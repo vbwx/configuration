@@ -1,0 +1,27 @@
+#
+# Set the the list of directories that cd searches.
+#
+cdpath+=(~/Projects)
+
+#
+# List of directories that Node.js searcbes for modules.
+#
+export NODE_PATH="/usr/local/opt/node/lib/node_modules"
+
+#
+# Network configuration
+#
+export IP=$(ipconfig getifaddr en1)
+# export IP6=$(ifconfig en1 | grep 'inet6 ' | cut -d ' ' -f 2)
+
+#
+# Set the list of directories that Zsh searches for programs.
+#
+path=(
+	/usr/local/bin
+	$path
+	.
+)
+
+DEFAULT_USER=vbwx
+
