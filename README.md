@@ -6,8 +6,8 @@ I have these files symlinked from my home directory.
 * `~/.bashrc`
 * `~/.coffeelint.json`
 * `~/.eslintrc.json`
-* `~/.gitconfig`
-* `~/.gitignore`
+* `~/.config/git/config`
+* `~/.config/git/ignore`
 * `~/.vim/gvimrc`
 * `~/.profile`
 * `~/.scss-lint.yml`
