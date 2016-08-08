@@ -96,9 +96,6 @@
 		nnoremap <Leader>f :Autoformat<CR>
 		" Show indentation lines with [Space][Tab]
 		nnoremap <silent> <Leader><Tab> :set invlist<CR>:IndentLinesToggle<CR>
-		" Start interactive EasyAlign
-		nmap ga <Plug>(EasyAlign)
-		xmap ga <Plug>(EasyAlign)
 	else
 		" Show indentation lines with [Space][Tab]
 		nnoremap <silent> <Leader><Tab> :set invlist<CR>
@@ -111,51 +108,55 @@
 	else
 		let $VIMHOME = $HOME."/.vim"
 	endif
-	filetype plugin on
-	call plug#begin($VIMHOME."/bundles")
+	filetype off
+	set rtp+=$VIMHOME/bundle/Vundle.vim
+	call vundle#begin()
+
+"{{{ Tools
+	Plugin 'VundleVim/Vundle.vim'
+	Plugin 'sjl/gundo.vim'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'Shougo/unite.vim'
+"}}}
 
 "{{{ User Interface
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'chriskempson/base16-vim'
+	Plugin 'vim-airline/vim-airline'
+	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'chriskempson/base16-vim'
 "}}}
 
 "{{{ Editing
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'editorconfig/editorconfig-vim'
-	Plug 'SirVer/ultisnips'
-	Plug 'tmhedberg/matchit'
-	Plug 'mattn/emmet-vim'
-	Plug 'Yggdroot/indentLine'
-	Plug 'junegunn/vim-easy-align'
+	Plugin 'jiangmiao/auto-pairs'
+	Plugin 'editorconfig/editorconfig-vim'
+	Plugin 'SirVer/ultisnips'
+	Plugin 'tmhedberg/matchit'
+	Plugin 'mattn/emmet-vim'
+	Plugin 'Yggdroot/indentLine'
+	Plugin 'godlygeek/tabular'
 "}}}
 
 "{{{ Syntax
-	Plug 'digitaltoad/vim-pug'
-	Plug 'kchmck/vim-coffee-script'
-	Plug 'isRuslan/vim-es6'
-	Plug 'mustache/vim-mustache-handlebars'
-	Plug 'leafgarland/typescript-vim'
+	Plugin 'digitaltoad/vim-pug'
+	Plugin 'kchmck/vim-coffee-script'
+	Plugin 'isRuslan/vim-es6'
+	Plugin 'mustache/vim-mustache-handlebars'
+	Plugin 'leafgarland/typescript-vim'
 "}}}
 
 "{{{ Integration
-	Plug 'scrooloose/syntastic'
-	Plug 'rizzatti/dash.vim'
-	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'vim-scripts/vim-svngutter'
-	Plug 'suan/vim-instant-markdown'
-	Plug 'Chiel92/vim-autoformat'
-	Plug 'Valloric/YouCompleteMe'
+	Plugin 'scrooloose/syntastic'
+	Plugin 'rizzatti/dash.vim'
+	Plugin 'tpope/vim-fugitive'
+	Plugin 'airblade/vim-gitgutter'
+	Plugin 'vim-scripts/vim-svngutter'
+	Plugin 'suan/vim-instant-markdown'
+	Plugin 'Chiel92/vim-autoformat'
+	Plugin 'Valloric/YouCompleteMe'
 "}}}
 
-"{{{ Tools
-	Plug 'sjl/gundo.vim'
-	Plug 'scrooloose/nerdtree'
-	Plug 'Shougo/unite.vim'
-"}}}
+	call vundle#end()
 
-	call plug#end()
+	filetype plugin indent on
 "}}}
 
 "{{{ Syntax Highlighting
