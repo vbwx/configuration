@@ -1,5 +1,5 @@
 export GOPATH="$HOME/.go"
 export PATH="/usr/local/bin:$PATH:$GOPATH/bin:."
 export NODE_PATH="/usr/local/opt/node/lib/node_modules"
-export EDITOR="/usr/local/bin/atom"
-export VISUAL="/usr/local/bin/atom"
+export EDITOR="vim"
+export VISUAL="vim"
