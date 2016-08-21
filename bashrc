@@ -18,10 +18,6 @@ alias e='open -e'
 alias p='pwd'
 alias where='lsof | grep -i'
 alias rm='\rm -id'
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim --noplugin'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias mvim='> /dev/null /usr/local/bin/mvim'
-alias view='/Applications/MacVim.app/Contents/MacOS/Vim -R --noplugin'
 alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
 
 prefix=$(brew --prefix)

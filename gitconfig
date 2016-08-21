@@ -6,7 +6,7 @@
 	user = vbwx
 	token = 1b4f2bbda68a129e3474798bcc212541
 [core]
-	editor = /Applications/MacVim.app/Contents/MacOS/Vim --noplugin
+	editor = vi
 	trustctime = false
 [filter "lfs"]
 	clean = git lfs clean %f

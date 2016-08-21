@@ -1,5 +1,5 @@
 export GOPATH="$HOME/.go"
 export PATH="/usr/local/bin:$PATH:$GOPATH/bin:."
 export NODE_PATH="/usr/local/opt/node/lib/node_modules"
-export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
-export VISUAL="/Applications/MacVim.app/Contents/MacOS/Vim"
+export EDITOR="vim"
+export VISUAL="vim"
