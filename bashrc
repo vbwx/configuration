@@ -19,11 +19,12 @@ alias p='pwd'
 alias where='lsof | grep -i'
 alias rm='\rm -id'
 alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
+alias update_npm='npm install -g npm@latest'
+alias update_nvm='(cd "$NVM_DIR" && git fetch origin && git checkout `git describe --abrev=0 --tags --match "v[0-9]*" origin` && . "$NVM_DIR/nvm.sh")'
 
 prefix=$(brew --prefix)
 [ -f $prefix/etc/bash_completion ] && . $prefix/etc/bash_completion
 
-export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
@@ -31,3 +32,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -f $prefix/opt/fzf/shell/key-bindings.bash ] && . $prefix/opt/fzf/shell/key-bindings.bash
 
 eval "$(rbenv init -)"
+eval "$(pyenv init -)"
+source "$PERLBREW_ROOT/etc/bashrc"
