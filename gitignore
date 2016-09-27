@@ -10,6 +10,9 @@ Icon
 ._*
 Thumbs.db
 
+# Cache files
+.tags
+
 # Backup files
 *.swp
 *~
