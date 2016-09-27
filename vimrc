@@ -49,14 +49,16 @@
 	let g:user_emmet_install_global = 0
 	let g:user_emmet_mode = 'nv'
 	let g:user_emmet_leader_key = maplocalleader
-	let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-	\	--ignore .git
-	\	--ignore .svn
-	\	--ignore .hg
-	\	--ignore .DS_Store
-	\	--ignore Thumbs.db
-	\	--ignore "**/*.pyc"
-	\	-g ""'
+	if executable('ag')
+		let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+		\	--ignore .git
+		\	--ignore .svn
+		\	--ignore .hg
+		\	--ignore .DS_Store
+		\	--ignore Thumbs.db
+		\	--ignore "**/*.pyc"
+		\	-g ""'
+	endif
 "}}}
 
 "{{{ Mappings
