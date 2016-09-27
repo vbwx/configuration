@@ -1,27 +1,23 @@
-#
 # Set the the list of directories that cd searches.
-#
 cdpath+=(~/Projects)
 
-#
 # List of directories that Node.js searcbes for modules.
-#
-export NODE_PATH="/usr/local/opt/node/lib/node_modules"
+export NODE_PATH="/usr/local/node/lib/node_modules"
 
-#
+# Location of the Node Version Manager
+export NVM_DIR="/usr/local/nvm"
+
+# Location of Perlbrew
+export PERLBREW_ROOT="/usr/local/perlbrew"
+
+# Location of rbenv
+export RBENV_ROOT="/usr/local/rbenv"
+
+# Location of pyenv
+export PYENV_ROOT="/usr/local/pyenv"
+
 # Network configuration
-#
 export IP=$(ipconfig getifaddr en1)
 # export IP6=$(ifconfig en1 | grep 'inet6 ' | cut -d ' ' -f 2)
 
-#
-# Set the list of directories that Zsh searches for programs.
-#
-path=(
-	/usr/local/bin
-	$path
-	.
-)
-
 DEFAULT_USER=vbwx
-

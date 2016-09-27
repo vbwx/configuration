@@ -1,5 +1,10 @@
-export GOPATH="$HOME/.go"
-export PATH="/usr/local/bin:$PATH:$GOPATH/bin:."
+export PATH="$PATH:."
 export NODE_PATH="/usr/local/opt/node/lib/node_modules"
+export NVM_DIR="$HOME/.nvm"
 export EDITOR="vim"
 export VISUAL="vim"
+export PERLBREW_ROOT="/usr/local/perlbrew"
+export RBENV_ROOT="/usr/local/rbenv"
+export PYENV_ROOT="/usr/local/pyenv"
+export IP=`ipconfig getifaddr en1`
+# export IP6=`ifconfig en1 | grep 'inet6 ' | cut -d ' ' -f 2`
