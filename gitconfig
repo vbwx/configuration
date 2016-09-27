@@ -31,7 +31,3 @@
 	default = simple
 [credential]
 	helper = osxkeychain
-[merge]
-	tool = opendiff
-[diff]
-	tool = opendiff
