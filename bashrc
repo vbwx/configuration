@@ -21,6 +21,7 @@ alias rm='\rm -id'
 alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
 alias update_npm='npm install -g npm@latest'
 alias update_nvm='(cd "$NVM_DIR" && git fetch origin && git checkout `git describe --abrev=0 --tags --match "v[0-9]*" origin` && . "$NVM_DIR/nvm.sh")'
+alias wget='\wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0'
 
 prefix=$(brew --prefix)
 [ -f $prefix/etc/bash_completion ] && . $prefix/etc/bash_completion
