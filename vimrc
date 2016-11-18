@@ -30,6 +30,7 @@
 	set selectmode=mouse
 	set tags=./.tags,.tags;$HOME
 
+	let $VIMHOME = expand('<sfile>:p:h')
 	let maplocalleader = '\\'
 	let g:solarized_menu = 0
 	let g:airline_powerline_fonts = 1
@@ -269,13 +270,14 @@
 
 "{{{ Installation
 if !has('win32') && !has('win64')
-	if empty(glob('~/.vim/autoload/plug.vim'))
-		silent ! curl -fLo '~/.vim/autoload/plug.vim' --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-		autocmd VimEnter * PlugInstall | source $MYVIMRC
+	let file = $VIMHOME."/autoload/plug.vim"
+	if empty(glob(file))
+		silent exe "!curl -fLo ".file." --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'"
 	endif
 
-	if empty(glob('~/.vim/spell/de.utf-8.spl'))
-		silent ! curl -fLo '~/.vim/spell/de.utf-8.spl' --create-dirs 'http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl'
+	let file = $VIMHOME."/spell/de.utf-8.spl"
+	if empty(glob(file))
+		silent exe "!curl -fLo ".file." --create-dirs 'http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl'"
 	endif
 endif
 "}}}
