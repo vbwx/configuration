@@ -1,12 +1,17 @@
 if has('win32') || has('win64')
 "{{{ Windows
-	set guioptions=egmrLt
+	set guioptions=egmrLT
 	set guifont=DejaVu_Sans_Mono_for_Powerline:h10
 "}}}
-else
-"{{{ Unix
-	set guioptions-=rL
+elseif has('gui_macvim')
+"{{{ macOS
+	set guioptions-=rLT
 	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+"}}}
+else
+"{{{ *nix
+	set guioptions-=T
+	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline 10
 "}}}
 endif
 
