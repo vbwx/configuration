@@ -1,3 +1,7 @@
+"{{{ General
+	set visualbell t_vb=
+"}}}
+
 if has('win32') || has('win64')
 "{{{ Windows
 	set guioptions=egmrLT

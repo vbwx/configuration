@@ -13,7 +13,7 @@
 	set copyindent
 	set preserveindent
 	set modeline
-	set visualbell t_vb=
+	set noerrorbells visualbell t_vb=
 	set modelines=3
 	set foldmethod=indent
 	set foldlevelstart=99
