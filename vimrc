@@ -290,7 +290,7 @@ autocmd BufReadCmd *.jar call zip#Browse(expand("<amatch>"))
 autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
 " Syntax specific formatting
 autocmd FileType tex setlocal formatoptions+=1
-autocmd FileType text,markdown setlocal formatoptions+=an1
+autocmd FileType text,markdown setlocal formatoptions+=n1
 
 if &loadplugins
 	" Allow traversing the tree upwards when navigating Git objects
