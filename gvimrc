@@ -15,7 +15,7 @@ elseif has('gui_macvim')
 else
 "{{{ *nix
 	set guioptions=gmrvL
-	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline 10
+	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 "}}}
 endif
 " vim: ts=5:sw=5:ci:pi:fdm=marker:fdl=0
