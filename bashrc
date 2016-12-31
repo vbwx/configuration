@@ -1,7 +1,12 @@
+shopt cdable_vars
+
 PS1="\n\[\e[32m\]\W> \[\e[m\]"
 PS2="\[\e[32m\]> \[\e[m\]"
 
 CDPATH="$HOME/Projects"
+
+export DESK="$HOME/Desktop"
+export DOWN="$HOME/Downloads"
 
 alias dir='ls -F'
 alias ll='ls -AFlho'
@@ -14,7 +19,6 @@ alias ....='cd ../../..'
 alias +='pushd'
 alias -- -='popd'
 alias o='open'
-alias desk='cd ~/Desktop'
 alias e='open -e'
 alias p='pwd'
 alias where='lsof | grep -i'
