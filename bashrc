@@ -1,4 +1,4 @@
-shopt cdable_vars
+shopt -s cdable_vars
 
 PS1="\n\[\e[32m\]\W> \[\e[m\]"
 PS2="\[\e[32m\]> \[\e[m\]"
