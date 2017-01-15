@@ -1,29 +1,29 @@
-" Copyright 2016 Bernhard Waldbrunner
+" Copyright 2016-2017 Bernhard Waldbrunner
+
+"{{{ Load Defaults
+	unlet! skip_defaults_vim
+	source $VIMRUNTIME/defaults.vim
+"}}}
 
 "{{{ Settings
-	set number
+	set relativenumber
 	set showmatch
 	set hlsearch
-	set incsearch
 	set ignorecase
 	set smartcase
+	set gdefault
 	set smarttab
-	set wildmenu
 	set autoread
 	set autowrite
-	set showcmd
 	set autoindent
 	set copyindent
 	set preserveindent
 	set modeline
-	set ruler
-	set ttimeout
-	set ttimeoutlen=100
-	set nrformats-=octal
+	set undofile
+	set lazyredraw
 	set complete-=i
 	set modelines=3
-	set display+=truncate
-	set backspace=indent,eol,start
+	set display+=uhex
 	set foldmethod=indent
 	set foldlevelstart=99
 	set wildignore=.git,.svn,.sass-cache,.tmp,.temp,.DS_Store,Thumbs.db,.tags,._*
@@ -36,13 +36,13 @@
 	set textwidth=100
 	set history=1000
 	set tabpagemax=40
-	set scrolloff=1
+	set scrolloff=2
 	set laststatus=2
-	set mouse=a
 	set selectmode=mouse
 	set viminfo^=!
 	set sessionoptions-=options
 	set noerrorbells visualbell t_vb=
+
 	setglobal tags=./.tags,.tags;$HOME
 
 	let $VIMHOME = expand('<sfile>:p:h')
@@ -60,25 +60,24 @@
 	let g:UltiSnipsJumpForwardTrigger = "<C-Right>"
 	let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
 	let g:UltiSnipsEditSplit = "vertical"
+	let g:strip_whitespace_on_save = 1
 	let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 	let g:visualstar_extra_commands = 'zzzv'
 	let g:user_emmet_install_global = 0
 	let g:user_emmet_mode = 'nv'
 	let g:user_emmet_leader_key = maplocalleader
 	let g:yankstack_map_keys = 0
+	let g:ctrlp_map = '-f'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
+
 	if has('python')
-		" let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
 		let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 	endif
+
 	if executable('ag')
 		set grepprg=ag\ --vimgrep\ --hidden
-		let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden
-		\	--ignore .git
-		\	--ignore .svn
-		\	--ignore .DS_Store
-		\	--ignore Thumbs.db
-		\	-g ""'
+		" let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden -g ""'
+		let g:ctrlp_user_command = 'ag --vimgrep --hidden %s'
 	endif
 "}}}
 
@@ -95,9 +94,7 @@
 	Plug 'suan/vim-instant-markdown'
 "}}}
 
-"{{{ Tools
-	Plug 'scrooloose/nerdtree'
-	Plug 'majutsushi/tagbar'
+"{{{ Fuzzy Finder
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'JazzCore/ctrlp-cmatcher', {'do': 'export CFLAGS=-Qunused-arguments; export CPPFLAGS=-Qunused-arguments; ./install.sh'}
 	Plug 'mattn/ctrlp-mark'
@@ -111,10 +108,16 @@
 	Plug 'suy/vim-ctrlp-unicode'
 	Plug 'jasoncodes/ctrlp-modified.vim'
 	Plug 'zeero/vim-ctrlp-help'
+"}}}
+
+"{{{ Tools
+	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
+	Plug 'majutsushi/tagbar'
 	Plug 'rizzatti/dash.vim'
 	Plug 'scrooloose/syntastic'
 	Plug 'editorconfig/editorconfig-vim'
 	" Plug 'KabbAmine/gulp-vim'
+	" Plug 'mklabs/grunt.vim'
 "}}}
 
 "{{{ Editing
@@ -134,16 +137,17 @@
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'thinca/vim-visualstar'
-	Plug 'vim-scripts/YankRing.vim'
+	Plug 'maxbrunsfeld/vim-yankstack'
 	Plug 'Valloric/YouCompleteMe', {'do': '/usr/bin/python install.py --tern-completer'}
 "}}}
 
-"{{{ Syntax
+"{{{ Language Support
 	Plug 'digitaltoad/vim-pug'
 	Plug 'kchmck/vim-coffee-script'
 	Plug 'isRuslan/vim-es6'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'leafgarland/typescript-vim'
+	Plug 'lervag/vimtex'
 "}}}
 
 "{{{ Revision Control
@@ -154,6 +158,7 @@
 "}}}
 
 	call plug#end()
+	call yankstack#setup()
 "}}}
 
 "{{{ Mappings
@@ -162,8 +167,9 @@
 	map <Leader><Space> <Localleader>
 	imap <C-\> <C-O><Localleader>
 	imap <C-Space> <C-O><Localleader>
-	" Move to the end of the next line with [_]
-	noremap _ j$
+	" Use [_] instead of [-] to go to the previous line so it's similar to [+]
+	noremap - <NOP>
+	noremap _ -
 	" [Ctrl]+[C] doesn't trigger InsertLeave autocommands, so we map it to [Esc]
 	inoremap <C-C> <Esc>
 	vnoremap <C-C> <Esc>
@@ -171,20 +177,20 @@
 	nnoremap <C-C> <C-W>c
 	" Faster access to ex mode with [Return]
 	noremap <CR> :
-	ounmap <CR>
 	" Faster shell command execution [Ctrl]+[Return]
 	noremap <C-CR> :!
-	ounmap <C-CR>
 	" Adding lines in insert mode
 	inoremap <C-CR> <C-O>o
 	inoremap <S-CR> <C-O>O
-	" Jump to definition with [Shift]+[Return]
+	" Jump to tag with [Shift]+[Return]
 	nnoremap <S-CR> <C-]>
 	" Jump back with [Shift]+[Backspace] or [Backspace]
 	nnoremap <S-BS> <C-T>
 	nnoremap <BS> <C-T>
+	" Ex mode is unnecessary
+	nnoremap Q <NOP>
 	" Write & close a tab with [Shift]+[Z][Shift]+[Tab]
-	nnoremap <silent> Z<S-Tab> :<C-R>=&mod ? 'w <Bar>' : ''<CR>tabclose<CR>
+	nnoremap <silent> Z<S-Tab> :<C-R>=&mod ? 'w <Bar> ' : ''<CR>tabclose<CR>
 	" Close a tab with [Shift]+[Q][Shift]+[Tab]
 	nnoremap <silent> Q<S-Tab> :tabclose!<CR>
 	" Open a new tab with [Z][Tab]
@@ -198,14 +204,15 @@
 	nnoremap <C-Up> <C-W>k
 	nnoremap <C-Left> <C-W>h
 	nnoremap <C-Right> <C-W>l
-	" Ex mode is unnecessary
-	nnoremap Q <NOP>
+	" Help shortcut is unnecessary
+	noremap <F1> <Esc>
+	inoremap <F1> <Esc>
 	" Save & close a buffer with [Shift]+[Q][Shift]+[Q]
-	nnoremap QQ :<C-R>=&mod ? 'w <Bar>' : ''<CR>bdelete<CR>
+	nnoremap QQ :<C-R>=&mod ? 'w <Bar> ' : ''<CR>bdelete<CR>
 	" Discard changes in a buffer with [Shift]+[Q][Shift]+[Z]
 	nnoremap QZ :bdelete!<CR>
 	" Redraw screen, update diff & fix syntax highlighting with [Ctrl]+[L]
-	nnoremap <silent> <C-L> :syntax sync fromstart<C-R>=has('diff') ? '<Bar>diffupdate' : ''<CR><CR><C-L>
+	nnoremap <silent> <C-L> :syntax sync fromstart<C-R>=has('diff') ? ' <Bar> diffupdate' : ''<CR><CR><C-L>
 	" Toggle folds with [Tab]
 	nnoremap <Tab> za
 	" Toggle folds recursively with [Shift]+[Tab]
@@ -219,29 +226,27 @@
 	nnoremap <silent> g/ :nohl<CR>
 	" Make [Shift]+[Y] behave like [Shift]+[D] or [Shift]+[C]
 	nmap Y y$
-	" Copy into the system clipboard with [G][Y]
-	nmap gy "*y
-	xmap gy "*y
-	nmap gY "*y
-	xmap gY "*y
-	" Cut into the system clipboard with [G][M]
-	nmap gr "*d
-	xmap gr "*d
-	nmap gR "*dd
-	xmap gR "*d
-	" Don't leave visual mode when shifting lines
-	vnoremap <silent> > >gv
-	vnoremap <silent> < <gv
+	" Copy into the system clipboard with [Space][Y]
+	nmap <Leader>y "*y
+	xmap <Leader>y "*y
+	nmap <Leader>Y "*y$
+	xmap <Leader>Y "*y
+	" Cut into the system clipboard with [Space][D]
+	nmap <Leader>d "*d
+	xmap <Leader>d "*d
+	nmap <Leader>D "*d$
+	xmap <Leader>D "*d
+
 	" Reference the directory of the current file in ex commands
 	cnoremap %/ %:p:h/
 
 	" Special mappings that require plugins
 	if &loadplugins
-		" Paste from the system clipboard with [G][P]
-		nmap gp "*=p
-		xmap gp "*=p
-		nmap gP "*=P
-		xmap gP "*=P
+		" Paste from the system clipboard with [Space][P]
+		nmap <Leader>p "*=p
+		xmap <Leader>p "*=p
+		nmap <Leader>P "*=P
+		xmap <Leader>P "*=P
 		" Additional settings
 		nnoremap [oI :set incsearch<CR>
 		nnoremap ]oI :set noincsearch<CR>
@@ -249,14 +254,19 @@
 		nnoremap [of :set foldcolumn=4<CR>
 		nnoremap ]of :set foldcolumn=0<CR>
 		nnoremap cof :set fdc=<C-R>=&fdc == 0 ? 4 : 0<CR><CR>
-		" Open a URI with [\][Return]
+		nnoremap [oC :set colorcolumn=+1<CR>
+		nnoremap ]oC :set colorcolumn=<CR>
+		nnoremap coC :set cc=<C-R>=&cc == '' ? '+1' : ''<CR><CR>
+		nnoremap col :IndentLinesToggle <Bar> set list!<CR>
+		" Open a URI with [\][Return] or [Cmd]+[Return]
 		nmap <Leader><CR> <Plug>NetrwBrowseX
 		vmap <Leader><CR> <Plug>NetrwBrowseXVis
+		nmap <D-CR> <Plug>NetrwBrowseX
+		vmap <D-CR> <Plug>NetrwBrowseXVis
 		" Format buffer with [Space][=]
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [Space][,]
 		noremap <Leader>, :Tabularize /
-		ounmap <Leader>,
 		" Move focus to file explorer with [Space][N]
 		nnoremap <Leader>n :NERDTreeFocus<CR>
 		" Change working directory of file explorer with [Space][Shift]+[N]
@@ -269,65 +279,84 @@
 		nnoremap <Leader>T :TagbarShowTag<CR>
 		" Check syntax with [Space][S]
 		nnoremap <Leader>s :SyntasticCheck<CR>
-		" Look up keyword in Dash with [Space][D]
+		" Look up keyword in Dash with [Space][?]
 		noremap <Leader>d :Dash<CR>
-		ounmap <Leader>d
-		" Look up keyword in all Dash docsets with [Space][Shift]+[D]
+		" Look up keyword in all Dash docsets with [Space][Shift]+[!]
 		noremap <Leader>D :Dash!<CR>
-		ounmap <Leader>D
-		" Show indentation lines with [\][|]
-		nnoremap <Leader><Bar> :IndentLinesToggle<CR>
 		" Show undo tree
 		nnoremap <Leader>u :GundoShow<CR>
-		" Set indentation settings with [Space][I]
+		" Set indentation settings with [Space][Tab]
 		nnoremap <Leader><Tab> :DetectIndent<CR>
 		" Show mark positions when using jump command
 		nnoremap ` :ShowMarksOnce<CR>`
+		" Access yank history with [Ctrl]+[N] and [Ctrl]+[P]
+		nmap <C-P> <Plug>yankstack_substitute_older_paste
+		nmap <C-N> <Plug>yankstack_substitute_newer_paste
+		" CtrlP shortcuts
+		nnoremap -- :CtrlPCmdPalette<CR>
+		nnoremap -! :CtrlPCmdHistory<CR>
+		nnoremap -m :CtrlPMixed<CR>
+		nnoremap -c :CtrlPChange<CR>
+		nnoremap -C :CtrlPChangeAll<CR>
+		nnoremap -. :CtrlPCurWD<CR>
+		nnoremap -" :CtrlPRegister<CR>
+		nnoremap -u :CtrlPUndo<CR>
+		nnoremap -t :CtrlPTag<CR>
+		nnoremap -/ :CtrlPSearchHistory<CR>
+		nnoremap -` :CtrlPMark<CR>
+		nnoremap -h :CtrlPHelp<CR>
+		nnoremap -a :CtrlPag<CR>
+		xnoremap -a :CtrlPagVisual<CR>
+		nnoremap -A :CtrlPagLocate<CR>
+		nnoremap -? :CtrlPagPrevious<CR>
+		nnoremap -<Tab> :CtrlPSmartTabs<CR>
 	else
-		" Paste from the system clipboard with [G][P]
-		nnoremap gp "*gp
-		xnoremap gp "*gp
-		nnoremap gP "*gP
-		xnoremap gP "*gP
+		" Paste from the system clipboard with [Space][P]
+		nnoremap <Leader>p "*gp
+		xnoremap <Leader>p "*gp
+		nnoremap <Leader>P "*gP
+		xnoremap <Leader>P "*gP
 	endif
 "}}}
 
 "{{{ Syntax Highlighting
-	syntax enable
 	colorscheme base16-tomorrow-night
 	highlight! link ExtraWhitespace Todo
 "}}}
 
 "{{{ Auto Commands
-" Explore contents of JAR files
-autocmd BufReadCmd *.jar call zip#Browse(expand("<amatch>"))
-" Prevent comment insertion when inserting new lines; remove comment leader when joining lines and
-" add comment leader on [Return]
-autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
-" Syntax specific formatting
-autocmd FileType tex setlocal formatoptions+=1
-autocmd FileType text,markdown setlocal formatoptions+=n1
+	if has('autocmd')
+		" Explore contents of JAR files
+		autocmd BufReadCmd *.jar call zip#Browse(expand("<amatch>"))
+		" Prevent comment insertion when inserting new lines; remove comment leader when joining lines and
+		" add comment leader on [Return]
+		autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
+		" Syntax specific formatting
+		autocmd FileType tex setlocal formatoptions+=1
+		autocmd FileType text,markdown setlocal formatoptions+=n1
+		" Save on losing focus
+		" autocmd FocusLost * wa
 
-if &loadplugins
-	" Allow traversing the tree upwards when navigating Git objects
-	autocmd User fugitive
-	\	if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-	\		nnoremap <buffer> <BS> :edit %:h<CR> |
-	\		nnoremap <buffer> <S-BS> :edit %:h<CR> |
-	\	endif
-	" Delete buffers when navigating Git objects
-	autocmd BufReadPost fugitive://* set bufhidden=delete
-	" Enable Emmet for HTML & CSS files
-	autocmd FileType html,css EmmetInstall
-	autocmd BufWritePre * StripWhitespace
-endif
+		if &loadplugins
+			" Allow traversing the tree upwards when navigating Git objects
+			autocmd User fugitive
+			\	if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+			\		nnoremap <buffer> <BS> :edit %:h<CR> |
+			\		nnoremap <buffer> <S-BS> :edit %:h<CR> |
+			\	endif
+			" Delete buffers when navigating Git objects
+			autocmd BufReadPost fugitive://* set bufhidden=delete
+			" Enable Emmet for HTML & CSS files
+			autocmd FileType html,css EmmetInstall
+		endif
+	endif
 "}}}
 
 "{{{ Custom Commands
-" Update tags file for JS projects
-command! GetJSTags ! find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > .tags
-" Open a Terminal window in the current working directory
-command! Term execute '! osascript -e $''tell application "Terminal"\nactivate\ndo script "cd \\"' . getcwd() . '\\""\nend tell'''
+	" Update tags file for JS projects
+	command! GetJSTags ! find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > .tags
+	" Open a Terminal window in the current working directory
+	command! Term execute '! osascript -e $''tell application "Terminal"\nactivate\ndo script "cd \\"' . getcwd() . '\\""\nend tell'' > /dev/null'
 "}}}
 
-" vim: ts=5:sw=5:ci:pi:fdm=marker:fdl=0:fdc=3
+" vim: ts=5:sw=5:fdm=marker:fdl=0:fdc=3
