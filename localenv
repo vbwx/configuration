@@ -1,5 +1,10 @@
 # Set the the list of directories that cd searches.
-cdpath+=(~/Projects)
+CDPATH="$HOME/Projects"
+
+# Define important directories
+DES="$HOME/Desktop"
+DOW="$HOME/Downloads"
+PUB="$HOME/Public"
 
 # List of directories that Node.js searcbes for modules.
 export NODE_PATH="/usr/local/node/lib/node_modules"
@@ -17,7 +22,13 @@ export RBENV_ROOT="/usr/local/rbenv"
 export PYENV_ROOT="/usr/local/pyenv"
 
 # Network configuration
-export IP=$(ipconfig getifaddr en1)
-# export IP6=$(ifconfig en1 | grep 'inet6 ' | cut -d ' ' -f 2)
+IP=$(ipconfig getifaddr en0)
+# IP6=$(ifconfig en1 | grep 'inet6 ' | cut -d ' ' -f 2)
+if [ ! $IP ]; then
+	IP=$(ipconfig getifaddr en1)
+	if [ ! $IP ]; then
+		IP=$(ipconfig getifaddr en2)
+	fi
+fi
 
 DEFAULT_USER=vbwx

@@ -3,11 +3,6 @@ shopt -s cdable_vars
 PS1="\n\[\e[32m\]\W> \[\e[m\]"
 PS2="\[\e[32m\]> \[\e[m\]"
 
-CDPATH="$HOME/Projects"
-
-export DESK="$HOME/Desktop"
-export DOWN="$HOME/Downloads"
-
 alias dir='ls -F'
 alias ll='ls -AFlho'
 alias la='ls -lao'
