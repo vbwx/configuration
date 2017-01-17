@@ -166,7 +166,7 @@
 	map <Leader><Space> <Localleader>
 	imap <C-\> <C-O><Localleader>
 	imap <C-Space> <C-O><Localleader>
-	" [Ctrl]+[C] doesn't trigger InsertLeave autocommands, so we map it to [Esc]
+	" [Ctrl]+[C] doesn't trigger InsertLeave autocommands, so I map it to [Esc]
 	inoremap <C-C> <Esc>
 	vnoremap <C-C> <Esc>
 	" Close a window with [Ctrl]+[C]
@@ -223,8 +223,8 @@
 	" Make [Shift]+[Y] behave like [Shift]+[D] or [Shift]+[C]
 	nmap Y y$
 	" Shortcut for accessing the system clipboard
-	noremap _ "*
-	sunmap _
+	noremap - "*
+	sunmap -
 
 	" Reference the directory of the current file in ex commands
 	cnoremap %/ %:p:h/
@@ -260,10 +260,13 @@
 		" Set indentation settings with [Space][I]
 		nnoremap <Leader>i :DetectIndent<CR>
 		" Show mark positions when using jump command
-		nnoremap ` :ShowMarksOnce<CR>`
-		" Access yank history with [Ctrl]+[N] and [Ctrl]+[P]
-		nmap <C-P> <Plug>yankstack_substitute_older_paste
-		nmap <C-N> <Plug>yankstack_substitute_newer_paste
+		nnoremap <silent> ` :ShowMarksOnce<CR>`
+		nnoremap <silent> ' :ShowMarksOnce<CR>'
+		nnoremap <silent> g` :ShowMarksOnce<CR>g`
+		nnoremap <silent> g' :ShowMarksOnce<CR>g'
+		" Access yank history with [+] and [_]
+		nmap _ <Plug>yankstack_substitute_older_paste
+		nmap + <Plug>yankstack_substitute_newer_paste
 		" CtrlP shortcuts
 		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
 		nnoremap <Leader>: :CtrlPCmdHistory<CR>
