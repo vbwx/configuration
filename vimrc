@@ -67,7 +67,7 @@
 	let g:user_emmet_mode = 'nv'
 	let g:user_emmet_leader_key = maplocalleader
 	let g:yankstack_map_keys = 0
-	let g:ctrlp_map = '-f'
+	let g:ctrlp_map = '<Leader>f'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
 
 	if has('python')
@@ -167,9 +167,6 @@
 	map <Leader><Space> <Localleader>
 	imap <C-\> <C-O><Localleader>
 	imap <C-Space> <C-O><Localleader>
-	" Use [_] instead of [-] to go to the previous line so it's similar to [+]
-	noremap - <NOP>
-	noremap _ -
 	" [Ctrl]+[C] doesn't trigger InsertLeave autocommands, so we map it to [Esc]
 	inoremap <C-C> <Esc>
 	vnoremap <C-C> <Esc>
@@ -260,9 +257,10 @@
 		nnoremap col :IndentLinesToggle <Bar> set list!<CR>
 		" Open a URI with [\][Return] or [Cmd]+[Return]
 		nmap <Leader><CR> <Plug>NetrwBrowseX
-		vmap <Leader><CR> <Plug>NetrwBrowseXVis
+		xmap <Leader><CR> <Plug>NetrwBrowseXVis
 		nmap <D-CR> <Plug>NetrwBrowseX
-		vmap <D-CR> <Plug>NetrwBrowseXVis
+		imap <D-CR> <C-O><Plug>NetrwBrowseX
+		xmap <D-CR> <Plug>NetrwBrowseXVis
 		" Format buffer with [Space][=]
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [Space][,]
@@ -274,9 +272,9 @@
 		" Reveal current file in file explorer with [Space][%]
 		nnoremap <Leader>% :NERDTreeFind<CR>
 		" Move focus to tag bar with [Space][T]
-		nnoremap <Leader>t :TagbarOpen fj<CR>
+		nnoremap <Leader># :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [Space][Shift]+[T]
-		nnoremap <Leader>T :TagbarShowTag<CR>
+		nnoremap <Leader>$ :TagbarShowTag<CR>
 		" Check syntax with [Space][S]
 		nnoremap <Leader>s :SyntasticCheck<CR>
 		" Look up keyword in Dash with [Space][?]
@@ -286,30 +284,31 @@
 		" Show undo tree
 		nnoremap <Leader>u :GundoShow<CR>
 		" Set indentation settings with [Space][Tab]
-		nnoremap <Leader><Tab> :DetectIndent<CR>
+		nnoremap <Leader>i :DetectIndent<CR>
 		" Show mark positions when using jump command
 		nnoremap ` :ShowMarksOnce<CR>`
 		" Access yank history with [Ctrl]+[N] and [Ctrl]+[P]
 		nmap <C-P> <Plug>yankstack_substitute_older_paste
 		nmap <C-N> <Plug>yankstack_substitute_newer_paste
 		" CtrlP shortcuts
-		nnoremap -- :CtrlPCmdPalette<CR>
-		nnoremap -! :CtrlPCmdHistory<CR>
-		nnoremap -m :CtrlPMixed<CR>
-		nnoremap -c :CtrlPChange<CR>
-		nnoremap -C :CtrlPChangeAll<CR>
-		nnoremap -. :CtrlPCurWD<CR>
-		nnoremap -" :CtrlPRegister<CR>
-		nnoremap -u :CtrlPUndo<CR>
-		nnoremap -t :CtrlPTag<CR>
-		nnoremap -/ :CtrlPSearchHistory<CR>
-		nnoremap -` :CtrlPMark<CR>
-		nnoremap -h :CtrlPHelp<CR>
-		nnoremap -a :CtrlPag<CR>
-		xnoremap -a :CtrlPagVisual<CR>
-		nnoremap -A :CtrlPagLocate<CR>
-		nnoremap -? :CtrlPagPrevious<CR>
-		nnoremap -<Tab> :CtrlPSmartTabs<CR>
+		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
+		nnoremap <Leader>: :CtrlPCmdHistory<CR>
+		nnoremap <Leader>m :CtrlPMixed<CR>
+		nnoremap <Leader>c :CtrlPChange<CR>
+		nnoremap <Leader>C :CtrlPChangeAll<CR>
+		nnoremap <Leader>. :CtrlPCurWD<CR>
+		nnoremap <Leader>" :CtrlPRegister<CR>
+		nnoremap <Leader>T :CtrlPTag<CR>
+		nnoremap <Leader>t :CtrlPBufTagAll<CR>
+		nnoremap <Leader>/ :CtrlPSearchHistory<CR>
+		nnoremap <Leader>` :CtrlPMark<CR>
+		nnoremap <Leader>h :CtrlPHelp<CR>
+		nnoremap <Leader>a :CtrlPag<CR>
+		xnoremap <Leader>a :CtrlPagVisual<CR>
+		nnoremap <Leader>A :CtrlPagLocate<CR>
+		nnoremap <Leader>? :CtrlPagPrevious<CR>
+		nnoremap <Leader>b :CtrlPBookmarkDir<CR>
+		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
 	else
 		" Paste from the system clipboard with [Space][P]
 		nnoremap <Leader>p "*gp
