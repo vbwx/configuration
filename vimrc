@@ -76,8 +76,7 @@
 
 	if executable('ag')
 		set grepprg=ag\ --vimgrep\ --hidden
-		" let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden -g ""'
-		let g:ctrlp_user_command = 'ag --vimgrep --hidden %s'
+		let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden -g ""'
 	endif
 "}}}
 
