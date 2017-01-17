@@ -125,7 +125,7 @@
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'jacquesbh/vim-showmarks'
 	Plug 'tpope/vim-repeat'
-	Plug 'tpope/vim-unimpaired'
+	Plug 'vbwx/vim-unimpaired'
 	Plug 'ciaranm/detectindent'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tmhedberg/matchit'
@@ -223,41 +223,16 @@
 	nnoremap <silent> g/ :nohl<CR>
 	" Make [Shift]+[Y] behave like [Shift]+[D] or [Shift]+[C]
 	nmap Y y$
-	" Copy into the system clipboard with [Space][Y]
-	nmap <Leader>y "*y
-	xmap <Leader>y "*y
-	nmap <Leader>Y "*y$
-	xmap <Leader>Y "*y
-	" Cut into the system clipboard with [Space][D]
-	nmap <Leader>d "*d
-	xmap <Leader>d "*d
-	nmap <Leader>D "*d$
-	xmap <Leader>D "*d
+	" Shortcut for accessing the system clipboard
+	noremap _ "*
+	sunmap _
 
 	" Reference the directory of the current file in ex commands
 	cnoremap %/ %:p:h/
 
 	" Special mappings that require plugins
 	if &loadplugins
-		" Paste from the system clipboard with [Space][P]
-		nmap <Leader>p "*=p
-		xmap <Leader>p "*=p
-		nmap <Leader>P "*=P
-		xmap <Leader>P "*=P
-		" Additional settings
-		nnoremap [oI :set incsearch<CR>
-		nnoremap ]oI :set noincsearch<CR>
-		nnoremap coI :set incsearch!<CR>
-		nnoremap [of :set foldcolumn=4<CR>
-		nnoremap ]of :set foldcolumn=0<CR>
-		nnoremap cof :set fdc=<C-R>=&fdc == 0 ? 4 : 0<CR><CR>
-		nnoremap [oC :set colorcolumn=+1<CR>
-		nnoremap ]oC :set colorcolumn=<CR>
-		nnoremap coC :set cc=<C-R>=&cc == '' ? '+1' : ''<CR><CR>
-		nnoremap col :IndentLinesToggle <Bar> set list!<CR>
-		" Open a URI with [\][Return] or [Cmd]+[Return]
-		nmap <Leader><CR> <Plug>NetrwBrowseX
-		xmap <Leader><CR> <Plug>NetrwBrowseXVis
+		" Open a URI with [Cmd]+[Return]
 		nmap <D-CR> <Plug>NetrwBrowseX
 		imap <D-CR> <C-O><Plug>NetrwBrowseX
 		xmap <D-CR> <Plug>NetrwBrowseXVis
@@ -283,7 +258,7 @@
 		noremap <Leader>D :Dash!<CR>
 		" Show undo tree
 		nnoremap <Leader>u :GundoShow<CR>
-		" Set indentation settings with [Space][Tab]
+		" Set indentation settings with [Space][I]
 		nnoremap <Leader>i :DetectIndent<CR>
 		" Show mark positions when using jump command
 		nnoremap ` :ShowMarksOnce<CR>`
@@ -309,12 +284,6 @@
 		nnoremap <Leader>? :CtrlPagPrevious<CR>
 		nnoremap <Leader>b :CtrlPBookmarkDir<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
-	else
-		" Paste from the system clipboard with [Space][P]
-		nnoremap <Leader>p "*gp
-		xnoremap <Leader>p "*gp
-		nnoremap <Leader>P "*gP
-		xnoremap <Leader>P "*gP
 	endif
 "}}}
 
