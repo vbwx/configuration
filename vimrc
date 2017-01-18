@@ -217,14 +217,22 @@
 	nnoremap du :diffupdate<CR>
 	" Automatically open folds when jumping to a line
 	nnoremap G Gzv
-	" Clear search highlighting with [Z][/] or [G][/]
+	" Clear search highlighting with [Z][/]
 	nnoremap <silent> z/ :nohl<CR>
-	nnoremap <silent> g/ :nohl<CR>
 	" Make [Shift]+[Y] behave like [Shift]+[D] or [Shift]+[C]
 	nmap Y y$
 	" Shortcut for accessing the system clipboard
 	noremap - "*
 	sunmap -
+	" Faster global substitution (who needs a shortcut for :sleep, anyway?)
+	cnoremap %s %s///g<Left><Left><Left>
+	noremap gs :%s/\v//cgI<Left><Left><Left><Left><Left>
+	noremap gS :g/\v/s/\v//g<Left><Left><Left><Left><Left><Left><Left><Left>
+	" Faster search
+	nnoremap g/ :nohl<CR>/\v
+	xnoremap g/ <Esc>:nohl<CR>gv/\v
+	nnoremap g? :nohl<CR>?\v
+	xnoremap g? <Esc>:nohl<CR>gv?\v
 
 	" Reference the directory of the current file in ex commands
 	cnoremap %/ %:p:h/
