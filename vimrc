@@ -5,7 +5,7 @@
 	source $VIMRUNTIME/defaults.vim
 "}}}
 
-"{{{ Settings
+"{{{ Options
 	set relativenumber
 	set showmatch
 	set hlsearch
@@ -45,39 +45,66 @@
 
 	setglobal tags=./.tags,.tags;$HOME
 
-	let $VIMHOME = expand('<sfile>:p:h')
+	if executable('ag')
+		set grepprg=ag\ --vimgrep\ --hidden
+	endif
+"}}}
+
+"{{{ Plugin Settings
 	let maplocalleader = '\\'
+
 	let g:solarized_menu = 0
+
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
+
 	let g:indentLine_char = '┆'
 	let g:indentLine_enabled = 0
+
 	let g:syntastic_mode_map = {
 	\	'mode': 'passive',
 	\	'active_filetypes': []
 	\ }
+
 	let g:UltiSnipsExpandTrigger = "<C-Down>"
 	let g:UltiSnipsJumpForwardTrigger = "<C-Right>"
 	let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
 	let g:UltiSnipsEditSplit = "vertical"
+
 	let g:strip_whitespace_on_save = 1
+
 	let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 	let g:visualstar_extra_commands = 'zzzv'
+
 	let g:user_emmet_install_global = 0
 	let g:user_emmet_mode = 'nv'
 	let g:user_emmet_leader_key = maplocalleader
+
 	let g:yankstack_map_keys = 0
+
 	let g:ctrlp_map = '<Leader>f'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
-
 	if has('python')
 		let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 	endif
-
 	if executable('ag')
-		set grepprg=ag\ --vimgrep\ --hidden
 		let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden -g ""'
 	endif
+
+	if !exists('g:ycm_semantic_triggers')
+		let g:ycm_semantic_triggers = {}
+	endif
+	let g:ycm_semantic_triggers.tex = [
+	\	're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+	\	're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+	\	're!\\hyperref\[[^]]*',
+	\	're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+	\	're!\\(include(only)?|input){[^}]*',
+	\	're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+	\	're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+	\	're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+	\ ]
 "}}}
 
 "{{{ Bundles
@@ -127,26 +154,30 @@
 	Plug 'vbwx/vim-unimpaired'
 	Plug 'ciaranm/detectindent'
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'tmhedberg/matchit'
-	Plug 'mattn/emmet-vim'
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-surround'
-	Plug 'tpope/vim-commentary'
-	Plug 'Chiel92/vim-autoformat'
 	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
 	Plug 'thinca/vim-visualstar'
 	Plug 'maxbrunsfeld/vim-yankstack'
-	Plug 'Valloric/YouCompleteMe', {'do': '/usr/bin/python install.py --tern-completer'}
 "}}}
 
 "{{{ Language Support
-	Plug 'digitaltoad/vim-pug'
-	Plug 'kchmck/vim-coffee-script'
+	Plug 'Valloric/YouCompleteMe', {'do': '/usr/bin/python install.py --tern-completer'}
+	Plug 'honza/vim-snippets'
+	Plug 'Chiel92/vim-autoformat'
+	Plug 'tpope/vim-commentary'
+	Plug 'tmhedberg/matchit'
+	Plug 'mattn/emmet-vim'
+
+	" Language-specific:
 	Plug 'isRuslan/vim-es6'
-	Plug 'mustache/vim-mustache-handlebars'
+	Plug 'pangloss/vim-javascript'
 	Plug 'leafgarland/typescript-vim'
 	Plug 'lervag/vimtex'
+	" Plug 'digitaltoad/vim-pug'
+	" Plug 'kchmck/vim-coffee-script'
+	" Plug 'lumiliet/vim-twig'
+	" Plug 'mustache/vim-mustache-handlebars'
 "}}}
 
 "{{{ Revision Control
@@ -285,7 +316,7 @@
 		nnoremap <Leader>" :CtrlPRegister<CR>
 		nnoremap <Leader>T :CtrlPTag<CR>
 		nnoremap <Leader>t :CtrlPBufTagAll<CR>
-		nnoremap <Leader>/ :CtrlPSearchHistory<CR>
+		nnoremap <Leader>/ :nohl <Bar> CtrlPSearchHistory<CR>
 		nnoremap <Leader>` :CtrlPMark<CR>
 		nnoremap <Leader>h :CtrlPHelp<CR>
 		nnoremap <Leader>a :CtrlPag<CR>
@@ -318,10 +349,10 @@
 		if &loadplugins
 			" Allow traversing the tree upwards when navigating Git objects
 			autocmd User fugitive
-			\	if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-			\		nnoremap <buffer> <BS> :edit %:h<CR> |
-			\		nnoremap <buffer> <S-BS> :edit %:h<CR> |
-			\	endif
+			\ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+			\	nnoremap <buffer> <BS> :edit %:h<CR> |
+			\	nnoremap <buffer> <S-BS> :edit %:h<CR> |
+			\ endif
 			" Delete buffers when navigating Git objects
 			autocmd BufReadPost fugitive://* set bufhidden=delete
 			" Enable Emmet for HTML & CSS files
