@@ -44,10 +44,6 @@
 	set noerrorbells visualbell t_vb=
 
 	setglobal tags=./.tags,.tags;$HOME
-
-	if executable('ag')
-		set grepprg=ag\ --vimgrep\ --hidden
-	endif
 "}}}
 
 "{{{ Plugin Settings
@@ -88,9 +84,6 @@
 	if has('python')
 		let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 	endif
-	if executable('ag')
-		let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden -g ""'
-	endif
 
 	if !exists('g:ycm_semantic_triggers')
 		let g:ycm_semantic_triggers = {}
@@ -126,7 +119,7 @@
 	Plug 'mattn/ctrlp-mark'
 	Plug 'mattn/ctrlp-register'
 	Plug 'ompugao/ctrlp-history'
-	Plug 'lokikl/vim-ctrlp-ag'
+	Plug 'vbwx/vim-ctrlp-ag'
 	Plug 'ivalkeen/vim-ctrlp-tjump'
 	Plug 'DavidEGx/ctrlp-smarttabs'
 	Plug 'fisadev/vim-ctrlp-cmdpalette'
@@ -321,7 +314,7 @@
 		nnoremap <Leader>h :CtrlPHelp<CR>
 		nnoremap <Leader>a :CtrlPag<CR>
 		xnoremap <Leader>a :CtrlPagVisual<CR>
-		nnoremap <Leader>A :CtrlPagLocate<CR>
+		nnoremap <Leader>A :CtrlPagLocate<Space>
 		nnoremap <Leader>? :CtrlPagPrevious<CR>
 		nnoremap <Leader>b :CtrlPBookmarkDir<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
