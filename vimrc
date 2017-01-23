@@ -80,6 +80,7 @@
 	let g:yankstack_map_keys = 0
 
 	let g:ctrlp_map = '<Leader>f'
+	let g:ctrlp_match_window = 'min:3,max:15,results:200'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
 	if has('python')
 		let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
@@ -318,6 +319,7 @@
 		nnoremap <Leader>A :CtrlPagLocate<Space>
 		nnoremap <Leader>? :CtrlPagPrevious<CR>
 		nnoremap <Leader>b :CtrlPBookmarkDir<CR>
+		nnoremap <Leader>q :CtrlPQuickfix<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
 	endif
 "}}}
