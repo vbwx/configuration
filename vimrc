@@ -111,6 +111,7 @@
 
 "{{{ Preview
 	Plug 'suan/vim-instant-markdown'
+	Plug 'vim-utils/vim-man'
 "}}}
 
 "{{{ Fuzzy Finder
