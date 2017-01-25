@@ -79,7 +79,8 @@
 
 	let g:yankstack_map_keys = 0
 
-	let g:ctrlp_map = '<Leader>f'
+	let g:ctrlp_map = '<Leader>p'
+	let g:ctrlp_working_path_mode = 'rc'
 	let g:ctrlp_match_window = 'min:3,max:15,results:200'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
 	if has('python')
@@ -279,15 +280,15 @@
 		nnoremap <Leader>N :NERDTreeCWD<CR>
 		" Reveal current file in file explorer with [Space][%]
 		nnoremap <Leader>% :NERDTreeFind<CR>
-		" Move focus to tag bar with [Space][T]
+		" Move focus to tag bar with [Space][#]
 		nnoremap <Leader># :TagbarOpen fj<CR>
-		" Reveal current tag in tag bar with [Space][Shift]+[T]
+		" Reveal current tag in tag bar with [Space][$]
 		nnoremap <Leader>$ :TagbarShowTag<CR>
 		" Check syntax with [Space][S]
 		nnoremap <Leader>s :SyntasticCheck<CR>
-		" Look up keyword in Dash with [Space][?]
+		" Look up keyword in Dash with [Space][D]
 		noremap <Leader>d :Dash<CR>
-		" Look up keyword in all Dash docsets with [Space][Shift]+[!]
+		" Look up keyword in all Dash docsets with [Space][Shift]+[D]
 		noremap <Leader>D :Dash!<CR>
 		" Show undo tree
 		nnoremap <Leader>u :GundoShow<CR>
@@ -298,16 +299,20 @@
 		nnoremap <silent> ' :ShowMarksOnce<CR>'
 		nnoremap <silent> g` :ShowMarksOnce<CR>g`
 		nnoremap <silent> g' :ShowMarksOnce<CR>g'
-		" Access yank history with [+] and [_]
+		" Access yank history with [+] and [_] (or [-] on the numeric keyboard)
 		nmap _ <Plug>yankstack_substitute_older_paste
 		nmap + <Plug>yankstack_substitute_newer_paste
+		nmap <KMinus> _
+		nmap <KPlus> +
 		" CtrlP shortcuts
-		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
+		nnoremap <Leader>P :CtrlPMixed<CR>
 		nnoremap <Leader>: :CtrlPCmdHistory<CR>
-		nnoremap <Leader>m :CtrlPMixed<CR>
+		nnoremap <Leader>. :CtrlPCurWD<CR>
+		nnoremap <Leader>b :CtrlPBuffer<CR>
+		nnoremap <Leader>m :CtrlPMRUFiles<CR>
 		nnoremap <Leader>c :CtrlPChange<CR>
 		nnoremap <Leader>C :CtrlPChangeAll<CR>
-		nnoremap <Leader>. :CtrlPCurWD<CR>
+		nnoremap <Leader>l :nohl <Bar> CtrlPLine<CR>
 		nnoremap <Leader>" :CtrlPRegister<CR>
 		nnoremap <Leader>T :CtrlPTag<CR>
 		nnoremap <Leader>t :CtrlPBufTagAll<CR>
@@ -318,9 +323,10 @@
 		xnoremap <Leader>a :CtrlPagVisual<CR>
 		nnoremap <Leader>A :CtrlPagLocate<Space>
 		nnoremap <Leader>? :CtrlPagPrevious<CR>
-		nnoremap <Leader>b :CtrlPBookmarkDir<CR>
+		nnoremap <Leader>@ :CtrlPBookmarkDir<CR>
 		nnoremap <Leader>q :CtrlPQuickfix<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
+		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
 	endif
 "}}}
 
