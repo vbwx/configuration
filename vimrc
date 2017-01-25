@@ -111,11 +111,6 @@
 	Plug 'chriskempson/base16-vim'
 "}}}
 
-"{{{ Preview
-	Plug 'suan/vim-instant-markdown'
-	Plug 'vim-utils/vim-man'
-"}}}
-
 "{{{ Fuzzy Finder
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'JazzCore/ctrlp-cmatcher', {'do': 'export CFLAGS=-Qunused-arguments; export CPPFLAGS=-Qunused-arguments; ./install.sh'}
@@ -168,8 +163,10 @@
 	" Language-specific:
 	Plug 'isRuslan/vim-es6'
 	Plug 'pangloss/vim-javascript'
-	Plug 'leafgarland/typescript-vim'
 	Plug 'lervag/vimtex'
+	Plug 'suan/vim-instant-markdown'
+	Plug 'vim-utils/vim-man'
+	" Plug 'leafgarland/typescript-vim'
 	" Plug 'digitaltoad/vim-pug'
 	" Plug 'kchmck/vim-coffee-script'
 	" Plug 'lumiliet/vim-twig'
