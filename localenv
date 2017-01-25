@@ -2,8 +2,8 @@
 CDPATH="$HOME/Projects"
 
 # Define important directories
-DES="$HOME/Desktop"
-DOW="$HOME/Downloads"
+DESK="$HOME/Desktop"
+DOWN="$HOME/Downloads"
 PUB="$HOME/Public"
 
 # List of directories that Node.js searcbes for modules.
