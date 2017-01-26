@@ -310,7 +310,7 @@
 		nnoremap <Leader>: :CtrlPCmdHistory<CR>
 		nnoremap <Leader>. :CtrlPCurWD<CR>
 		nnoremap <Leader>b :CtrlPBuffer<CR>
-		nnoremap <Leader>m :CtrlPMRUFiles<CR>
+		nnoremap <Leader>r :CtrlPMRUFiles<CR>
 		nnoremap <Leader>c :CtrlPChange<CR>
 		nnoremap <Leader>C :CtrlPChangeAll<CR>
 		nnoremap <Leader>l :nohl <Bar> CtrlPLine<CR>
