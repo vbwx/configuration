@@ -7,7 +7,7 @@ alias dir='ls -F'
 alias ll='ls -AFlho'
 alias la='ls -lao'
 alias cd='last_dir="`pwd`"; \cd'
-alias b='temp_dir="`pwd`"; \cd "$last_dir"; last_dir="$temp_dir"; unset temp_dir;'
+alias 1='temp_dir="`pwd`"; \cd "$last_dir"; last_dir="$temp_dir"; unset temp_dir;'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -18,25 +18,8 @@ alias e='open -e'
 alias p='pwd'
 alias where='lsof | grep -i'
 alias rm='\rm -id'
-alias update-npm='npm install -g npm@latest'
-alias update-nvm='(
-	cd "$NVM_DIR"
-	git fetch origin
-	git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" origin`
-	source "$NVM_DIR/nvm.sh"
-)'
 alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
 alias wget='\wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0'
-alias rebuild-iconcache='(
-	sudo find /private/var/folders -name com.apple.dock.iconcache -exec rm {} \;
-	sudo find /private/var/folders -name com.apple.iconservices -exec rm -rf {} \;
-	sudo rm -rf /Library/Caches/com.apple.iconservices.store
-)'
-alias rebuild-appcache='(
-	cd /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support
-	./lsregister -kill -r -domain local-domain system -domain user -seed
-)'
-alias rebuild-spotlight='sudo mdutil -E /'
 
 prefix=$(brew --prefix)
 [ -f $prefix/etc/bash_completion ] && . $prefix/etc/bash_completion
