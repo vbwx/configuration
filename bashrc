@@ -20,6 +20,10 @@ alias where='lsof | grep -i'
 alias rm='\rm -id'
 alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
 alias wget='\wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0'
+alias killall='\killall -i -I'
+for cmd in start stop restart reboot reload; do
+	alias $cmd=">&2 echo Call sudo $cmd"
+done
 
 prefix=$(brew --prefix)
 [ -f $prefix/etc/bash_completion ] && . $prefix/etc/bash_completion
