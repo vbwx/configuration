@@ -134,7 +134,11 @@
 "{{{ Tools
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'majutsushi/tagbar'
-	Plug 'rizzatti/dash.vim'
+	if !empty(glob("/Applications/Dash.app"))
+		Plug 'rizzatti/dash.vim'
+	elseif executable('zeal')
+		Plug 'KabbAmine/zeavim.vim'
+	endif
 	Plug 'scrooloose/syntastic'
 	Plug 'editorconfig/editorconfig-vim'
 	" Plug 'KabbAmine/gulp-vim'
