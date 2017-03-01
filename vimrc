@@ -158,6 +158,7 @@
 	Plug 'SirVer/ultisnips'
 	Plug 'thinca/vim-visualstar'
 	Plug 'maxbrunsfeld/vim-yankstack'
+	Plug 'tkhren/vim-fake'
 "}}}
 
 "{{{ Language Support
