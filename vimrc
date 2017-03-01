@@ -201,6 +201,11 @@
 	" [Ctrl]+[C] doesn't trigger InsertLeave autocommands, so I map it to [Esc]
 	inoremap <C-C> <Esc>
 	vnoremap <C-C> <Esc>
+	" Workaround for keyboards without [Delete] key
+	map <S-Del> <Del>
+	map! <S-Del> <Del>
+	map <S-BS> <BS>
+	map! <S-BS> <BS>
 	" Close a window with [Ctrl]+[C]
 	nnoremap <C-C> <C-W>c
 	" Faster access to ex mode with [Return]
