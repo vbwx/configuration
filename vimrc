@@ -205,8 +205,8 @@
 	" Workaround for keyboards without [Delete] key
 	map <S-Del> <Del>
 	map! <S-Del> <Del>
-	map <S-BS> <BS>
-	map! <S-BS> <BS>
+	map <S-BS> <Del>
+	map! <S-BS> <Del>
 	" Close a window with [Ctrl]+[C]
 	nnoremap <C-C> <C-W>c
 	" Faster access to ex mode with [Return]
