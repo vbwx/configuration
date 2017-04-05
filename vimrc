@@ -184,9 +184,9 @@
 
 "{{{ Revision Control
 	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
+	" Plug 'airblade/vim-gitgutter'
 	Plug 'sjl/gundo.vim'
-	" Plug 'mhinz/vim-signify'
+	Plug 'mhinz/vim-signify'
 "}}}
 
 	call plug#end()
