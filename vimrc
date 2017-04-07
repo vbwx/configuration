@@ -121,7 +121,7 @@
 	Plug 'mattn/ctrlp-mark'
 	Plug 'mattn/ctrlp-register'
 	Plug 'ompugao/ctrlp-history'
-	Plug 'vbwx/vim-ctrlp-ag'
+	Plug 'lokikl/vim-ctrlp-ag'
 	Plug 'ivalkeen/vim-ctrlp-tjump'
 	Plug 'DavidEGx/ctrlp-smarttabs'
 	Plug 'fisadev/vim-ctrlp-cmdpalette'
