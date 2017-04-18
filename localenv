@@ -1,5 +1,5 @@
 # Set the the list of directories that cd searches.
-CDPATH="$HOME/Projects"
+CDPATH="$HOME/Projects:$HOME/Business:$HOME/Library/Mobile Documents/com~apple~CloudDocs/University"
 
 # Define important directories
 DESK="$HOME/Desktop"
