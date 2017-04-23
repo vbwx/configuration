@@ -1,5 +1,6 @@
 shopt -s cdable_vars
 
+prefix=/usr/local
 PS1="\n\[\e[32m\]\W> \[\e[m\]"
 PS2="\[\e[32m\]> \[\e[m\]"
 
@@ -25,11 +26,10 @@ for cmd in start stop restart reboot reload; do
 	alias $cmd=">&2 echo Call sudo $cmd"
 done
 
-prefix=$(brew --prefix)
 [ -f $prefix/etc/bash_completion ] && . $prefix/etc/bash_completion
 
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+[ -s "${NVM_DIR:-$HOME/.nvm}/nvm.sh" ] && . "${NVM_DIR:-$HOME/.nvm}/nvm.sh" --no-use
+[[ -r ${NVM_DIR:-$HOME/.nvm}/bash_completion ]] && . ${NVM_DIR:-$HOME/.nvm}/bash_completion
 
 [ -f $prefix/opt/fzf/shell/completion.bash ] && . $prefix/opt/fzf/shell/completion.bash 2> /dev/null
 [ -f $prefix/opt/fzf/shell/key-bindings.bash ] && . $prefix/opt/fzf/shell/key-bindings.bash
@@ -37,3 +37,5 @@ prefix=$(brew --prefix)
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 source "$PERLBREW_ROOT/etc/bashrc"
+
+unset prefix
