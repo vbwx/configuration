@@ -1,10 +1,11 @@
-# Set the the list of directories that cd searches.
-CDPATH="$HOME/Projects:$HOME/Business:$HOME/Library/Mobile Documents/com~apple~CloudDocs/University"
-
 # Define important directories
-DESK="$HOME/Desktop"
-DOWN="$HOME/Downloads"
-PUB="$HOME/Public"
+Desk="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Desktop"
+Down="$HOME/Downloads"
+Pub="$HOME/Public"
+Uni="$HOME/Library/Mobile Documents/com~apple~CloudDocs/University"
+Busi="$HOME/Business"
+Site="$HOME/Sites"
+Pro="$HOME/Projects"
 
 # List of directories that Node.js searcbes for modules.
 export NODE_PATH="/usr/local/node/lib/node_modules"
