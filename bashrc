@@ -28,7 +28,7 @@ done
 
 [ -f $prefix/etc/bash_completion ] && . $prefix/etc/bash_completion
 
-[ -s "${NVM_DIR:-$HOME/.nvm}/nvm.sh" ] && . "${NVM_DIR:-$HOME/.nvm}/nvm.sh" --no-use
+[ -s "${NVM_DIR:-$HOME/.nvm}/nvm.sh" ] && . "${NVM_DIR:-$HOME/.nvm}/nvm.sh" $NVM_ARGS
 [[ -r ${NVM_DIR:-$HOME/.nvm}/bash_completion ]] && . ${NVM_DIR:-$HOME/.nvm}/bash_completion
 
 [ -f $prefix/opt/fzf/shell/completion.bash ] && . $prefix/opt/fzf/shell/completion.bash 2> /dev/null
