@@ -14,8 +14,12 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias +='pushd'
 alias -- -='popd'
-alias o='open'
-alias e='open -e'
+if type xdg-open &> /dev/null; then
+	alias o='xdg-open'
+else
+	alias o='open'
+fi
+alias e="${VISUAL:-$EDITOR}"
 alias p='pwd'
 alias where='lsof | grep -i'
 alias rm='\rm -id'
