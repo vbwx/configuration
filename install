@@ -1,0 +1,29 @@
+#!/bin/bash
+
+inhome() {
+	test -e "$HOME/$1"
+}
+
+link() {
+	ln -vs "$@"
+}
+
+set -eu
+
+cfg="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+inhome .config/git        || mkdir -p "$HOME/.config/git"
+inhome .vim               || mkdir "$HOME/.vim"
+inhome .bash_profile      || link "$cfg/bash_profile" "$HOME/.bash_profile"
+inhome .bashrc            || link "$cfg/bashrc" "$HOME/.bashrc"
+inhome .coffeelint.json   || link "$cfg/coffeelint.json" "$HOME/.coffeelint.json"
+inhome .eslintrc.json     || link "$cfg/eslintrc.json" "$HOME/.eslintrc.json"
+inhome .config/git/config || link "$cfg/gitconfig" "$HOME/.config/git/config"
+inhome .config/git/ignore || link "$cfg/gitignore" "$HOME/.config/git/ignore"
+inhome .vim/vimrc         || link "$cfg/vimrc" "$HOME/.vim/vimrc"
+inhome .vim/gvimrc        || link "$cfg/gvimrc" "$HOME/.vim/gvimrc"
+inhome .profile           || link "$cfg/profile" "$HOME/.profile"
+inhome .scss-lint.yml     || link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
+inhome .tern-project      || link "$cfg/tern-project.json" "$HOME/.tern-project"
+inhome .localenv          || link "$cfg/localenv" "$HOME/.localenv"
+inhome .inputrc           || link "$cfg/inputrc" "$HOME/.inputrc"
