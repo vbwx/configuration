@@ -109,13 +109,13 @@
 "{{{ Bundles
 	call plug#begin()
 
-"{{{ User Interface
+	"{{{ User Interface
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'chriskempson/base16-vim'
-"}}}
+	"}}}
 
-"{{{ Fuzzy Finder
+	"{{{ Fuzzy Finder
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'JazzCore/ctrlp-cmatcher', {'do': 'export CFLAGS=-Qunused-arguments; export CPPFLAGS=-Qunused-arguments; ./install.sh'}
 	Plug 'mattn/ctrlp-mark'
@@ -129,9 +129,9 @@
 	Plug 'suy/vim-ctrlp-unicode'
 	Plug 'jasoncodes/ctrlp-modified.vim'
 	Plug 'zeero/vim-ctrlp-help'
-"}}}
+	"}}}
 
-"{{{ Tools
+	"{{{ Tools
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'majutsushi/tagbar'
 	if !empty(glob("/Applications/Dash.app"))
@@ -141,11 +141,12 @@
 	endif
 	Plug 'scrooloose/syntastic'
 	Plug 'editorconfig/editorconfig-vim'
+	Plug 'vim-scripts/Conque-Shell'
 	" Plug 'KabbAmine/gulp-vim'
 	" Plug 'mklabs/grunt.vim'
-"}}}
+	"}}}
 
-"{{{ Editing
+	"{{{ Editing
 	Plug 'Yggdroot/indentLine'
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'jacquesbh/vim-showmarks'
@@ -159,9 +160,9 @@
 	Plug 'thinca/vim-visualstar'
 	Plug 'maxbrunsfeld/vim-yankstack'
 	Plug 'tkhren/vim-fake'
-"}}}
+	"}}}
 
-"{{{ Language Support
+	"{{{ Language Support
 	Plug 'Valloric/YouCompleteMe', {'do': '/usr/bin/python install.py --tern-completer'}
 	Plug 'honza/vim-snippets'
 	Plug 'Chiel92/vim-autoformat'
@@ -180,14 +181,14 @@
 	" Plug 'kchmck/vim-coffee-script'
 	" Plug 'lumiliet/vim-twig'
 	" Plug 'mustache/vim-mustache-handlebars'
-"}}}
+	"}}}
 
-"{{{ Revision Control
+	"{{{ Revision Control
 	Plug 'tpope/vim-fugitive'
 	" Plug 'airblade/vim-gitgutter'
 	Plug 'sjl/gundo.vim'
 	Plug 'mhinz/vim-signify'
-"}}}
+	"}}}
 
 	call plug#end()
 	call yankstack#setup()
