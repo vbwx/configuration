@@ -26,4 +26,7 @@ inhome .profile           || link "$cfg/profile" "$HOME/.profile"
 inhome .scss-lint.yml     || link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
 inhome .tern-project      || link "$cfg/tern-project.json" "$HOME/.tern-project"
 inhome .localenv          || link "$cfg/localenv" "$HOME/.localenv"
-inhome .inputrc           || link "$cfg/inputrc" "$HOME/.inputrc"
+
+if [[ ! $OSTYPE = darwin* ]]; then
+	inhome .inputrc || link "$cfg/inputrc" "$HOME/.inputrc"
+fi
