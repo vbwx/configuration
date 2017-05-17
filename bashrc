@@ -19,6 +19,9 @@ if type xdg-open &> /dev/null; then
 else
 	alias o='open'
 fi
+if type mdfind &> /dev/null; then
+	alias locate='mdfind'
+fi
 alias e="${VISUAL:-$EDITOR}"
 alias p='pwd'
 alias where='lsof | grep -i'
