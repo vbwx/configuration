@@ -21,6 +21,11 @@ else
 		alias pbpaste='xsel --clipboard --output'
 	fi
 fi
+if type -t curl > /dev/null; then
+	alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
+elif type -t wget > /dev/null; then
+	alias get='wget --continue --progress=bar --timestamping --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15'
+fi
 
 alias dir='ls -F'
 alias ll='ls -AFlho'
@@ -39,8 +44,9 @@ alias p='pwd'
 alias where='lsof | grep -i'
 alias rm='\rm -id'
 alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
-alias wget='\wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0'
 alias killall='\killall -i -I'
+alias df='\df -kh'
+alias du='\du -kh'
 
 for cmd in start stop restart reboot reload; do
 	alias $cmd=">&2 echo Call sudo $cmd"
