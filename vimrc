@@ -157,21 +157,22 @@
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-surround'
-	Plug 'SirVer/ultisnips'
 	Plug 'thinca/vim-visualstar'
 	Plug 'maxbrunsfeld/vim-yankstack'
 	Plug 'tkhren/vim-fake'
-	"}}}
-
-	"{{{ Language Support
 	Plug 'Valloric/YouCompleteMe', {'do': '/usr/bin/python install.py --tern-completer'}
-	Plug 'honza/vim-snippets'
 	Plug 'Chiel92/vim-autoformat'
 	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
-	Plug 'mattn/emmet-vim'
+	"}}}
+	
+	"{{{ Snippets
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+	"}}}
 
-	" Language-specific:
+	"{{{ Language Support
+	Plug 'mattn/emmet-vim'
 	Plug 'isRuslan/vim-es6'
 	Plug 'pangloss/vim-javascript'
 	Plug 'lervag/vimtex'
