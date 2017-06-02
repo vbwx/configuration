@@ -133,6 +133,7 @@
 	"}}}
 
 	"{{{ Tools
+	Plug 'tpope/vim-dispatch'
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'majutsushi/tagbar'
 	if !empty(glob("/Applications/Dash.app"))
@@ -143,6 +144,7 @@
 	Plug 'scrooloose/syntastic'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'vim-scripts/Conque-Shell'
+	Plug 'vim-utils/vim-man'
 	" Plug 'KabbAmine/gulp-vim'
 	" Plug 'mklabs/grunt.vim'
 	"}}}
@@ -176,8 +178,10 @@
 	Plug 'isRuslan/vim-es6'
 	Plug 'pangloss/vim-javascript'
 	Plug 'lervag/vimtex'
+	Plug 'vim-pandoc/vim-pandoc'
+	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'suan/vim-instant-markdown'
-	Plug 'vim-utils/vim-man'
+	" Plug 'plasticboy/vim-markdown'
 	" Plug 'leafgarland/typescript-vim'
 	" Plug 'digitaltoad/vim-pug'
 	" Plug 'kchmck/vim-coffee-script'
