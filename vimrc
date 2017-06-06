@@ -133,7 +133,6 @@
 	"}}}
 
 	"{{{ Tools
-	Plug 'tpope/vim-dispatch'
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'majutsushi/tagbar'
 	if !empty(glob("/Applications/Dash.app"))
@@ -167,7 +166,7 @@
 	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
 	"}}}
-	
+
 	"{{{ Snippets
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
