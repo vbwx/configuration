@@ -180,6 +180,7 @@
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'suan/vim-instant-markdown'
+	" Plug 'gi1242/vim-multimarkdown'
 	" Plug 'plasticboy/vim-markdown'
 	" Plug 'leafgarland/typescript-vim'
 	" Plug 'digitaltoad/vim-pug'
