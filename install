@@ -8,7 +8,8 @@ link() {
 	ln -vs "$@"
 }
 
-set -eu
+set -euo pipefail
+IFS=$'\n\t'
 
 cfg="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -27,6 +28,6 @@ inhome .scss-lint.yml     || link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
 inhome .tern-project      || link "$cfg/tern-project.json" "$HOME/.tern-project"
 inhome .localenv          || link "$cfg/localenv" "$HOME/.localenv"
 
-if [[ ! $OSTYPE = darwin* ]]; then
+if [[ $OSTYPE != darwin* ]]; then
 	inhome .inputrc || link "$cfg/inputrc" "$HOME/.inputrc"
 fi
