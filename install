@@ -1,10 +1,10 @@
 #!/bin/bash
 
-inhome() {
+function inhome {
 	test -e "$HOME/$1"
 }
 
-link() {
+function link {
 	ln -vs "$@"
 }
 
@@ -28,6 +28,3 @@ inhome .scss-lint.yml     || link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
 inhome .tern-project      || link "$cfg/tern-project.json" "$HOME/.tern-project"
 inhome .localenv          || link "$cfg/localenv" "$HOME/.localenv"
 
-if [[ $OSTYPE != darwin* ]]; then
-	inhome .inputrc || link "$cfg/inputrc" "$HOME/.inputrc"
-fi
