@@ -5,12 +5,12 @@ I have these files symlinked from my home directory.
 * `~/.bash_profile`
 * `~/.bashrc`
 * `~/.coffeelint.json`
-* `~/.eslintrc.json`
 * `~/.config/git/config`
 * `~/.config/git/ignore`
-* `~/.vim/gvimrc`
+* `~/.eslintrc.json`
+* `~/.localenv`
 * `~/.profile`
 * `~/.scss-lint.yml`
 * `~/.tern-project`
+* `~/.vim/gvimrc`
 * `~/.vim/vimrc`
-* `~/.zlocal`
