@@ -19,8 +19,6 @@
 	set copyindent
 	set preserveindent
 	set modeline
-	set undofile
-	set undodir=~/.vim/undo
 	set lazyredraw
 	set complete-=i
 	set modelines=3
