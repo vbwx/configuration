@@ -27,4 +27,7 @@ export RBENV_ROOT="/usr/local/rbenv"
 # Location of pyenv
 export PYENV_ROOT="/usr/local/pyenv"
 
+# Location of phpenv
+export PHPENV_ROOT="/usr/local/phpenv"
+
 DEFAULT_USER=vbwx
