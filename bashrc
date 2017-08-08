@@ -55,6 +55,12 @@ for cmd in start stop restart reboot reload; do
 	alias $cmd=">&2 echo Call sudo $cmd"
 done
 
+if type -t pandoc > /dev/null; then
+	function qpdf {
+		pandoc "$1" -o "${1%.*}.pdf"
+	}
+fi
+
 [ -f $prefix/etc/bash_completion ] && . $prefix/etc/bash_completion
 
 [ -s "${NVM_DIR:-$HOME/.nvm}/nvm.sh" ] && . "${NVM_DIR:-$HOME/.nvm}/nvm.sh" $NVM_ARGS
