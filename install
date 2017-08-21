@@ -15,7 +15,7 @@ function link {
 			[[ ${dest:(-1)} == '/' ]] && set - "${@:1:$i}" "$dest$(basename "$1")"
 			makedir "$(dirname "$dest")"
 		fi
-		ln -vs "$@"
+		[[ -e $dest ]] || ln -vs "$@"
 	fi
 }
 
