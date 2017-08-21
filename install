@@ -1,11 +1,36 @@
 #!/bin/bash
 
-function inhome {
-	test -e "$HOME/$1"
+function makedir {
+	if [[ ${1-} ]]; then
+		[[ -d $1 ]] || mkdir -vp "$@"
+	fi
 }
 
 function link {
-	ln -vs "$@"
+	local i dest
+	if [[ ${1-} ]]; then
+		if [[ ${2-} ]]; then
+			i=$[$#-2]
+			dest="${@:(-1)}"
+			if [[ ${dest:(-1)} == '/' ]]; then
+				makedir "$dest"
+			else
+				makedir "$(dirname "$dest")"
+			fi
+		fi
+		ln -vs "$@"
+	fi
+}
+
+function copy {
+	local i dest
+	if [[ ${1-} && ${2-}]]; then
+		dest="${@:(-1)}"
+		i=$[$#-2]
+		[[ ${dest:(-1)} == '/' ]] && set - "${@:1:$i}" "$dest$(basename "$1")"
+		makedir "$(dirname "$dest")"
+		[[ -e "$dest" ]] || cp -Rv "$@"
+	fi
 }
 
 set -euo pipefail
@@ -13,18 +38,17 @@ IFS=$'\n\t'
 
 cfg="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-inhome .config/git        || mkdir -p "$HOME/.config/git"
-inhome .vim               || mkdir "$HOME/.vim"
-inhome .bash_profile      || link "$cfg/bash_profile" "$HOME/.bash_profile"
-inhome .bashrc            || link "$cfg/bashrc" "$HOME/.bashrc"
-inhome .coffeelint.json   || link "$cfg/coffeelint.json" "$HOME/.coffeelint.json"
-inhome .eslintrc.json     || link "$cfg/eslintrc.json" "$HOME/.eslintrc.json"
-inhome .config/git/config || link "$cfg/gitconfig" "$HOME/.config/git/config"
-inhome .config/git/ignore || link "$cfg/gitignore" "$HOME/.config/git/ignore"
-inhome .vim/vimrc         || link "$cfg/vimrc" "$HOME/.vim/vimrc"
-inhome .vim/gvimrc        || link "$cfg/gvimrc" "$HOME/.vim/gvimrc"
-inhome .profile           || link "$cfg/profile" "$HOME/.profile"
-inhome .scss-lint.yml     || link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
-inhome .tern-project      || link "$cfg/tern-project.json" "$HOME/.tern-project"
-inhome .localenv          || link "$cfg/localenv" "$HOME/.localenv"
+link "$cfg/bash_profile" "$HOME/.bash_profile"
+link "$cfg/bashrc" "$HOME/.bashrc"
+link "$cfg/coffeelint.json" "$HOME/.coffeelint.json"
+link "$cfg/eslintrc.json" "$HOME/.eslintrc.json"
+link "$cfg/gitconfig" "$HOME/.config/git/config"
+link "$cfg/gitignore" "$HOME/.config/git/ignore"
+link "$cfg/vimrc" "$HOME/.vim/vimrc"
+link "$cfg/gvimrc" "$HOME/.vim/gvimrc"
+link "$cfg/profile" "$HOME/.profile"
+link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
+link "$cfg/tern-project.json" "$HOME/.tern-project"
+link "$cfg/localenv" "$HOME/.localenv"
 
+[[ -d /Library/LaunchAgents ]] && copy "$cfg/local.env.plist" /Library/LaunchAgents/
