@@ -65,12 +65,12 @@ link "$cfg/tern-project.json" "$HOME/.tern-project"
 link "$cfg/localenv" "$HOME/.localenv"
 
 if [[ $os == 'darwin' ]]; then
-	sudo ln -vs "$cfg/local.env.plist" /Library/LaunchAgents
-	
+	ln -vs "$cfg/local.env.plist" ~/Library/LaunchAgents
+
 	guipath="$(launchctl getenv PATH)"
 	println "PATH: $PATH"
 	println "GUI PATH: $guipath"
-	
+
 	for var in '' tex; do
 		v="${var}paths"
 		if [[ ${!v-} ]]; then
@@ -83,6 +83,7 @@ if [[ $os == 'darwin' ]]; then
 					println "New /etc/paths.d/$var:"
 					cat /etc/paths.d/$var
 				else
+					# TODO Don't modify /etc/paths, use .profile instead
 					PATH="$(IFS=: print "${!v}"):$PATH"
 					IFS=$'\n' println "${!v}" > "$TMPDIR/paths"
 					cat /etc/paths >> "$TMPDIR/paths"
