@@ -1,13 +1,5 @@
 #!/bin/bash
 
-function println {
-	printf "%s\n" "$*"
-}
-
-function print {
-	printf "%s" "$*"
-}
-
 function makedir {
 	if [[ ${1-} ]]; then
 		[[ -d $1 ]] || mkdir -vp "$@"
@@ -27,29 +19,9 @@ function link {
 	fi
 }
 
-function modify {
-	if [[ $os == 'linux' ]]; then
-		if [[ ${2-} ]]; then
-			sudo sed -i"${3-\~}" -r "$1" "$2"
-		else
-			sudo sed -r "$1"
-		fi
-	else
-		if [[ ${2-} ]]; then
-			sudo sed -E -i "${3-\~}" "$1" "$2"
-		else
-			sudo sed -E "$1"
-		fi
-	fi
-}
+set -eu
 
-set -euo pipefail
-IFS=$'\n\t'
-
-os="$(uname)"
-os="${os,,}"
 cfg="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$cfg/install.conf"
 
 link "$cfg/bash_profile" "$HOME/.bash_profile"
 link "$cfg/bashrc" "$HOME/.bashrc"
@@ -66,57 +38,4 @@ link "$cfg/localenv" "$HOME/.localenv"
 
 if [[ $os == 'darwin' ]]; then
 	ln -vs "$cfg/local.env.plist" ~/Library/LaunchAgents
-
-	guipath="$(launchctl getenv PATH)"
-	println "PATH: $PATH"
-	println "GUI PATH: $guipath"
-
-	for var in '' tex; do
-		v="${var}paths"
-		if [[ ${!v-} ]]; then
-			v="${var}paths[0]"
-			if ! grep -sq "${!v}" /etc/paths /etc/paths.d/*; then
-				v="${var}paths[*]"
-				if [[ $var ]]; then
-					PATH+=":$(IFS=: print "${!v}")"
-					IFS=$'\n' println "${!v}" | sudo tee /etc/paths.d/$var > /dev/null
-					println "New /etc/paths.d/$var:"
-					cat /etc/paths.d/$var
-				else
-					# TODO Don't modify /etc/paths, use .profile instead
-					PATH="$(IFS=: print "${!v}"):$PATH"
-					IFS=$'\n' println "${!v}" > "$TMPDIR/paths"
-					cat /etc/paths >> "$TMPDIR/paths"
-					println "New /etc/paths:"
-					cat "$TMPDIR/paths"
-					sudo mv -vf "$TMPDIR/paths" /etc
-				fi
-			fi
-			v="${var}paths[0]"
-			if [[ ${guipath#*${!v}} == $guipath ]]; then
-				v="${var}paths[*]"
-				if [[ $var ]]; then
-					guipath+=":$(IFS=: print "${!v}")"
-				else
-					guipath="$(IFS=: print "${!v}"):$guipath"
-				fi
-				println "New GUI PATH:"
-				println "$guipath"
-				sudo launchctl config user path "$guipath"
-			fi
-		fi
-	done
-else
-	for var in '' tex; do
-		v="${var}paths[0]"
-		if [[ ${!var-} ]] && ! grep -sq "${!v}" /etc/environment; then
-			v="${var}paths[*]"
-			if [[ $var ]]; then
-				PATH+=":$(IFS=: print "${!v}")"
-			else
-				PATH="$(IFS=: print "${!v}"):$PATH"
-			fi
-			modify "s#^[[:space:]]*PATH=.*#PATH=\"$PATH\"#" /etc/environment
-		fi
-	done
 fi
