@@ -1,5 +1,5 @@
 # List of directories that cd searches.
-export CDPATH="/Volumes"
+CDPATH="/Volumes"
 # CDPATH="/media/$USER" # for Debian systems
 
 # Define important directories
@@ -12,22 +12,6 @@ Site="$HOME/Sites"
 Pro="$HOME/Projects"
 
 # List of directories that Node.js searcbes for modules.
-export NODE_PATH="/usr/local/node/lib/node_modules"
-
-# Location of the Node Version Manager
-export NVM_ARGS="--no-use"
-export NVM_DIR="/usr/local/nvm"
-
-# Location of Perlbrew
-export PERLBREW_ROOT="/usr/local/perlbrew"
-
-# Location of rbenv
-export RBENV_ROOT="/usr/local/rbenv"
-
-# Location of pyenv
-export PYENV_ROOT="/usr/local/pyenv"
-
-# Location of phpenv
-export PHPENV_ROOT="/usr/local/phpenv"
+export NODE_PATH="/usr/local/lib/node_modules"
 
 DEFAULT_USER=vbwx

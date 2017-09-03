@@ -1,6 +1,6 @@
-export PATH="$PATH:."
-export EDITOR="vim"
-export VISUAL="vim"
+PATH+=":."
+EDITOR="vim"
+VISUAL="vim"
 
 # Local variables, etc.
 [ -r "$HOME/.localenv" ] && source "$HOME/.localenv"

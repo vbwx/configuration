@@ -1,6 +1,5 @@
 shopt -s cdable_vars
 
-prefix=/usr/local
 PS1="\n\[\e[32m\]\W> \[\e[m\]"
 PS2="\[\e[32m\]> \[\e[m\]"
 
@@ -61,16 +60,9 @@ if type -t pandoc > /dev/null; then
 	}
 fi
 
-[ -f $prefix/etc/bash_completion ] && . $prefix/etc/bash_completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
-[ -s "${NVM_DIR:-$HOME/.nvm}/nvm.sh" ] && . "${NVM_DIR:-$HOME/.nvm}/nvm.sh" $NVM_ARGS
-[[ -r ${NVM_DIR:-$HOME/.nvm}/bash_completion ]] && . ${NVM_DIR:-$HOME/.nvm}/bash_completion
-
-[ -f $prefix/opt/fzf/shell/completion.bash ] && . $prefix/opt/fzf/shell/completion.bash 2> /dev/null
-[ -f $prefix/opt/fzf/shell/key-bindings.bash ] && . $prefix/opt/fzf/shell/key-bindings.bash
-
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
-source "$PERLBREW_ROOT/etc/bashrc"
+[ -f /usr/local/opt/fzf/shell/completion.bash ] && . /usr/local/opt/fzf/shell/completion.bash 2> /dev/null
+[ -f /usr/local/opt/fzf/shell/key-bindings.bash ] && . /usr/local/opt/fzf/shell/key-bindings.bash
 
 unset prefix
