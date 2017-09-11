@@ -33,7 +33,7 @@ link "$cfg/vimrc" "$HOME/.vim/vimrc"
 link "$cfg/gvimrc" "$HOME/.vim/gvimrc"
 link "$cfg/profile" "$HOME/.profile"
 link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
-link "$cfg/tern-project.json" "$HOME/.tern-project"
+link "$cfg/tern-config.json" "$HOME/.tern-config"
 link "$cfg/localenv" "$HOME/.localenv"
 
 if [[ $os == 'darwin' ]]; then

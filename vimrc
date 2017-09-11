@@ -217,9 +217,9 @@
 	" Faster access to ex mode with [Return]
 	noremap <CR> :
 	" Faster shell command execution [Ctrl]+[Return]
-	noremap <C-CR> :!
+	noremap <D-CR> :!
 	" Adding lines in insert mode
-	inoremap <C-CR> <C-O>o
+	inoremap <D-CR> <C-O>o
 	inoremap <S-CR> <C-O>O
 	" Jump to tag with [Shift]+[Return]
 	nnoremap <S-CR> <C-]>
@@ -283,9 +283,9 @@
 	" Special mappings that require plugins
 	if &loadplugins
 		" Open a URI with [Cmd]+[Return]
-		nmap <D-CR> <Plug>NetrwBrowseX
-		imap <D-CR> <C-O><Plug>NetrwBrowseX
-		xmap <D-CR> <Plug>NetrwBrowseXVis
+		nmap <C-CR> <Plug>NetrwBrowseX
+		imap <C-CR> <C-O><Plug>NetrwBrowseX
+		xmap <C-CR> <Plug>NetrwBrowseXVis
 		" Format buffer with [Space][=]
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [Space][,]
