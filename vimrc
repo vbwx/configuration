@@ -335,9 +335,9 @@
 		nnoremap <Leader>/ :nohl <Bar> CtrlPSearchHistory<CR>
 		nnoremap <Leader>` :CtrlPMark<CR>
 		nnoremap <Leader>h :CtrlPHelp<CR>
-		nnoremap <Leader>a :CtrlPag<CR>
-		xnoremap <Leader>a :CtrlPagVisual<CR>
-		nnoremap <Leader>A :CtrlPagLocate<Space>
+		nnoremap <Leader>A :CtrlPag<CR>
+		xnoremap <Leader>A :CtrlPagVisual<CR>
+		nnoremap <Leader>a :CtrlPagLocate<Space>
 		nnoremap <Leader>? :CtrlPagPrevious<CR>
 		nnoremap <Leader>@ :CtrlPBookmarkDir<CR>
 		nnoremap <Leader>q :CtrlPQuickfix<CR>
