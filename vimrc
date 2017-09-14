@@ -268,7 +268,6 @@
 	noremap - "*
 	sunmap -
 	" Faster global substitution (who needs a shortcut for :sleep, anyway?)
-	cnoremap %s %s///g<Left><Left><Left>
 	noremap gs :%s/\v//cgI<Left><Left><Left><Left><Left>
 	noremap gS :g/\v/s/\v//g<Left><Left><Left><Left><Left><Left><Left><Left>
 	" Faster search
@@ -279,6 +278,8 @@
 
 	" Reference the directory of the current file in ex commands
 	cnoremap %/ %:p:h/
+	" Fast ex command for global substitution
+	cnoremap %s %s///g<Left><Left><Left>
 
 	" Special mappings that require plugins
 	if &loadplugins
