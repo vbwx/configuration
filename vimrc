@@ -189,9 +189,11 @@
 
 	"{{{ Revision Control
 	Plug 'tpope/vim-fugitive'
-	" Plug 'airblade/vim-gitgutter'
 	Plug 'sjl/gundo.vim'
 	Plug 'mhinz/vim-signify'
+	Plug 'idanarye/vim-merginal'
+	Plug 'juneedahamed/svnj.vim'
+	" Plug 'airblade/vim-gitgutter'
 	"}}}
 
 	call plug#end()
@@ -297,6 +299,8 @@
 		nnoremap <Leader>N :NERDTreeCWD<CR>
 		" Reveal current file in file explorer with [Space][%]
 		nnoremap <Leader>% :NERDTreeFind<CR>
+		" Move focus to Git explorer with [Space][G]
+		nnoremap <Leader>g :Merginal<CR>
 		" Move focus to tag bar with [Space][#]
 		nnoremap <Leader># :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [Space][$]
