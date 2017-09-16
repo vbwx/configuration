@@ -140,7 +140,6 @@
 	endif
 	Plug 'scrooloose/syntastic'
 	Plug 'editorconfig/editorconfig-vim'
-	Plug 'vim-scripts/Conque-Shell'
 	Plug 'vim-utils/vim-man'
 	" Plug 'KabbAmine/gulp-vim'
 	" Plug 'mklabs/grunt.vim'

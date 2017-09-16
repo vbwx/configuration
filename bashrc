@@ -49,6 +49,7 @@ alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
 alias killall='\killall -i -I'
 alias df='\df -kh'
 alias du='\du -kh'
+alias man='viman'
 
 for cmd in start stop restart reboot reload; do
 	alias $cmd=">&2 echo Call sudo $cmd"
