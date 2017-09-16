@@ -46,6 +46,8 @@
 "}}}
 
 "{{{ Plugin Settings
+	let $PAGER = ''
+
 	let maplocalleader = '\\'
 
 	let g:solarized_menu = 0
