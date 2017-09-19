@@ -364,6 +364,7 @@
 		autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
 		" Syntax specific formatting
 		autocmd FileType tex setlocal formatoptions+=1
+		autocmd FileType html setlocal formatoptions-=tc
 		autocmd FileType text,markdown setlocal formatoptions+=n1
 		" Save on losing focus
 		" autocmd FocusLost * wa
