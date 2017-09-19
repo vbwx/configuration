@@ -53,6 +53,10 @@
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
 
+	let g:localvimrc_name = ['.vimrc']
+	let g:localvimrc_whitelist = [$HOME.'/Projects/.*', $HOME.'/Storyclash/.*', $HOME.'/Business/.*']
+	let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
+
 	let g:indentLine_char = '┆'
 	let g:indentLine_enabled = 0
 
@@ -131,6 +135,7 @@
 	"}}}
 
 	"{{{ Tools
+	Plug 'embear/vim-localvimrc'
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'majutsushi/tagbar'
 	if !empty(glob("/Applications/Dash.app"))
@@ -364,7 +369,6 @@
 		autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
 		" Syntax specific formatting
 		autocmd FileType tex setlocal formatoptions+=1
-		autocmd FileType html setlocal formatoptions-=tc
 		autocmd FileType text,markdown setlocal formatoptions+=n1
 		" Save on losing focus
 		" autocmd FocusLost * wa
