@@ -191,12 +191,12 @@
 	" Plug 'mustache/vim-mustache-handlebars'
 	"}}}
 
-	"{{{ Revision Control
-	Plug 'tpope/vim-fugitive'
+	"{{{ Version Control
 	Plug 'sjl/gundo.vim'
 	Plug 'mhinz/vim-signify'
-	Plug 'idanarye/vim-merginal'
-	Plug 'juneedahamed/svnj.vim'
+	Plug 'juneedahamed/vc.vim'
+	" Plug 'tpope/vim-fugitive'
+	" Plug 'idanarye/vim-merginal'
 	" Plug 'airblade/vim-gitgutter'
 	"}}}
 
