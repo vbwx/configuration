@@ -72,8 +72,6 @@
 
 	let g:strip_whitespace_on_save = 1
 
-	let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
 	let g:visualstar_extra_commands = 'zzzv'
 
 	let g:user_emmet_install_global = 0
@@ -137,20 +135,22 @@
 	"{{{ Tools
 	Plug 'embear/vim-localvimrc'
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
-	Plug 'majutsushi/tagbar'
+	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
 	elseif executable('zeal')
 		Plug 'KabbAmine/zeavim.vim'
 	endif
-	Plug 'scrooloose/syntastic'
-	Plug 'editorconfig/editorconfig-vim'
-	Plug 'vim-utils/vim-man'
 	" Plug 'KabbAmine/gulp-vim'
 	" Plug 'mklabs/grunt.vim'
 	"}}}
 
 	"{{{ Editing
+	Plug 'majutsushi/tagbar'
+	Plug 'sjl/gundo.vim'
+	Plug 'mhinz/vim-signify'
+	Plug 'scrooloose/syntastic'
+	Plug 'editorconfig/editorconfig-vim'
 	Plug 'Yggdroot/indentLine'
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'jacquesbh/vim-showmarks'
@@ -189,15 +189,6 @@
 	" Plug 'kchmck/vim-coffee-script'
 	" Plug 'lumiliet/vim-twig'
 	" Plug 'mustache/vim-mustache-handlebars'
-	"}}}
-
-	"{{{ Version Control
-	Plug 'sjl/gundo.vim'
-	Plug 'mhinz/vim-signify'
-	Plug 'juneedahamed/vc.vim'
-	" Plug 'tpope/vim-fugitive'
-	" Plug 'idanarye/vim-merginal'
-	" Plug 'airblade/vim-gitgutter'
 	"}}}
 
 	call plug#end()
@@ -303,8 +294,6 @@
 		nnoremap <Leader>N :NERDTreeCWD<CR>
 		" Reveal current file in file explorer with [Space][%]
 		nnoremap <Leader>% :NERDTreeFind<CR>
-		" Move focus to Git explorer with [Space][G]
-		nnoremap <Leader>g :Merginal<CR>
 		" Move focus to tag bar with [Space][#]
 		nnoremap <Leader># :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [Space][$]
@@ -361,30 +350,20 @@
 "}}}
 
 "{{{ Auto Commands
-	if has('autocmd')
-		" Explore contents of JAR files
-		autocmd BufReadCmd *.jar call zip#Browse(expand("<amatch>"))
-		" Prevent comment insertion when inserting new lines; remove comment leader when joining lines and
-		" add comment leader on [Return]
-		autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
-		" Syntax specific formatting
-		autocmd FileType tex setlocal formatoptions+=1
-		autocmd FileType text,markdown setlocal formatoptions+=n1
-		" Save on losing focus
-		" autocmd FocusLost * wa
+	" Explore contents of JAR files
+	autocmd BufReadCmd *.jar call zip#Browse(expand("<amatch>"))
+	" Prevent comment insertion when inserting new lines; remove comment leader when joining lines and
+	" add comment leader on [Return]
+	autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
+	" Syntax specific formatting
+	autocmd FileType tex setlocal formatoptions+=1
+	autocmd FileType text,markdown setlocal formatoptions+=n1
+	" Save on losing focus
+	" autocmd FocusLost * wa
 
-		if &loadplugins
-			" Allow traversing the tree upwards when navigating Git objects
-			autocmd User fugitive
-			\ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-			\	nnoremap <buffer> <BS> :edit %:h<CR> |
-			\	nnoremap <buffer> <S-BS> :edit %:h<CR> |
-			\ endif
-			" Delete buffers when navigating Git objects
-			autocmd BufReadPost fugitive://* set bufhidden=delete
-			" Enable Emmet for HTML & CSS files
-			autocmd FileType html,css EmmetInstall
-		endif
+	if &loadplugins
+		" Enable Emmet for HTML & CSS files
+		autocmd FileType html,css EmmetInstall
 	endif
 "}}}
 
