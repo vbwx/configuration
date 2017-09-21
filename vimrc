@@ -81,7 +81,6 @@
 	let g:yankstack_map_keys = 0
 
 	let g:ctrlp_map = '<Leader>p'
-	let g:ctrlp_working_path_mode = 'rc'
 	let g:ctrlp_match_window = 'min:3,max:15,results:200'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
 	if has('python')
@@ -134,7 +133,6 @@
 
 	"{{{ Tools
 	Plug 'embear/vim-localvimrc'
-	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -288,12 +286,6 @@
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [Space][,]
 		noremap <Leader>, :Tabularize /
-		" Move focus to file explorer with [Space][N]
-		nnoremap <Leader>n :NERDTreeFocus<CR>
-		" Change working directory of file explorer with [Space][Shift]+[N]
-		nnoremap <Leader>N :NERDTreeCWD<CR>
-		" Reveal current file in file explorer with [Space][%]
-		nnoremap <Leader>% :NERDTreeFind<CR>
 		" Move focus to tag bar with [Space][#]
 		nnoremap <Leader># :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [Space][$]
@@ -321,7 +313,7 @@
 		" CtrlP shortcuts
 		nnoremap <Leader>P :CtrlPMixed<CR>
 		nnoremap <Leader>: :CtrlPCmdHistory<CR>
-		nnoremap <Leader>. :CtrlPCurWD<CR>
+		nnoremap <Leader>. :CtrlPCurFile<CR>
 		nnoremap <Leader>b :CtrlPBuffer<CR>
 		nnoremap <Leader>r :CtrlPMRUFiles<CR>
 		nnoremap <Leader>c :CtrlPChange<CR>
