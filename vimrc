@@ -196,13 +196,13 @@
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'suan/vim-instant-markdown'
+	Plug 'mustache/vim-mustache-handlebars'
 	" Plug 'gi1242/vim-multimarkdown'
 	" Plug 'plasticboy/vim-markdown'
 	" Plug 'leafgarland/typescript-vim'
 	" Plug 'digitaltoad/vim-pug'
 	" Plug 'kchmck/vim-coffee-script'
 	" Plug 'lumiliet/vim-twig'
-	" Plug 'mustache/vim-mustache-handlebars'
 	"}}}
 
 	call plug#end()
