@@ -5,7 +5,6 @@ I have these files symlinked from my home directory.
 * `~/.bash_profile`
 * `~/.bashrc`
 * `~/.coffeelint.json`
-* `~/.config/git/config`
 * `~/.config/git/ignore`
 * `~/.eslintrc.json`
 * `~/.localenv`

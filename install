@@ -19,6 +19,17 @@ function link {
 	fi
 }
 
+function move {
+	local i dest
+	if [[ ${1-} && ${2-} ]]; then
+		i=$[$#-2]
+		dest="${@:(-1)}"
+		[[ ${dest:(-1)} == '/' ]] && set - "${@:1:$i}" "$dest$(basename "$1")"
+		makedir "$(dirname "$dest")"
+		[[ -e $dest ]] || mv -v "$@"
+	fi
+}
+
 set -eu
 
 cfg="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -27,7 +38,6 @@ link "$cfg/bash_profile" "$HOME/.bash_profile"
 link "$cfg/bashrc" "$HOME/.bashrc"
 link "$cfg/coffeelint.json" "$HOME/.coffeelint.json"
 link "$cfg/eslintrc.json" "$HOME/.eslintrc.json"
-link "$cfg/gitconfig" "$HOME/.config/git/config"
 link "$cfg/gitignore" "$HOME/.config/git/ignore"
 link "$cfg/vimrc" "$HOME/.vim/vimrc"
 link "$cfg/gvimrc" "$HOME/.vim/gvimrc"
@@ -35,6 +45,7 @@ link "$cfg/profile" "$HOME/.profile"
 link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
 link "$cfg/tern-config.json" "$HOME/.tern-config"
 link "$cfg/localenv" "$HOME/.localenv"
+move "$HOME/.gitconfig" "$HOME/.config/git/config"
 
 if [[ $os == 'darwin' ]]; then
 	ln -vs "$cfg/local.env.plist" ~/Library/LaunchAgents
