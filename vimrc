@@ -174,13 +174,13 @@
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-surround'
-	Plug 'thinca/vim-visualstar'
 	Plug 'maxbrunsfeld/vim-yankstack'
 	Plug 'tkhren/vim-fake'
 	Plug 'Valloric/YouCompleteMe', {'do': '/usr/bin/python install.py --tern-completer'}
 	Plug 'Chiel92/vim-autoformat'
 	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
+	Plug 'dyng/ctrlsf.vim'
 	"}}}
 
 	"{{{ Snippets
