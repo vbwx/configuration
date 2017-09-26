@@ -104,6 +104,20 @@
 	let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 	let g:vimtex_view_general_options = '-r @line @pdf @tex'
 	let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
+
+	let g:loaded_netrwPlugin = 1
+	let g:NERDTreeIndicatorMapCustom = {
+	\	"Modified":  "✹",
+	\	"Staged":    "✚",
+	\	"Untracked": "✭",
+	\	"Renamed":   "➜",
+	\	"Unmerged":  "═",
+	\	"Deleted":   "✖",
+	\	"Dirty":     "✗",
+	\	"Clean":     "✔︎",
+	\	"Ignored":   "☒",
+	\	"Unknown":   "?"
+	\ }
 "}}}
 
 "{{{ Bundles
@@ -133,6 +147,8 @@
 
 	"{{{ Tools
 	Plug 'embear/vim-localvimrc'
+	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -270,22 +286,38 @@
 	xnoremap g/ <Esc>:nohl<CR>gv/\v
 	nnoremap g? :nohl<CR>?\v
 	xnoremap g? <Esc>:nohl<CR>gv?\v
+	" Evaluate expression in insert mode with [Ctrl]+[Return]
+	imap <C-CR> <C-R>=
 
-	" Reference the directory of the current file in ex commands
+	" Open a URI in the browser with [Ctrl]+[Return]
+	if executable('open')
+		nnoremap <C-CR> yiW:!open '<C-R>"'<CR>
+		vmap <C-CR> y:!open '<C-R>"'<CR>
+	elseif executable('xdg-open')
+		nnoremap <C-CR> yiW:!xdg-open '<C-R>"'<CR>
+		vmap <C-CR> y:!xdg-open '<C-R>"'<CR>
+	else
+		nnoremap <C-CR> yiW:!start <C-R>"<CR>
+		vmap <C-CR> y:!start <C-R>"<CR>
+	endif
+
+	" Reference the directory of the current file in command line
 	cnoremap %/ %:p:h/
-	" Fast ex command for global substitution
+	" Fast command for global substitution
 	cnoremap %s %s///g<Left><Left><Left>
 
 	" Special mappings that require plugins
 	if &loadplugins
-		" Open a URI with [Cmd]+[Return]
-		nmap <C-CR> <Plug>NetrwBrowseX
-		imap <C-CR> <C-O><Plug>NetrwBrowseX
-		xmap <C-CR> <Plug>NetrwBrowseXVis
 		" Format buffer with [Space][=]
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [Space][,]
 		noremap <Leader>, :Tabularize /
+		" Move focus to file explorer with [Space][N]
+		nnoremap <Leader>n :NERDTreeFocus<CR>
+		" Change working directory of file explorer with [Space][Shift]+[N]
+		nnoremap <Leader>N :NERDTreeCWD<CR>
+		" Reveal current file in file explorer with [Space][%]
+		nnoremap <Leader>% :NERDTreeFind<CR>
 		" Move focus to tag bar with [Space][#]
 		nnoremap <Leader># :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [Space][$]
