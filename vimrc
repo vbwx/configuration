@@ -213,8 +213,12 @@
 	" [Space] is the new leader key
 	map <Space> <Leader>
 	map <Leader><Space> <Localleader>
+	map <S-Space> <Leader>
+	map <Leader><S-Space> <Localleader>
 	imap <C-\> <C-O><Localleader>
 	imap <C-Space> <C-O><Localleader>
+	imap <C-S-\> <C-O><Localleader>
+	imap <C-S-Space> <C-O><Localleader>
 	" [Ctrl]+[C] doesn't trigger InsertLeave autocommands, so I map it to [Esc]
 	inoremap <C-C> <Esc>
 	vnoremap <C-C> <Esc>
@@ -337,11 +341,9 @@
 		nnoremap <silent> ' :ShowMarksOnce<CR>'
 		nnoremap <silent> g` :ShowMarksOnce<CR>g`
 		nnoremap <silent> g' :ShowMarksOnce<CR>g'
-		" Access yank history with [+] and [_] (or [-] on the numeric keyboard)
+		" Access yank history with [+] and [_]
 		nmap _ <Plug>yankstack_substitute_older_paste
 		nmap + <Plug>yankstack_substitute_newer_paste
-		nmap <KMinus> _
-		nmap <KPlus> +
 		" CtrlP shortcuts
 		nnoremap <Leader>P :CtrlPMixed<CR>
 		nnoremap <Leader>: :CtrlPCmdHistory<CR>
@@ -360,11 +362,16 @@
 		nnoremap <Leader>A :CtrlPag<CR>
 		xnoremap <Leader>A :CtrlPagVisual<CR>
 		nnoremap <Leader>a :CtrlPagLocate<Space>
-		nnoremap <Leader>? :CtrlPagPrevious<CR>
 		nnoremap <Leader>@ :CtrlPBookmarkDir<CR>
 		nnoremap <Leader>q :CtrlPQuickfix<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
 		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
+		" Recursive search & replace in working directory
+		nmap <Leader>f <Plug>CtrlSFPrompt
+		nmap <Leader>F <Plug>CtrlSFCCwordPath
+		nmap <Leader>? <Plug>CtrlSFPwordPath
+		vmap <Leader>f <Plug>CtrlSFVwordPath
+		vmap <Leader>F <Plug>CtrlSFVwordExec
 	endif
 "}}}
 
