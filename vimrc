@@ -215,10 +215,8 @@
 	map <Leader><Space> <Localleader>
 	map <S-Space> <Leader>
 	map <Leader><S-Space> <Localleader>
-	imap <C-\> <C-O><Localleader>
-	imap <C-Space> <C-O><Localleader>
-	imap <C-S-\> <C-O><Localleader>
-	imap <C-S-Space> <C-O><Localleader>
+	imap <A-Space> <C-O><Localleader>
+	imap <A-S-Space> <C-O><Localleader>
 	" [Ctrl]+[C] doesn't trigger InsertLeave autocommands, so I map it to [Esc]
 	inoremap <C-C> <Esc>
 	vnoremap <C-C> <Esc>
@@ -231,10 +229,10 @@
 	nnoremap <C-C> <C-W>c
 	" Faster access to ex mode with [Return]
 	noremap <CR> :
-	" Faster shell command execution [Ctrl]+[Return]
-	noremap <D-CR> :!
-	" Adding lines in insert mode
-	inoremap <D-CR> <C-O>o
+	" Faster shell command execution with [Alt]+[Return]
+	noremap <A-CR> :!
+	" Adding lines in insert mode with [Alt]+[Return] or [Shift]+[Return]
+	inoremap <A-CR> <C-O>o
 	inoremap <S-CR> <C-O>O
 	" Jump to tag with [Shift]+[Return]
 	nnoremap <S-CR> <C-]>
