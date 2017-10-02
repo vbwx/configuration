@@ -200,6 +200,7 @@
 	Plug 'suan/vim-instant-markdown'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'darfink/vim-plist'
+	" Plug 'jalvesaq/Nvim-R'
 	" Plug 'gi1242/vim-multimarkdown'
 	" Plug 'plasticboy/vim-markdown'
 	" Plug 'leafgarland/typescript-vim'
