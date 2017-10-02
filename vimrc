@@ -135,6 +135,7 @@
 	Plug 'mattn/ctrlp-mark'
 	Plug 'mattn/ctrlp-register'
 	Plug 'ompugao/ctrlp-history'
+	" XXX Remove vim-ctrlp-ag if CtrlSF is versatile enough
 	Plug 'lokikl/vim-ctrlp-ag'
 	Plug 'ivalkeen/vim-ctrlp-tjump'
 	Plug 'DavidEGx/ctrlp-smarttabs'
@@ -147,6 +148,7 @@
 
 	"{{{ Tools
 	Plug 'embear/vim-localvimrc'
+	" XXX Maybe remove NERDTree
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'vim-utils/vim-man'
@@ -197,6 +199,7 @@
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'suan/vim-instant-markdown'
 	Plug 'mustache/vim-mustache-handlebars'
+	Plug 'darfink/vim-plist'
 	" Plug 'gi1242/vim-multimarkdown'
 	" Plug 'plasticboy/vim-markdown'
 	" Plug 'leafgarland/typescript-vim'
