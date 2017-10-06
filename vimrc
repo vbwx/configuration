@@ -25,7 +25,7 @@
 	set display+=uhex
 	set foldmethod=indent
 	set foldlevelstart=99
-	set wildignore=.git,.svn,.sass-cache,.tmp,.temp,.DS_Store,Thumbs.db,.tags,._*
+	set wildignore=*/.git/*,*/.svn/*,*/.sass-cache/*,*/.tmp/*,*/.temp/*,.DS_Store,Thumbs.db,.tags,._*
 	set encoding=utf-8
 	set spelllang=en
 	set listchars=tab:┆\ ,nbsp:·
@@ -231,8 +231,11 @@
 	map! <S-BS> <Del>
 	" Close a window with [Ctrl]+[C]
 	nnoremap <C-C> <C-W>c
-	" Faster access to ex mode with [Return]
-	noremap <CR> :
+	" Faster access to command line with [Return]
+	nnoremap <CR> :
+	" Insert selected text as search command into command line with [Return]
+	xnoremap <CR> y:/\V\(<C-R>=escape(getreg('"'), '/\')<CR>\)/<C-B>
+	smap <CR> <C-G><CR>
 	" Faster shell command execution with [Alt]+[Return]
 	noremap <A-CR> :!
 	" Adding lines in insert mode with [Alt]+[Return] or [Shift]+[Return]
