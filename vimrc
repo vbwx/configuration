@@ -11,7 +11,6 @@
 	set hlsearch
 	set ignorecase
 	set smartcase
-	set gdefault
 	set smarttab
 	set autoread
 	set autowrite
@@ -106,18 +105,6 @@
 	let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
 
 	let g:loaded_netrwPlugin = 1
-	let g:NERDTreeIndicatorMapCustom = {
-	\	"Modified":  "✹",
-	\	"Staged":    "✚",
-	\	"Untracked": "✭",
-	\	"Renamed":   "➜",
-	\	"Unmerged":  "═",
-	\	"Deleted":   "✖",
-	\	"Dirty":     "✗",
-	\	"Clean":     "✔︎",
-	\	"Ignored":   "☒",
-	\	"Unknown":   "?"
-	\ }
 "}}}
 
 "{{{ Bundles
@@ -131,7 +118,7 @@
 
 	"{{{ Fuzzy Finder
 	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'JazzCore/ctrlp-cmatcher', {'do': 'export CFLAGS=-Qunused-arguments; export CPPFLAGS=-Qunused-arguments; ./install.sh'}
+	Plug 'JazzCore/ctrlp-cmatcher', {'do': 'export CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments; ./install.sh'}
 	Plug 'mattn/ctrlp-mark'
 	Plug 'mattn/ctrlp-register'
 	Plug 'ompugao/ctrlp-history'
@@ -150,7 +137,6 @@
 	Plug 'embear/vim-localvimrc'
 	" XXX Maybe remove NERDTree
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
-	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -163,6 +149,7 @@
 
 	"{{{ Editing
 	Plug 'majutsushi/tagbar'
+	Plug 'vim-scripts/todolist.vim'
 	Plug 'sjl/gundo.vim'
 	Plug 'mhinz/vim-signify'
 	Plug 'scrooloose/syntastic'
