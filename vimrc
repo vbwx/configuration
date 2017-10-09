@@ -179,14 +179,15 @@
 
 	"{{{ Language Support
 	Plug 'mattn/emmet-vim'
-	Plug 'isRuslan/vim-es6'
 	Plug 'pangloss/vim-javascript'
+	Plug 'hail2u/vim-css3-syntax'
 	Plug 'lervag/vimtex'
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'suan/vim-instant-markdown'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'darfink/vim-plist'
+	" Plug 'isRuslan/vim-es6'
 	" Plug 'jalvesaq/Nvim-R'
 	" Plug 'gi1242/vim-multimarkdown'
 	" Plug 'plasticboy/vim-markdown'
