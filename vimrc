@@ -123,7 +123,7 @@
 	Plug 'mattn/ctrlp-register'
 	Plug 'ompugao/ctrlp-history'
 	" XXX Remove vim-ctrlp-ag if CtrlSF is versatile enough
-	Plug 'lokikl/vim-ctrlp-ag'
+	Plug 'vbwx/vim-ctrlp-ag'
 	Plug 'ivalkeen/vim-ctrlp-tjump'
 	Plug 'DavidEGx/ctrlp-smarttabs'
 	Plug 'fisadev/vim-ctrlp-cmdpalette'
@@ -169,7 +169,7 @@
 	Plug 'Chiel92/vim-autoformat'
 	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
-	Plug 'dyng/ctrlsf.vim'
+	Plug 'vbwx/ctrlsf.vim'
 	"}}}
 
 	"{{{ Snippets
