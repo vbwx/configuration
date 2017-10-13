@@ -413,9 +413,14 @@
 
 "{{{ Custom Commands
 	" Update tags file for JS projects
-	command! GetJSTags ! find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > .tags
+	command! GetJSTags !
+	\	find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \;
+	\	| sed '/^$/d' | sort > .tags
 	" Open a Terminal window in the current working directory
-	command! Term execute '! osascript -e $''tell application "Terminal"\nactivate\ndo script "cd \\"' . getcwd() . '\\""\nend tell'' > /dev/null'
+	command! -nargs=1 Term execute
+	\	'! osascript -e $''tell application "Terminal"\nactivate\ndo script "cd \\"' .
+	\	expand("<args>") . '\\""\nend tell'' > /dev/null'
+	command! WDTerm execute 'Term ' . getcwd()
 "}}}
 
 " vim: ts=5:sw=5:fdm=marker:fdl=0:fdc=3

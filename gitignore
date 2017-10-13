@@ -4,7 +4,8 @@
 .LSOverride
 
 # Icon must end with two <CR>
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -34,3 +35,4 @@ Thumbs.db
 Network Trash Folder
 Temporary Items
 .apdisk
+doc/tags
