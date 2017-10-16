@@ -5,6 +5,16 @@
 	source $VIMRUNTIME/defaults.vim
 "}}}
 
+"{{{ Local Variables
+	if executable('timeout')
+		let timeout = 'timeout 10 '
+	elseif executable('gtimeout')
+		let timeout = 'gtimeout 10 '
+	else
+		let timeout = ''
+	endif
+"}}}
+
 "{{{ Options
 	set relativenumber
 	set showmatch
@@ -39,7 +49,11 @@
 	set selectmode=mouse
 	set viminfo^=!
 	set sessionoptions-=options
+	set grepformat=%f:%l:%c:%m
 	set noerrorbells visualbell t_vb=
+	if timeout
+		let &grepprg = timeout . 'ag --vimgrep --hidden $*'
+	endif
 
 	setglobal tags=./.tags,.tags;$HOME
 "}}}
@@ -82,6 +96,9 @@
 	let g:ctrlp_map = '<Leader>p'
 	let g:ctrlp_match_window = 'min:3,max:15,results:200'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
+	if timeout
+		let g:ctrlp_user_command = timeout . 'ag %s --nocolor --nogroup --hidden -g ""'
+	endif
 	if has('python')
 		let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 	endif
@@ -122,8 +139,6 @@
 	Plug 'mattn/ctrlp-mark'
 	Plug 'mattn/ctrlp-register'
 	Plug 'ompugao/ctrlp-history'
-	" XXX Remove vim-ctrlp-ag if CtrlSF is versatile enough
-	Plug 'vbwx/vim-ctrlp-ag'
 	Plug 'ivalkeen/vim-ctrlp-tjump'
 	Plug 'DavidEGx/ctrlp-smarttabs'
 	Plug 'fisadev/vim-ctrlp-cmdpalette'
@@ -169,7 +184,7 @@
 	Plug 'Chiel92/vim-autoformat'
 	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
-	Plug 'vbwx/ctrlsf.vim'
+	Plug 'dyng/ctrlsf.vim'
 	"}}}
 
 	"{{{ Snippets
@@ -189,8 +204,7 @@
 	Plug 'darfink/vim-plist'
 	" Plug 'isRuslan/vim-es6'
 	" Plug 'jalvesaq/Nvim-R'
-	" Plug 'gi1242/vim-multimarkdown'
-	" Plug 'plasticboy/vim-markdown'
+	" Plug 'vim-pandoc/vim-rmarkdown'
 	" Plug 'leafgarland/typescript-vim'
 	" Plug 'digitaltoad/vim-pug'
 	" Plug 'kchmck/vim-coffee-script'
@@ -352,9 +366,6 @@
 		nnoremap <Leader>/ :nohl <Bar> CtrlPSearchHistory<CR>
 		nnoremap <Leader>` :CtrlPMark<CR>
 		nnoremap <Leader>h :CtrlPHelp<CR>
-		nnoremap <Leader>A :CtrlPag<CR>
-		xnoremap <Leader>A :CtrlPagVisual<CR>
-		nnoremap <Leader>a :CtrlPagLocate<Space>
 		nnoremap <Leader>@ :CtrlPBookmarkDir<CR>
 		nnoremap <Leader>q :CtrlPQuickfix<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
