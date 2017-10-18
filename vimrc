@@ -185,6 +185,7 @@
 	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
 	Plug 'dyng/ctrlsf.vim'
+	Plug 'dhruvasagar/vim-table-mode'
 	"}}}
 
 	"{{{ Snippets
@@ -200,7 +201,6 @@
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'vim-pandoc/vim-pandoc-after'
-	Plug 'suan/vim-instant-markdown'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'darfink/vim-plist'
 	" Plug 'isRuslan/vim-es6'
