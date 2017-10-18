@@ -44,9 +44,8 @@ link "$cfg/gvimrc" "$HOME/.vim/gvimrc"
 link "$cfg/profile" "$HOME/.profile"
 link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
 link "$cfg/tern-config.json" "$HOME/.tern-config"
-link "$cfg/localenv" "$HOME/.localenv"
 move "$HOME/.gitconfig" "$HOME/.config/git/config"
 
-if [[ $os == 'darwin' ]]; then
-	ln -vs "$cfg/local.env.plist" ~/Library/LaunchAgents
+if [[ $(uname) == 'Darwin' ]]; then
+	ln -vs "$cfg/lang.env.plist" ~/Library/LaunchAgents
 fi
