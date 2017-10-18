@@ -199,6 +199,7 @@
 	Plug 'lervag/vimtex'
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
+	Plug 'vim-pandoc/vim-pandoc-after'
 	Plug 'suan/vim-instant-markdown'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'darfink/vim-plist'
