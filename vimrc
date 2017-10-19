@@ -67,7 +67,7 @@
 	let g:airline#extensions#tabline#enabled = 1
 
 	let g:localvimrc_name = ['.vimrc']
-	let g:localvimrc_whitelist = [$HOME.'/Projects/.*', $HOME.'/Storyclash/.*', $HOME.'/Business/.*']
+	let g:localvimrc_persistent = 2
 	let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
 
 	let g:indentLine_char = '┆'
@@ -198,7 +198,7 @@
 	Plug 'pangloss/vim-javascript'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'lervag/vimtex'
-	Plug 'vim-pandoc/vim-pandoc'
+	Plug 'vbwx/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'vim-pandoc/vim-pandoc-after'
 	Plug 'mustache/vim-mustache-handlebars'
