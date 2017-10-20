@@ -175,7 +175,6 @@
 	Plug 'tpope/vim-repeat'
 	Plug 'vbwx/vim-unimpaired'
 	Plug 'ciaranm/detectindent'
-	Plug 'jiangmiao/auto-pairs'
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-surround'
 	Plug 'maxbrunsfeld/vim-yankstack'
