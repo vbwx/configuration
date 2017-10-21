@@ -197,7 +197,7 @@
 	Plug 'pangloss/vim-javascript'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'lervag/vimtex'
-	Plug 'vbwx/vim-pandoc'
+	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'vim-pandoc/vim-pandoc-after'
 	Plug 'mustache/vim-mustache-handlebars'
