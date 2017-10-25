@@ -155,6 +155,7 @@
 	Plug 'embear/vim-localvimrc'
 	" XXX Maybe remove NERDTree
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
+	" Plug 'tpope/vim-vinegar'
 	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -402,7 +403,7 @@
 	autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
 	" Syntax specific formatting
 	autocmd FileType tex setlocal formatoptions+=1
-	autocmd FileType text,markdown setlocal formatoptions+=n1
+	autocmd FileType text,markdown,pandoc setlocal formatoptions+=tcn1
 	" Save on losing focus
 	" autocmd FocusLost * wa
 
@@ -441,6 +442,7 @@
 	command! -nargs=1 Term execute
 	\	'! osascript -e $''tell application "Terminal"\nactivate\ndo script "cd \\"' .
 	\	expand("<args>") . '\\""\nend tell'' > /dev/null'
+	" TODO Replace :WDTerm with :Term!
 	command! WDTerm execute 'Term ' . getcwd()
 "}}}
 
