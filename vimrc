@@ -122,6 +122,9 @@
 	let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
 
 	let g:loaded_netrwPlugin = 1
+
+	let g:table_mode_map_prefix = '<Bar>'
+	let g:table_mode_tableize_d_map = '<Bar>T'
 "}}}
 
 "{{{ Bundles
@@ -184,7 +187,7 @@
 	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
 	Plug 'dyng/ctrlsf.vim'
-	Plug 'dhruvasagar/vim-table-mode'
+	Plug 'vbwx/vim-table-mode'
 	"}}}
 
 	"{{{ Snippets
@@ -249,7 +252,10 @@
 	nnoremap <S-BS> <C-T>
 	nnoremap <BS> <C-T>
 	" Ex mode is unnecessary
-	nnoremap Q <NOP>
+	nmap Q <NOP>
+	" Jumping to a specific column is seldom necessary
+	nmap <Bar> <NOP>
+	nnoremap <Bar><Bar> <Bar>
 	" Write & close a tab with [Shift]+[Z][Shift]+[Tab]
 	nnoremap <silent> Z<S-Tab> :<C-R>=&mod ? 'w <Bar> ' : ''<CR>tabclose<CR>
 	" Close a tab with [Shift]+[Q][Shift]+[Tab]
@@ -370,12 +376,16 @@
 		nnoremap <Leader>q :CtrlPQuickfix<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
 		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
-		" Recursive search & replace in working directory
+		" Recursive search & replace in the working directory
+		nnoremap <Leader>g :CtrlSFOpen<CR>
+		nnoremap <Leader>G :CtrlSFUpdate<CR>
 		nmap <Leader>f <Plug>CtrlSFPrompt
-		nmap <Leader>F <Plug>CtrlSFCCwordPath
+		nmap <Leader>F <Plug>CtrlSFCwordPath
+		nmap <Leader>e <Plug>CtrlSFCwordExec
+		nmap <Leader>E <Plug>CtrlSFCCwordExec
 		nmap <Leader>? <Plug>CtrlSFPwordPath
 		vmap <Leader>f <Plug>CtrlSFVwordPath
-		vmap <Leader>F <Plug>CtrlSFVwordExec
+		vmap <Leader>e <Plug>CtrlSFVwordExec
 	endif
 "}}}
 
