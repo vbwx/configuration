@@ -125,6 +125,9 @@
 
 	let g:table_mode_map_prefix = '<Bar>'
 	let g:table_mode_tableize_d_map = '<Bar>T'
+
+	let g:cosco_ignore_comment_lines = 1
+	let g:cosco_filetype_whitelist = ['php', 'javascript', 'c', 'cpp', 'css', 'typescript']
 "}}}
 
 "{{{ Bundles
@@ -187,6 +190,7 @@
 	Plug 'Chiel92/vim-autoformat'
 	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
+	Plug 'lfilho/cosco.vim'
 	Plug 'dyng/ctrlsf.vim'
 	Plug 'vbwx/vim-table-mode'
 	"}}}
@@ -244,9 +248,12 @@
 	smap <CR> <C-G><CR>
 	" Faster shell command execution with [Alt]+[Return]
 	noremap <A-CR> :!
-	" Adding lines in insert mode with [Alt]+[Return] or [Shift]+[Return]
-	inoremap <A-CR> <C-O>o
+	" Add a line below in insert mode with [Ctrl]+[Return] or [Cmd]+[Return]
+	inoremap <C-CR> <C-O>o
+	inoremap <D-CR> <C-O>o
+	" Add a line above in insert mode with [Shift]+[Return] or [Shift]+[Cmd]+[Return]
 	inoremap <S-CR> <C-O>O
+	inoremap <S-D-CR> <C-O>O
 	" Jump to tag with [Shift]+[Return]
 	nnoremap <S-CR> <C-]>
 	" Jump back with [Shift]+[Backspace] or [Backspace]
@@ -304,27 +311,27 @@
 	xnoremap g/ <Esc>:nohl<CR>gv/\v
 	nnoremap g? :nohl<CR>?\v
 	xnoremap g? <Esc>:nohl<CR>gv?\v
-	" Evaluate expression in insert mode with [Ctrl]+[Return]
-	imap <C-CR> <C-R>=
 
-	" Open a URI in the browser with [Ctrl]+[Return]
+	" Open a URI in the browser with [Alt]+[Return] or [Cmd]+[Return]
 	if executable('open')
 		nnoremap <C-CR> yiW:!open '<C-R>"'<CR>
-		vmap <C-CR> y:!open '<C-R>"'<CR>
+		vnoremap <C-CR> y:!open '<C-R>"'<CR>
 	elseif executable('xdg-open')
 		nnoremap <C-CR> yiW:!xdg-open '<C-R>"'<CR>
-		vmap <C-CR> y:!xdg-open '<C-R>"'<CR>
+		vnoremap <C-CR> y:!xdg-open '<C-R>"'<CR>
 	else
 		nnoremap <C-CR> yiW:!start <C-R>"<CR>
-		vmap <C-CR> y:!start <C-R>"<CR>
+		vnoremap <C-CR> y:!start <C-R>"<CR>
 	endif
+	nmap <D-CR> <C-CR>
+	vmap <D-CR> <C-CR>
 
 	" Reference the directory of the current file in command line
 	cnoremap %/ %:p:h/
 	" Fast command for global substitution
 	cnoremap %s %s///g<Left><Left><Left>
 
-	" Special mappings that require plugins
+	" {{{ Plugin Mappings
 	if &loadplugins
 		" Format buffer with [Space][=]
 		nnoremap <Leader>= :Autoformat<CR>
@@ -356,8 +363,8 @@
 		nnoremap <silent> g` :ShowMarksOnce<CR>g`
 		nnoremap <silent> g' :ShowMarksOnce<CR>g'
 		" Access yank history with [+] and [_]
-		nmap _ <Plug>yankstack_substitute_older_paste
-		nmap + <Plug>yankstack_substitute_newer_paste
+		nmap <silent> _ <Plug>yankstack_substitute_older_paste
+		nmap <silent> + <Plug>yankstack_substitute_newer_paste
 		" CtrlP shortcuts
 		nnoremap <Leader>P :CtrlPMixed<CR>
 		nnoremap <Leader>: :CtrlPCmdHistory<CR>
@@ -380,14 +387,18 @@
 		" Recursive search & replace in the working directory
 		nnoremap <Leader>g :CtrlSFOpen<CR>
 		nnoremap <Leader>G :CtrlSFUpdate<CR>
-		nmap <Leader>f <Plug>CtrlSFPrompt
-		nmap <Leader>F <Plug>CtrlSFCwordPath
-		nmap <Leader>e <Plug>CtrlSFCwordExec
-		nmap <Leader>E <Plug>CtrlSFCCwordExec
-		nmap <Leader>? <Plug>CtrlSFPwordPath
-		vmap <Leader>f <Plug>CtrlSFVwordPath
-		vmap <Leader>e <Plug>CtrlSFVwordExec
+		nmap <silent> <Leader>f <Plug>CtrlSFPrompt
+		nmap <silent> <Leader>F <Plug>CtrlSFCwordPath
+		nmap <silent> <Leader>e <Plug>CtrlSFCwordExec
+		nmap <silent> <Leader>E <Plug>CtrlSFCCwordExec
+		nmap <silent> <Leader>? <Plug>CtrlSFPwordPath
+		vmap <silent> <Leader>f <Plug>CtrlSFVwordPath
+		vmap <silent> <Leader>e <Plug>CtrlSFVwordExec
+		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
+		nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
+		imap <silent> <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
 	endif
+	" }}}
 "}}}
 
 "{{{ Syntax Highlighting
