@@ -328,7 +328,7 @@
 		" Format buffer with [Space][=]
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [Space][,]
-		noremap <Leader>, :Tabularize /
+		noremap <Leader>, :Tabularize<Space>
 		" Move focus to file explorer with [Space][N]
 		nnoremap <Leader>n :NERDTreeFocus<CR>
 		" Change working directory of file explorer with [Space][Shift]+[N]
@@ -342,9 +342,9 @@
 		" Check syntax with [Space][S]
 		nnoremap <Leader>s :SyntasticCheck<CR>
 		" Look up keyword in Dash with [Space][D]
-		noremap <Leader>d :Dash<CR>
+		nnoremap <Leader>d :Dash<CR>
 		" Look up keyword in all Dash docsets with [Space][Shift]+[D]
-		noremap <Leader>D :Dash!<CR>
+		nnoremap <Leader>D :Dash!<CR>
 		" Show undo tree
 		nnoremap <Leader>u :GundoShow<CR>
 		" Set indentation settings with [Space][I]
