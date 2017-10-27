@@ -55,7 +55,7 @@
 		let &grepprg = timeout . 'ag --vimgrep --hidden $*'
 	endif
 
-	setglobal tags=./.tags,.tags;$HOME
+	setglobal tags=./tags,./.tags,.tags;$HOME
 "}}}
 
 "{{{ Plugin Settings
@@ -93,7 +93,7 @@
 
 	let g:yankstack_map_keys = 0
 
-	let g:ctrlp_map = '<Leader>p'
+	let g:ctrlp_map = '<Leader>*'
 	let g:ctrlp_match_window = 'min:3,max:15,results:200'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
 	if timeout
@@ -365,7 +365,6 @@
 		nmap <silent> _ <Plug>yankstack_substitute_older_paste
 		nmap <silent> + <Plug>yankstack_substitute_newer_paste
 		" CtrlP shortcuts
-		nnoremap <Leader>P :CtrlPMixed<CR>
 		nnoremap <Leader>: :CtrlPCmdHistory<CR>
 		nnoremap <Leader>. :CtrlPCurFile<CR>
 		nnoremap <Leader>b :CtrlPBuffer<CR>
@@ -397,8 +396,8 @@
 		nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <silent> <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
 		" Quickly write a document with [Space][W]
-		nnoremap <silent> <Leader>w :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
-		nnoremap <silent> <Leader>W :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
+		nnoremap <silent> <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
+		nnoremap <silent> <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
 	endif
 	" }}}
 "}}}
