@@ -337,9 +337,9 @@
 		" Align words/operators/columns across multiple lines with [Space][,]
 		noremap <Leader>, :Tabularize<Space>
 		" Move focus to file explorer with [Space][N]
-		nnoremap <Leader>n :NERDTreeFocus<CR>
+		nnoremap <Leader>` :NERDTreeFocus<CR>
 		" Change working directory of file explorer with [Space][Shift]+[N]
-		nnoremap <Leader>N :NERDTreeCWD<CR>
+		nnoremap <Leader>~ :NERDTreeCWD<CR>
 		" Reveal current file in file explorer with [Space][%]
 		nnoremap <Leader>% :NERDTreeFind<CR>
 		" Move focus to tag bar with [Space][#]
@@ -376,9 +376,9 @@
 		nnoremap <Leader>T :CtrlPTag<CR>
 		nnoremap <Leader>t :CtrlPBufTagAll<CR>
 		nnoremap <Leader>/ :nohl <Bar> CtrlPSearchHistory<CR>
-		nnoremap <Leader>` :CtrlPMark<CR>
+		nnoremap <Leader>' :CtrlPMark<CR>
 		nnoremap <Leader>h :CtrlPHelp<CR>
-		nnoremap <Leader>~ :CtrlPBookmarkDir<CR>
+		nnoremap <Leader>^ :CtrlPBookmarkDir<CR>
 		nnoremap <Leader>q :CtrlPQuickfix<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
 		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
