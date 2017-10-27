@@ -227,10 +227,9 @@
 	" [Space] is the new leader key
 	map <Space> <Leader>
 	map <Leader><Space> <Localleader>
-	map <S-Space> <Leader>
 	map <Leader><S-Space> <Localleader>
-	imap <A-Space> <C-O><Localleader>
-	imap <A-S-Space> <C-O><Localleader>
+	imap <C-Space> <C-O><Localleader>
+	imap <C-\> <C-O><Localleader>
 	" [Ctrl]+[C] doesn't trigger InsertLeave autocommands, so I map it to [Esc]
 	inoremap <C-C> <Esc>
 	vnoremap <C-C> <Esc>
@@ -320,8 +319,8 @@
 		nnoremap <C-CR> yiW:!xdg-open '<C-R>"'<CR>
 		vnoremap <C-CR> y:!xdg-open '<C-R>"'<CR>
 	else
-		nnoremap <C-CR> yiW:!start <C-R>"<CR>
-		vnoremap <C-CR> y:!start <C-R>"<CR>
+		nnoremap <C-CR> yiW:!start "<C-R>""<CR>
+		vnoremap <C-CR> y:!start "<C-R>""<CR>
 	endif
 	nmap <D-CR> <C-CR>
 	vmap <D-CR> <C-CR>
@@ -397,6 +396,9 @@
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <silent> <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
+		" Quickly write a document with [Space][W]
+		nnoremap <silent> <Leader>w :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
+		nnoremap <silent> <Leader>W :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
 	endif
 	" }}}
 "}}}
