@@ -378,7 +378,7 @@
 		nnoremap <Leader>/ :nohl <Bar> CtrlPSearchHistory<CR>
 		nnoremap <Leader>` :CtrlPMark<CR>
 		nnoremap <Leader>h :CtrlPHelp<CR>
-		nnoremap <Leader>@ :CtrlPBookmarkDir<CR>
+		nnoremap <Leader>~ :CtrlPBookmarkDir<CR>
 		nnoremap <Leader>q :CtrlPQuickfix<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
 		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
@@ -395,9 +395,11 @@
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <silent> <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
-		" Quickly write a document with [Space][W]
+		" Quickly create a document with [Space][P]
 		nnoremap <silent> <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
 		nnoremap <silent> <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
+		" Show previous yanks with [Space][Y]
+		nnoremap <Leader>y :Yanks<CR>
 	endif
 	" }}}
 "}}}
