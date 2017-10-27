@@ -121,16 +121,13 @@
 	let g:vimtex_view_general_options = '-r @line @pdf @tex'
 	let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
 
+	let g:loaded_netrwPlugin = 1
+
 	let g:table_mode_map_prefix = '<Bar>'
 	let g:table_mode_tableize_d_map = '<Bar>T'
 
 	let g:cosco_ignore_comment_lines = 1
 	let g:cosco_filetype_whitelist = ['php', 'javascript', 'c', 'cpp', 'css', 'typescript']
-
-	let g:netrw_liststyle = 3
-	let g:netrw_browse_split = 4
-	let g:netrw_altv = 1
-	let g:netrw_winsize = 25
 "}}}
 
 "{{{ Bundles
@@ -159,7 +156,9 @@
 
 	"{{{ Tools
 	Plug 'embear/vim-localvimrc'
-	Plug 'tpope/vim-vinegar'
+	" XXX Maybe remove NERDTree
+	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
+	" Plug 'tpope/vim-vinegar'
 	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -337,6 +336,12 @@
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [Space][,]
 		noremap <Leader>, :Tabularize<Space>
+		" Move focus to file explorer with [Space][N]
+		nnoremap <Leader>` :NERDTreeFocus<CR>
+		" Change working directory of file explorer with [Space][Shift]+[N]
+		nnoremap <Leader>~ :NERDTreeCWD<CR>
+		" Reveal current file in file explorer with [Space][%]
+		nnoremap <Leader>% :NERDTreeFind<CR>
 		" Move focus to tag bar with [Space][#]
 		nnoremap <Leader># :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [Space][$]
