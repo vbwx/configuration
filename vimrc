@@ -91,8 +91,6 @@
 	let g:user_emmet_mode = 'nv'
 	let g:user_emmet_leader_key = maplocalleader
 
-	let g:yankstack_map_keys = 0
-
 	let g:ctrlp_map = '<Leader>*'
 	let g:ctrlp_match_window = 'min:3,max:15,results:200'
 	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
@@ -120,8 +118,6 @@
 	let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 	let g:vimtex_view_general_options = '-r @line @pdf @tex'
 	let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
-
-	let g:loaded_netrwPlugin = 1
 
 	let g:table_mode_map_prefix = '<Bar>'
 	let g:table_mode_tableize_d_map = '<Bar>T'
@@ -158,7 +154,7 @@
 	Plug 'embear/vim-localvimrc'
 	" XXX Maybe remove NERDTree
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
-	" Plug 'tpope/vim-vinegar'
+	Plug 'tpope/vim-vinegar'
 	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -184,7 +180,6 @@
 	Plug 'ciaranm/detectindent'
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-surround'
-	Plug 'maxbrunsfeld/vim-yankstack'
 	Plug 'tkhren/vim-fake'
 	Plug 'Valloric/YouCompleteMe', {'do': '/usr/bin/python install.py --tern-completer'}
 	Plug 'Chiel92/vim-autoformat'
@@ -192,7 +187,7 @@
 	Plug 'tmhedberg/matchit'
 	Plug 'lfilho/cosco.vim'
 	Plug 'dyng/ctrlsf.vim'
-	Plug 'vbwx/vim-table-mode'
+	Plug 'dhruvasagar/vim-table-mode'
 	"}}}
 
 	"{{{ Snippets
@@ -220,7 +215,6 @@
 	"}}}
 
 	call plug#end()
-	call yankstack#setup()
 "}}}
 
 "{{{ Mappings
@@ -249,10 +243,8 @@
 	noremap <A-CR> :!
 	" Add a line below in insert mode with [Ctrl]+[Return] or [Cmd]+[Return]
 	inoremap <C-CR> <C-O>o
-	inoremap <D-CR> <C-O>o
 	" Add a line above in insert mode with [Shift]+[Return] or [Shift]+[Cmd]+[Return]
 	inoremap <S-CR> <C-O>O
-	inoremap <S-D-CR> <C-O>O
 	" Jump to tag with [Shift]+[Return]
 	nnoremap <S-CR> <C-]>
 	" Jump back with [Shift]+[Backspace] or [Backspace]
@@ -310,20 +302,14 @@
 	xnoremap g/ <Esc>:nohl<CR>gv/\v
 	nnoremap g? :nohl<CR>?\v
 	xnoremap g? <Esc>:nohl<CR>gv?\v
-
-	" Open a URI in the browser with [Alt]+[Return] or [Cmd]+[Return]
-	if executable('open')
-		nnoremap <C-CR> yiW:!open '<C-R>"'<CR>
-		vnoremap <C-CR> y:!open '<C-R>"'<CR>
-	elseif executable('xdg-open')
-		nnoremap <C-CR> yiW:!xdg-open '<C-R>"'<CR>
-		vnoremap <C-CR> y:!xdg-open '<C-R>"'<CR>
-	else
-		nnoremap <C-CR> yiW:!start "<C-R>""<CR>
-		vnoremap <C-CR> y:!start "<C-R>""<CR>
-	endif
+	" [Cmd]+[Return] is an alternative for [Ctrl]+[Return]
 	nmap <D-CR> <C-CR>
 	vmap <D-CR> <C-CR>
+	imap <D-CR> <C-CR>
+	" [Shift]+[Cmd]+[Return] is an alternative for [Shift]+[Return]
+	nmap <S-D-CR> <S-CR>
+	vmap <S-D-CR> <S-CR>
+	imap <S-D-CR> <S-CR>
 
 	" Reference the directory of the current file in command line
 	cnoremap %/ %:p:h/
@@ -361,9 +347,6 @@
 		nnoremap <silent> ' :ShowMarksOnce<CR>'
 		nnoremap <silent> g` :ShowMarksOnce<CR>g`
 		nnoremap <silent> g' :ShowMarksOnce<CR>g'
-		" Access yank history with [+] and [_]
-		nmap <silent> _ <Plug>yankstack_substitute_older_paste
-		nmap <silent> + <Plug>yankstack_substitute_newer_paste
 		" CtrlP shortcuts
 		nnoremap <Leader>: :CtrlPCmdHistory<CR>
 		nnoremap <Leader>. :CtrlPCurFile<CR>
@@ -398,8 +381,10 @@
 		" Quickly create a document with [Space][P]
 		nnoremap <silent> <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
 		nnoremap <silent> <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
-		" Show previous yanks with [Space][Y]
-		nnoremap <Leader>y :Yanks<CR>
+		" Open a URI in the browser with [Ctrl]+[Return]
+		nmap <silent> <C-CR> <Plug>NetrwBrowseX
+		vmap <silent> <C-CR> <Plug>NetrwBrowseXVis
+		unmap gx
 	endif
 	" }}}
 "}}}
