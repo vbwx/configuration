@@ -13,6 +13,8 @@
 	else
 		let timeout = ''
 	endif
+
+	let nerdtree = ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle', 'NERDTreeTabsToggle', 'NERDTreeTabsOpen', 'NERDTreeFocusToggle']
 "}}}
 
 "{{{ Options
@@ -84,9 +86,8 @@
 
 	"{{{ Tools
 	Plug 'embear/vim-localvimrc'
-	" XXX Maybe remove NERDTree
-	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
-	Plug 'tpope/vim-vinegar'
+	Plug 'scrooloose/nerdtree', {'on': nerdtree}
+	Plug 'jistr/vim-nerdtree-tabs', {'on': nerdtree}
 	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -324,11 +325,11 @@
 		" Align words/operators/columns across multiple lines with [Space][,]
 		noremap <Leader>, :Tabularize<Space>
 		" Move focus to file explorer with [Space][N]
-		nnoremap <Leader>` :NERDTreeFocus<CR>
+		nnoremap <Leader>` :NERDTreeFocusToggle<CR>
 		" Change working directory of file explorer with [Space][Shift]+[N]
 		nnoremap <Leader>~ :NERDTreeCWD<CR>
 		" Reveal current file in file explorer with [Space][%]
-		nnoremap <Leader>% :NERDTreeFind<CR>
+		nnoremap <Leader>% :NERDTreeTabsFind<CR>
 		" Move focus to tag bar with [Space][#]
 		nnoremap <Leader># :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [Space][$]
