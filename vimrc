@@ -443,6 +443,9 @@
 	\	expand("<args>") . '\\""\nend tell'' > /dev/null'
 	" TODO Replace :WDTerm with :Term!
 	command! WDTerm execute 'Term ' . getcwd()
+	" Count words of a document using Pandoc
+	command! -range=% Count <line1>,<line2>w !
+	\	pandoc -t plain | wc -w | sed -e 's/[[:space:]]//g' -e 's/$/ words/'
 "}}}
 
 " vim: ts=5:sw=5:fdm=marker:fdl=0:fdc=3
