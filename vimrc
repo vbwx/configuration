@@ -58,74 +58,6 @@
 	setglobal tags=./tags,./.tags,.tags;$HOME
 "}}}
 
-"{{{ Plugin Settings
-	let maplocalleader = '\\'
-
-	let g:solarized_menu = 0
-
-	let g:airline_powerline_fonts = 1
-	let g:airline#extensions#tabline#enabled = 1
-
-	let g:localvimrc_name = ['.vimrc']
-	let g:localvimrc_persistent = 2
-	let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
-
-	let g:indentLine_char = '┆'
-	let g:indentLine_enabled = 0
-
-	let g:syntastic_mode_map = {
-	\	'mode': 'passive',
-	\	'active_filetypes': []
-	\ }
-
-	let g:UltiSnipsExpandTrigger = "<C-Down>"
-	let g:UltiSnipsJumpForwardTrigger = "<C-Right>"
-	let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
-	let g:UltiSnipsEditSplit = "vertical"
-
-	let g:strip_whitespace_on_save = 1
-
-	let g:visualstar_extra_commands = 'zzzv'
-
-	let g:user_emmet_install_global = 0
-	let g:user_emmet_mode = 'nv'
-	let g:user_emmet_leader_key = maplocalleader
-
-	let g:ctrlp_map = '<Leader>*'
-	let g:ctrlp_match_window = 'min:3,max:15,results:200'
-	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
-	if timeout
-		let g:ctrlp_user_command = timeout . 'ag %s --nocolor --nogroup --hidden -g ""'
-	endif
-	if has('python')
-		let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
-	endif
-
-	if !exists('g:ycm_semantic_triggers')
-		let g:ycm_semantic_triggers = {}
-	endif
-	let g:ycm_semantic_triggers.tex = [
-	\	're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
-	\	're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
-	\	're!\\hyperref\[[^]]*',
-	\	're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
-	\	're!\\(include(only)?|input){[^}]*',
-	\	're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
-	\	're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
-	\	're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
-	\ ]
-
-	let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-	let g:vimtex_view_general_options = '-r @line @pdf @tex'
-	let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
-
-	let g:table_mode_map_prefix = '<Bar>'
-	let g:table_mode_tableize_d_map = '<Bar>T'
-
-	let g:cosco_ignore_comment_lines = 1
-	let g:cosco_filetype_whitelist = ['php', 'javascript', 'c', 'cpp', 'css', 'typescript']
-"}}}
-
 "{{{ Bundles
 	call plug#begin()
 
@@ -215,6 +147,75 @@
 	"}}}
 
 	call plug#end()
+"}}}
+
+"{{{ Plugin Settings
+	let maplocalleader = '\\'
+
+	let g:solarized_menu = 0
+
+	let g:airline_powerline_fonts = 1
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#wordcount#filetypes .= '|pandoc'
+
+	let g:localvimrc_name = ['.vimrc']
+	let g:localvimrc_persistent = 2
+	let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
+
+	let g:indentLine_char = '┆'
+	let g:indentLine_enabled = 0
+
+	let g:syntastic_mode_map = {
+	\	'mode': 'passive',
+	\	'active_filetypes': []
+	\ }
+
+	let g:UltiSnipsExpandTrigger = "<C-Down>"
+	let g:UltiSnipsJumpForwardTrigger = "<C-Right>"
+	let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
+	let g:UltiSnipsEditSplit = "vertical"
+
+	let g:strip_whitespace_on_save = 1
+
+	let g:visualstar_extra_commands = 'zzzv'
+
+	let g:user_emmet_install_global = 0
+	let g:user_emmet_mode = 'nv'
+	let g:user_emmet_leader_key = maplocalleader
+
+	let g:ctrlp_map = '<Leader>*'
+	let g:ctrlp_match_window = 'min:3,max:15,results:200'
+	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
+	if timeout
+		let g:ctrlp_user_command = timeout . 'ag %s --nocolor --nogroup --hidden -g ""'
+	endif
+	if has('python')
+		let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
+	endif
+
+	if !exists('g:ycm_semantic_triggers')
+		let g:ycm_semantic_triggers = {}
+	endif
+	let g:ycm_semantic_triggers.tex = [
+	\	're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+	\	're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+	\	're!\\hyperref\[[^]]*',
+	\	're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+	\	're!\\(include(only)?|input){[^}]*',
+	\	're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+	\	're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+	\	're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+	\ ]
+
+	let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+	let g:vimtex_view_general_options = '-r @line @pdf @tex'
+	let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
+
+	let g:table_mode_map_prefix = '<Bar>'
+	let g:table_mode_tableize_d_map = '<Bar>T'
+
+	let g:cosco_ignore_comment_lines = 1
+	let g:cosco_filetype_whitelist = ['php', 'javascript', 'c', 'cpp', 'css', 'typescript']
 "}}}
 
 "{{{ Mappings
@@ -382,9 +383,8 @@
 		nnoremap <silent> <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
 		nnoremap <silent> <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
 		" Open a URI in the browser with [Ctrl]+[Return]
-		nmap <silent> <C-CR> <Plug>NetrwBrowseX
-		vmap <silent> <C-CR> <Plug>NetrwBrowseXVis
-		unmap gx
+		nmap <silent> <C-CR> gx
+		vmap <silent> <C-CR> gx
 	endif
 	" }}}
 "}}}
