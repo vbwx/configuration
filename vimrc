@@ -13,8 +13,6 @@
 	else
 		let timeout = ''
 	endif
-
-	let nerdtree = ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle', 'NERDTreeTabsToggle', 'NERDTreeTabsOpen', 'NERDTreeFocusToggle']
 "}}}
 
 "{{{ Options
@@ -86,8 +84,7 @@
 
 	"{{{ Tools
 	Plug 'embear/vim-localvimrc'
-	Plug 'scrooloose/nerdtree', {'on': nerdtree}
-	Plug 'jistr/vim-nerdtree-tabs', {'on': nerdtree}
+	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'vim-utils/vim-man'
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -320,15 +317,15 @@
 
 	" {{{ Plugin Mappings
 	if &loadplugins
-		" Format buffer with [Space][=]
+		" Format buffer with [\][=]
 		nnoremap <Leader>= :Autoformat<CR>
-		" Align words/operators/columns across multiple lines with [Space][,]
+		" Align words/operators/columns across multiple lines with [\][,]
 		noremap <Leader>, :Tabularize<Space>
-		" Open & close file explorer with [Space][N]
-		nnoremap <silent> <Leader>` :NERDTreeTabsToggle<CR>
-		" Change working directory of file explorer with [Space][Shift]+[N]
+		" Move focus to file explorer with [\][`]
+		nnoremap <silent> <Leader>` :NERDTreeFocus<CR>
+		" Change working directory of file explorer with [\][~]
 		nnoremap <silent> <Leader>~ :NERDTreeCWD<CR>
-		" Reveal current file in file explorer with [Space][%]
+		" Reveal current file in file explorer with [\][%]
 		nnoremap <silent> <Leader>% :NERDTreeTabsFind<CR>
 		" Move focus to tag bar with [Space][#]
 		nnoremap <silent> <Leader># :TagbarOpen fj<CR>
@@ -368,24 +365,24 @@
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
 		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
 		" Recursive search & replace in the working directory
-		nnoremap <Leader>g :CtrlSFOpen<CR>
-		nnoremap <Leader>G :CtrlSFUpdate<CR>
-		nmap <silent> <Leader>f <Plug>CtrlSFPrompt
-		nmap <silent> <Leader>F <Plug>CtrlSFCwordPath
-		nmap <silent> <Leader>e <Plug>CtrlSFCwordExec
-		nmap <silent> <Leader>E <Plug>CtrlSFCCwordExec
-		nmap <silent> <Leader>? <Plug>CtrlSFPwordPath
-		vmap <silent> <Leader>f <Plug>CtrlSFVwordPath
-		vmap <silent> <Leader>e <Plug>CtrlSFVwordExec
+		nnoremap <silent> <Leader>g :CtrlSFOpen<CR>
+		nnoremap <silent> <Leader>G :CtrlSFUpdate<CR>
+		nmap <Leader>f <Plug>CtrlSFPrompt
+		nmap <Leader>F <Plug>CtrlSFCwordPath
+		nmap <Leader>e <Plug>CtrlSFCwordExec
+		nmap <Leader>E <Plug>CtrlSFCCwordExec
+		nmap <Leader>? <Plug>CtrlSFPwordPath
+		vmap <Leader>f <Plug>CtrlSFVwordPath
+		vmap <Leader>e <Plug>CtrlSFVwordExec
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
-		nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon)
-		imap <silent> <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
+		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
+		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
 		" Quickly create a document with [Space][P]
-		nnoremap <silent> <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
-		nnoremap <silent> <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
+		nnoremap <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
+		nnoremap <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
 		" Open a URI in the browser with [Ctrl]+[Return]
-		nmap <silent> <C-CR> gx
-		vmap <silent> <C-CR> gx
+		nmap <C-CR> gx
+		vmap <C-CR> gx
 	endif
 	" }}}
 "}}}
@@ -405,7 +402,7 @@
 	autocmd FileType tex setlocal formatoptions+=1
 	autocmd FileType text,markdown,pandoc setlocal formatoptions+=tcn1
 	" Save on losing focus
-	" autocmd FocusLost * wa
+	autocmd FocusLost * wa
 
 	if &loadplugins
 		" Enable Emmet for HTML & CSS files
