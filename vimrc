@@ -324,14 +324,14 @@
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [Space][,]
 		noremap <Leader>, :Tabularize<Space>
-		" Move focus to file explorer with [Space][N]
-		nnoremap <Leader>` :NERDTreeFocusToggle<CR>
+		" Open & close file explorer with [Space][N]
+		nnoremap <silent> <Leader>` :NERDTreeTabsToggle<CR>
 		" Change working directory of file explorer with [Space][Shift]+[N]
-		nnoremap <Leader>~ :NERDTreeCWD<CR>
+		nnoremap <silent> <Leader>~ :NERDTreeCWD<CR>
 		" Reveal current file in file explorer with [Space][%]
-		nnoremap <Leader>% :NERDTreeTabsFind<CR>
+		nnoremap <silent> <Leader>% :NERDTreeTabsFind<CR>
 		" Move focus to tag bar with [Space][#]
-		nnoremap <Leader># :TagbarOpen fj<CR>
+		nnoremap <silent> <Leader># :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [Space][$]
 		nnoremap <Leader>$ :TagbarShowTag<CR>
 		" Check syntax with [Space][S]
@@ -341,7 +341,7 @@
 		" Look up keyword in all Dash docsets with [Space][Shift]+[D]
 		nnoremap <Leader>D :Dash!<CR>
 		" Show undo tree
-		nnoremap <Leader>u :GundoShow<CR>
+		nnoremap <silent> <Leader>u :GundoShow<CR>
 		" Set indentation settings with [Space][I]
 		nnoremap <Leader>i :DetectIndent<CR>
 		" Show mark positions when using jump command
