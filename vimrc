@@ -377,9 +377,6 @@
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
-		" Quickly create a document with [Space][P]
-		nnoremap <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
-		nnoremap <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : '#'.&tag)<CR>
 		" Open a URI in the browser with [Ctrl]+[Return]
 		nmap <C-CR> gx
 		vmap <C-CR> gx
@@ -401,8 +398,6 @@
 	" Syntax specific formatting
 	autocmd FileType tex setlocal formatoptions+=1
 	autocmd FileType text,markdown,pandoc setlocal formatoptions+=tcn1
-	" Save on losing focus
-	autocmd FocusLost * wa
 
 	if &loadplugins
 		" Enable Emmet for HTML & CSS files
