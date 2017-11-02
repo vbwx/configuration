@@ -207,6 +207,8 @@
 	let g:sleuth_automatic = 0
 
 	let g:session_autosave = 'no'
+
+	let g:easytags_dynamic_files = 2
 "}}}
 
 "{{{ Mappings
