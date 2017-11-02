@@ -74,7 +74,10 @@
 	Plug 'scrooloose/nerdtree', {'on': nerdtree}
 	Plug 'Xuyuanp/nerdtree-git-plugin', {'on': nerdtree}
 	Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t; /usr/bin/ruby extconf.rb && make'}
+	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-session'
+	Plug 'xolox/vim-easytags'
+	Plug 'xolox/vim-shell'
 	Plug 'embear/vim-localvimrc'
 	Plug 'vim-utils/vim-man'
 	" Plug 'KabbAmine/gulp-vim'
@@ -202,6 +205,8 @@
 	\ }
 
 	let g:sleuth_automatic = 0
+
+	let g:session_autosave = 'no'
 "}}}
 
 "{{{ Mappings
