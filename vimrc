@@ -53,6 +53,7 @@
 	set sessionoptions-=options
 	set grepformat=%f:%l:%c:%m
 	set noerrorbells visualbell t_vb=
+
 	if timeout
 		let &grepprg = timeout . 'ag --vimgrep --hidden $*'
 	endif
@@ -146,9 +147,6 @@
 	let g:localvimrc_name = ['.vimrc']
 	let g:localvimrc_persistent = 2
 	let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
-
-	let g:indentLine_char = '┆'
-	let g:indentLine_enabled = 0
 
 	let g:syntastic_mode_map = {
 	\	'mode': 'passive',
