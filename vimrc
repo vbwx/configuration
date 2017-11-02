@@ -360,7 +360,7 @@
 		nnoremap <Leader>/ :nohl <Bar> CtrlPSearchHistory<CR>
 		nnoremap <Leader>' :CtrlPMark<CR>
 		nnoremap <Leader>h :CtrlPHelp<CR>
-		nnoremap <Leader>^ :CtrlPBookmarkDir<CR>
+		nnoremap <Leader>R :CtrlPBookmarkDir<CR>
 		nnoremap <Leader>q :CtrlPQuickfix<CR>
 		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
 		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
