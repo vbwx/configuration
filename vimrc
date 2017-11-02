@@ -362,14 +362,14 @@
 "}}}
 
 "{{{ Auto Commands
-	" Explore contents of JAR files
-	autocmd BufReadCmd *.jar call zip#Browse(expand("<amatch>"))
 	" Prevent comment insertion when inserting new lines; remove comment leader when joining lines and
 	" add comment leader on [Return]
 	autocmd FileType * setlocal formatoptions-=o formatoptions+=jr
 	" Syntax specific formatting
 	autocmd FileType tex setlocal formatoptions+=1
 	autocmd FileType text,markdown,pandoc setlocal formatoptions+=tcn1
+	" Strip trailing whitespace before saving
+	autocmd BufEnter * EnableStripWhitespaceOnSave
 
 	if &loadplugins
 		" Enable Emmet for HTML & CSS files
