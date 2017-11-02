@@ -204,11 +204,15 @@
 	\	"Unknown"  : "?"
 	\ }
 
+	let NERDMenuMode = 0
+
 	let g:sleuth_automatic = 0
 
 	let g:session_autosave = 'no'
 
 	let g:easytags_dynamic_files = 2
+	let g:easytags_on_cursorhold = 0
+	let g:easytags_events = []
 "}}}
 
 "{{{ Mappings
