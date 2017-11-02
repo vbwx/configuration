@@ -91,25 +91,21 @@
 	Plug 'mhinz/vim-signify'
 	Plug 'scrooloose/syntastic'
 	Plug 'editorconfig/editorconfig-vim'
-	Plug 'Yggdroot/indentLine'
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'jacquesbh/vim-showmarks'
+	Plug 'scrooloose/nerdcommenter'
 	Plug 'tpope/vim-repeat'
 	Plug 'vbwx/vim-unimpaired'
-	Plug 'ciaranm/detectindent'
+	Plug 'tpope/vim-sleuth'
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-surround'
 	Plug 'tkhren/vim-fake'
-	Plug 'Valloric/YouCompleteMe', {'do': '/usr/bin/python install.py --tern-completer'}
+	Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --tern-completer'}
 	Plug 'Chiel92/vim-autoformat'
-	Plug 'tpope/vim-commentary'
 	Plug 'tmhedberg/matchit'
 	Plug 'lfilho/cosco.vim'
 	Plug 'dyng/ctrlsf.vim'
 	Plug 'dhruvasagar/vim-table-mode'
-	"}}}
-
-	"{{{ Snippets
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	"}}}
