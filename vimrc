@@ -310,7 +310,7 @@
 		" Format buffer with [\][=]
 		nnoremap <Leader>= :Autoformat<CR>
 		" Align words/operators/columns across multiple lines with [\][,]
-		noremap <Leader>, :Tabularize<Space>
+		noremap <Leader>, :Tabularize /
 		" Move focus to file explorer with [\][`]
 		nnoremap <silent> <Leader>` :NERDTreeFocus<CR>
 		" Change working directory of file explorer with [\][~]
