@@ -210,8 +210,9 @@
 
 	let g:session_autosave = 'no'
 
+	let g:shell_mappings_enabled = 0
+
 	let g:easytags_dynamic_files = 2
-	let g:easytags_on_cursorhold = 0
 	let g:easytags_events = []
 "}}}
 
@@ -355,12 +356,27 @@
 		nmap <Leader>? <Plug>CtrlSFPwordPath
 		vmap <Leader>f <Plug>CtrlSFVwordPath
 		vmap <Leader>e <Plug>CtrlSFVwordExec
+		" Command-T shortcuts
+		nmap <silent> <Leader>r <Plug>(CommandTMRU)
+		nmap <silent> <Leader>/ <Plug>(CommandTSearch)
+		nmap <silent> <Leader>h <Plug>(CommandTHelp)
+		nmap <silent> <Leader>: <Plug>(CommandTHistory)
+		nmap <silent> <Leader>b <Plug>(CommandTBuffer)
+		nmap <silent> <Leader>t <Plug>(CommandTTag)
+		nmap <silent> <Leader>j <Plug>(CommandTJump)
+		nmap <silent> <Leader>. <Plug>(CommandTLine)
+		nmap <silent> <Leader>' <Plug>(CommandT)
+		nmap <silent> <Leader><CR> <Plug>(CommandTCommand)
+		" Update the tags file with [\][^]
+		nnoremap <Leader>^ :UpdateTags<CR>
+		" Highlight known tags with [Space][Space]+[T]
+		nnoremap <Leader>T :HighlightTags<CR>
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
 		" Open a URI in the browser with [Ctrl]+[Return]
-		nmap <C-CR> gx
-		vmap <C-CR> gx
+		nnoremap <C-CR> :Open<CR>
+		vnoremap <C-CR> <ESC>:Open<CR>
 	endif
 	" }}}
 "}}}
