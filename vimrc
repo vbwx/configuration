@@ -361,9 +361,10 @@
 	" }}}
 "}}}
 
-"{{{ Syntax Highlighting
-	colorscheme base16-tomorrow-night
-	highlight! link ExtraWhitespace Todo
+"{{{ Abbreviations
+	if !empty(glob('/Applications/Utilities/Terminal.app'))
+		cabbrev TERM !open -a Terminal %/
+	endif
 "}}}
 
 "{{{ Auto Commands
@@ -373,13 +374,18 @@
 	" Syntax specific formatting
 	autocmd FileType tex setlocal formatoptions+=1
 	autocmd FileType text,markdown,pandoc setlocal formatoptions+=tcn1
-	" Strip trailing whitespace before saving
-	autocmd BufEnter * EnableStripWhitespaceOnSave
 
 	if &loadplugins
 		" Enable Emmet for HTML & CSS files
 		autocmd FileType html,css EmmetInstall
+		" Strip trailing whitespace before saving
+		autocmd BufEnter * EnableStripWhitespaceOnSave
 	endif
+"}}}
+
+"{{{ Syntax Highlighting
+	colorscheme base16-tomorrow-night
+	highlight! link ExtraWhitespace Todo
 "}}}
 
 "{{{ Functions
@@ -403,16 +409,6 @@
 "}}}
 
 "{{{ Custom Commands
-	" Update tags file for JS projects
-	command! -bar GetJSTags !
-	\	find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \;
-	\	| sed '/^$/d' | sort > .tags
-	" Open a Terminal window in the current working directory
-	command! -nargs=1 Term execute
-	\	'! osascript -e $''tell application "Terminal"\nactivate\ndo script "cd \\"' .
-	\	expand("<args>") . '\\""\nend tell'' > /dev/null'
-	" TODO Replace :WDTerm with :Term!
-	command! -bar WDTerm execute 'Term ' . getcwd()
 	" Count words of a document using Pandoc
 	command! -bar -range=% Count <line1>,<line2>w !
 	\	pandoc -t plain | wc -w | sed -e 's/[[:space:]]//g' -e 's/$/ words/'
