@@ -386,7 +386,7 @@
 
 "{{{ Custom Commands
 	" Update tags file for JS projects
-	command! GetJSTags !
+	command! -bar GetJSTags !
 	\	find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \;
 	\	| sed '/^$/d' | sort > .tags
 	" Open a Terminal window in the current working directory
@@ -394,9 +394,9 @@
 	\	'! osascript -e $''tell application "Terminal"\nactivate\ndo script "cd \\"' .
 	\	expand("<args>") . '\\""\nend tell'' > /dev/null'
 	" TODO Replace :WDTerm with :Term!
-	command! WDTerm execute 'Term ' . getcwd()
+	command! -bar WDTerm execute 'Term ' . getcwd()
 	" Count words of a document using Pandoc
-	command! -range=% Count <line1>,<line2>w !
+	command! -bar -range=% Count <line1>,<line2>w !
 	\	pandoc -t plain | wc -w | sed -e 's/[[:space:]]//g' -e 's/$/ words/'
 "}}}
 
