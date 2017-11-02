@@ -13,6 +13,8 @@
 	else
 		let timeout = ''
 	endif
+
+	let nerdtree = ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']
 "}}}
 
 "{{{ Options
@@ -187,6 +189,21 @@
 
 	let g:cosco_ignore_comment_lines = 1
 	let g:cosco_filetype_whitelist = ['php', 'javascript', 'c', 'cpp', 'css', 'typescript']
+
+	let g:NERDTreeIndicatorMapCustom = {
+	\	"Modified" : "✹",
+	\	"Staged"   : "✚",
+	\	"Untracked": "✭",
+	\	"Renamed"  : "➜",
+	\	"Unmerged" : "═",
+	\	"Deleted"  : "✖",
+	\	"Dirty"    : "✗",
+	\	"Clean"    : "✔︎",
+	\	"Ignored"  : "☒",
+	\	"Unknown"  : "?"
+	\ }
+
+	let g:sleuth_automatic = 0
 "}}}
 
 "{{{ Mappings
