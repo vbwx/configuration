@@ -67,32 +67,21 @@
 	Plug 'chriskempson/base16-vim'
 	"}}}
 
-	"{{{ Fuzzy Finder
-	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'JazzCore/ctrlp-cmatcher', {'do': 'export CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments; ./install.sh'}
-	Plug 'mattn/ctrlp-mark'
-	Plug 'mattn/ctrlp-register'
-	Plug 'ompugao/ctrlp-history'
-	Plug 'ivalkeen/vim-ctrlp-tjump'
-	Plug 'DavidEGx/ctrlp-smarttabs'
-	Plug 'fisadev/vim-ctrlp-cmdpalette'
-	Plug 'endel/ctrlp-filetype.vim'
-	Plug 'suy/vim-ctrlp-unicode'
-	Plug 'jasoncodes/ctrlp-modified.vim'
-	Plug 'zeero/vim-ctrlp-help'
-	"}}}
-
 	"{{{ Tools
+	Plug 'scrooloose/nerdtree', {'on': nerdtree}
+	Plug 'Xuyuanp/nerdtree-git-plugin', {'on': nerdtree}
+	Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t; /usr/bin/ruby extconf.rb && make'}
+	Plug 'xolox/vim-session'
 	Plug 'embear/vim-localvimrc'
-	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'vim-utils/vim-man'
+	" Plug 'KabbAmine/gulp-vim'
+	" Plug 'mklabs/grunt.vim'
+
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
 	elseif executable('zeal')
 		Plug 'KabbAmine/zeavim.vim'
 	endif
-	" Plug 'KabbAmine/gulp-vim'
-	" Plug 'mklabs/grunt.vim'
 	"}}}
 
 	"{{{ Editing
@@ -173,23 +162,11 @@
 	let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
 	let g:UltiSnipsEditSplit = "vertical"
 
-	let g:strip_whitespace_on_save = 1
-
 	let g:visualstar_extra_commands = 'zzzv'
 
 	let g:user_emmet_install_global = 0
 	let g:user_emmet_mode = 'nv'
 	let g:user_emmet_leader_key = maplocalleader
-
-	let g:ctrlp_map = '<Leader>*'
-	let g:ctrlp_match_window = 'min:3,max:15,results:200'
-	let g:ctrlp_unicode_unicodedata_file = '/usr/local/share/unicode/UnicodeData.txt'
-	if timeout
-		let g:ctrlp_user_command = timeout . 'ag %s --nocolor --nogroup --hidden -g ""'
-	endif
-	if has('python')
-		let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
-	endif
 
 	if !exists('g:ycm_semantic_triggers')
 		let g:ycm_semantic_triggers = {}
@@ -339,31 +316,13 @@
 		nnoremap <Leader>D :Dash!<CR>
 		" Show undo tree
 		nnoremap <silent> <Leader>u :GundoShow<CR>
-		" Set indentation settings with [Space][I]
-		nnoremap <Leader>i :DetectIndent<CR>
+		" Guess indentation settings with [\][_]
+		nnoremap <Leader>_ :Sleuth<CR>
 		" Show mark positions when using jump command
 		nnoremap <silent> ` :ShowMarksOnce<CR>`
 		nnoremap <silent> ' :ShowMarksOnce<CR>'
 		nnoremap <silent> g` :ShowMarksOnce<CR>g`
 		nnoremap <silent> g' :ShowMarksOnce<CR>g'
-		" CtrlP shortcuts
-		nnoremap <Leader>: :CtrlPCmdHistory<CR>
-		nnoremap <Leader>. :CtrlPCurFile<CR>
-		nnoremap <Leader>b :CtrlPBuffer<CR>
-		nnoremap <Leader>r :CtrlPMRUFiles<CR>
-		nnoremap <Leader>c :CtrlPChange<CR>
-		nnoremap <Leader>C :CtrlPChangeAll<CR>
-		nnoremap <Leader>l :nohl <Bar> CtrlPLine<CR>
-		nnoremap <Leader>" :CtrlPRegister<CR>
-		nnoremap <Leader>T :CtrlPTag<CR>
-		nnoremap <Leader>t :CtrlPBufTagAll<CR>
-		nnoremap <Leader>/ :nohl <Bar> CtrlPSearchHistory<CR>
-		nnoremap <Leader>' :CtrlPMark<CR>
-		nnoremap <Leader>h :CtrlPHelp<CR>
-		nnoremap <Leader>R :CtrlPBookmarkDir<CR>
-		nnoremap <Leader>q :CtrlPQuickfix<CR>
-		nnoremap <Leader><Tab> :CtrlPSmartTabs<CR>
-		nnoremap <Leader><CR> :CtrlPCmdPalette<CR>
 		" Recursive search & replace in the working directory
 		nnoremap <silent> <Leader>g :CtrlSFOpen<CR>
 		nnoremap <silent> <Leader>G :CtrlSFUpdate<CR>
