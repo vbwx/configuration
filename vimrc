@@ -13,8 +13,6 @@
 	else
 		let timeout = ''
 	endif
-
-	let nerdtree = ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']
 "}}}
 
 "{{{ Options
@@ -71,8 +69,7 @@
 	"}}}
 
 	"{{{ Tools
-	Plug 'scrooloose/nerdtree', {'on': nerdtree}
-	Plug 'Xuyuanp/nerdtree-git-plugin', {'on': nerdtree}
+	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
 	Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t; /usr/bin/ruby extconf.rb && make'}
 	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-session'
@@ -126,6 +123,8 @@
 	Plug 'vim-pandoc/vim-pandoc-after'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'darfink/vim-plist'
+	Plug 'shawncplus/phpcomplete.vim'
+	Plug 'vim-php/tagbar-phpctags.vim'
 	" Plug 'isRuslan/vim-es6'
 	" Plug 'jalvesaq/Nvim-R'
 	" Plug 'vim-pandoc/vim-rmarkdown'
@@ -190,19 +189,6 @@
 
 	let g:cosco_ignore_comment_lines = 1
 	let g:cosco_filetype_whitelist = ['php', 'javascript', 'c', 'cpp', 'css', 'typescript']
-
-	let g:NERDTreeIndicatorMapCustom = {
-	\	"Modified" : "✹",
-	\	"Staged"   : "✚",
-	\	"Untracked": "✭",
-	\	"Renamed"  : "➜",
-	\	"Unmerged" : "═",
-	\	"Deleted"  : "✖",
-	\	"Dirty"    : "✗",
-	\	"Clean"    : "✔︎",
-	\	"Ignored"  : "☒",
-	\	"Unknown"  : "?"
-	\ }
 
 	let NERDMenuMode = 0
 
@@ -351,7 +337,7 @@
 		nnoremap <silent> <Leader>f :CtrlSFOpen<CR>
 		nnoremap <silent> <Leader>F :CtrlSFUpdate<CR>
 		nmap <Leader>/ <Plug>CtrlSFPrompt
-		nmap <Leader>n <Plug>CtrlSFPwordPath
+		nmap <Leader>& <Plug>CtrlSFPwordPath
 		nmap <Leader>* <Plug>CtrlSFCwordPath
 		vmap <Leader>* <Plug>CtrlSFVwordPath
 		" Command-T shortcuts
