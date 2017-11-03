@@ -332,16 +332,12 @@
 		nnoremap <silent> <Leader>~ :NERDTreeCWD<CR>
 		" Reveal current file in file explorer with [\][%]
 		nnoremap <silent> <Leader>% :NERDTreeTabsFind<CR>
-		" Move focus to tag bar with [Space][#]
-		nnoremap <silent> <Leader># :TagbarOpen fj<CR>
-		" Reveal current tag in tag bar with [Space][$]
-		nnoremap <Leader>$ :TagbarShowTag<CR>
-		" Check syntax with [Space][S]
-		nnoremap <Leader>s :SyntasticCheck<CR>
+		" Check syntax with [\][^]
+		nnoremap <Leader>^ :SyntasticCheck<CR>
 		" Look up keyword in Dash with [Space][D]
-		nnoremap <Leader>d :Dash<CR>
+		nnoremap <Leader>k :Dash<CR>
 		" Look up keyword in all Dash docsets with [Space][Shift]+[D]
-		nnoremap <Leader>D :Dash!<CR>
+		nnoremap <Leader>K :Dash!<CR>
 		" Show undo tree
 		nnoremap <silent> <Leader>u :GundoShow<CR>
 		" Guess indentation settings with [\][_]
@@ -352,43 +348,46 @@
 		nnoremap <silent> g` :ShowMarksOnce<CR>g`
 		nnoremap <silent> g' :ShowMarksOnce<CR>g'
 		" Recursive search & replace in the working directory
-		nnoremap <silent> <Leader>g :CtrlSFOpen<CR>
-		nnoremap <silent> <Leader>G :CtrlSFUpdate<CR>
-		nmap <Leader>f <Plug>CtrlSFPrompt
-		nmap <Leader>F <Plug>CtrlSFCwordPath
-		nmap <Leader>e <Plug>CtrlSFCwordExec
-		nmap <Leader>E <Plug>CtrlSFCCwordExec
-		nmap <Leader>? <Plug>CtrlSFPwordPath
-		vmap <Leader>f <Plug>CtrlSFVwordPath
-		vmap <Leader>e <Plug>CtrlSFVwordExec
+		nnoremap <silent> <Leader>f :CtrlSFOpen<CR>
+		nnoremap <silent> <Leader>F :CtrlSFUpdate<CR>
+		nmap <Leader>/ <Plug>CtrlSFPrompt
+		nmap <Leader>n <Plug>CtrlSFPwordPath
+		nmap <Leader>* <Plug>CtrlSFCwordPath
+		vmap <Leader>* <Plug>CtrlSFVwordPath
 		" Command-T shortcuts
 		nmap <silent> <Leader>r <Plug>(CommandTMRU)
-		nmap <silent> <Leader>/ <Plug>(CommandTSearch)
+		nmap <silent> <Leader>? <Plug>(CommandTSearch)
 		nmap <silent> <Leader>h <Plug>(CommandTHelp)
 		nmap <silent> <Leader>: <Plug>(CommandTHistory)
 		nmap <silent> <Leader>b <Plug>(CommandTBuffer)
 		nmap <silent> <Leader>t <Plug>(CommandTTag)
 		nmap <silent> <Leader>j <Plug>(CommandTJump)
-		nmap <silent> <Leader>. <Plug>(CommandTLine)
+		nmap <silent> <Leader>l <Plug>(CommandTLine)
 		nmap <silent> <Leader>' <Plug>(CommandT)
 		nmap <silent> <Leader><CR> <Plug>(CommandTCommand)
-		" Update the tags file with [\][^]
-		nnoremap <Leader>^ :UpdateTags<CR>
-		" Highlight known tags with [Space][Space]+[T]
-		nnoremap <Leader>T :HighlightTags<CR>
+		" Update the tags file with [\][@]
+		nnoremap <Leader>! :UpdateTags<CR>
+		" Highlight known tags with [Space][Shift]+[T]
+		nnoremap <Leader>@ :HighlightTags<CR>
+		" Move focus to tag bar with [Space][#]
+		nnoremap <silent> <Leader># :TagbarOpen fj<CR>
+		" Reveal current tag in tag bar with [Space][$]
+		nnoremap <silent> <Leader>$ :TagbarShowTag<CR>
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
 		" Open a URI in the browser with [Ctrl]+[Return]
 		nnoremap <C-CR> :Open<CR>
-		vnoremap <C-CR> <ESC>:Open<CR>
 	endif
 	" }}}
 "}}}
 
 "{{{ Abbreviations
 	if !empty(glob('/Applications/Utilities/Terminal.app'))
+		" Open a Terminal window at the directory of the current file
 		cabbrev TERM !open -a Terminal %/
+		" Open a Terminal window at the current working directory
+		cabbrev WTERM !open -a Terminal <C-R>=getcwd()<CR>
 	endif
 "}}}
 
