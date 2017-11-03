@@ -331,7 +331,7 @@
 		" Change working directory of file explorer with [\][~]
 		nnoremap <silent> <Leader>~ :NERDTreeCWD<CR>
 		" Reveal current file in file explorer with [\][%]
-		nnoremap <silent> <Leader>% :NERDTreeTabsFind<CR>
+		nnoremap <silent> <Leader>% :NERDTreeFind<CR>
 		" Check syntax with [\][^]
 		nnoremap <Leader>^ :SyntasticCheck<CR>
 		" Look up keyword in Dash with [Space][D]
