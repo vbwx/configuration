@@ -337,7 +337,7 @@
 		nnoremap <silent> <Leader>f :CtrlSFOpen<CR>
 		nnoremap <silent> <Leader>F :CtrlSFUpdate<CR>
 		nmap <Leader>/ <Plug>CtrlSFPrompt
-		nmap <Leader>& <Plug>CtrlSFPwordPath
+		nmap <Leader>n <Plug>CtrlSFPwordPath
 		nmap <Leader>* <Plug>CtrlSFCwordPath
 		vmap <Leader>* <Plug>CtrlSFVwordPath
 		" Command-T shortcuts
