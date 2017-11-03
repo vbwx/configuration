@@ -214,6 +214,11 @@
 
 	let g:easytags_dynamic_files = 2
 	let g:easytags_events = []
+
+	let g:CommandTEncoding = 'UTF-8'
+ 	if &term =~ "xterm" || &term =~ "screen"
+		let g:CommandTCancelMap = ['<Esc>', '<C-C>']
+  	endif
 "}}}
 
 "{{{ Mappings
