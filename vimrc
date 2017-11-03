@@ -338,7 +338,8 @@
 		nnoremap <silent> <Leader>F :CtrlSFUpdate<CR>
 		nmap <Leader>/ <Plug>CtrlSFPrompt
 		nmap <Leader>n <Plug>CtrlSFPwordPath
-		nmap <Leader>* <Plug>CtrlSFCwordPath
+		nmap <Leader>* <Plug>CtrlSFCCwordPath
+		nmap <Leader># <Plug>CtrlSFCwordPath
 		vmap <Leader>* <Plug>CtrlSFVwordPath
 		" Command-T shortcuts
 		nmap <silent> <Leader>r <Plug>(CommandTMRU)
@@ -346,7 +347,7 @@
 		nmap <silent> <Leader>h <Plug>(CommandTHelp)
 		nmap <silent> <Leader>: <Plug>(CommandTHistory)
 		nmap <silent> <Leader>b <Plug>(CommandTBuffer)
-		nmap <silent> <Leader># <Plug>(CommandTTag)
+		nmap <silent> <Leader>t <Plug>(CommandTTag)
 		nmap <silent> <Leader>j <Plug>(CommandTJump)
 		nmap <silent> <Leader>l <Plug>(CommandTLine)
 		nmap <silent> <Leader>' <Plug>(CommandT)
@@ -355,10 +356,10 @@
 		nnoremap <Leader>! :UpdateTags<CR>
 		" Highlight known tags with [\][@]
 		nnoremap <Leader>@ :HighlightTags<CR>
-		" Move focus to tag bar with [Space][T]
-		nnoremap <silent> <Leader>t :TagbarOpen fj<CR>
-		" Reveal current tag in tag bar with [Space][Shift]+[T]
-		nnoremap <silent> <Leader>T :TagbarShowTag<CR>
+		" Move focus to tag bar with [Space][Shift]+[T]
+		nnoremap <silent> <Leader>T :TagbarOpen fj<CR>
+		" Reveal current tag in tag bar with [\][$]
+		nnoremap <silent> <Leader>$ :TagbarShowTag<CR>
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
