@@ -6,6 +6,8 @@
 # Icon must end with two <CR>
 Icon
 
+# Local Vim configuration
+.vimrc
 
 # Thumbnails
 ._*
