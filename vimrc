@@ -346,19 +346,19 @@
 		nmap <silent> <Leader>h <Plug>(CommandTHelp)
 		nmap <silent> <Leader>: <Plug>(CommandTHistory)
 		nmap <silent> <Leader>b <Plug>(CommandTBuffer)
-		nmap <silent> <Leader>t <Plug>(CommandTTag)
+		nmap <silent> <Leader># <Plug>(CommandTTag)
 		nmap <silent> <Leader>j <Plug>(CommandTJump)
 		nmap <silent> <Leader>l <Plug>(CommandTLine)
 		nmap <silent> <Leader>' <Plug>(CommandT)
 		nmap <silent> <Leader><CR> <Plug>(CommandTCommand)
-		" Update the tags file with [\][@]
+		" Update the tags file with [\][!]
 		nnoremap <Leader>! :UpdateTags<CR>
-		" Highlight known tags with [Space][Shift]+[T]
+		" Highlight known tags with [\][@]
 		nnoremap <Leader>@ :HighlightTags<CR>
-		" Move focus to tag bar with [Space][#]
-		nnoremap <silent> <Leader># :TagbarOpen fj<CR>
-		" Reveal current tag in tag bar with [Space][$]
-		nnoremap <silent> <Leader>$ :TagbarShowTag<CR>
+		" Move focus to tag bar with [Space][T]
+		nnoremap <silent> <Leader>t :TagbarOpen fj<CR>
+		" Reveal current tag in tag bar with [Space][Shift]+[T]
+		nnoremap <silent> <Leader>T :TagbarShowTag<CR>
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
