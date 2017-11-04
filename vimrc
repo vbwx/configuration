@@ -5,16 +5,6 @@
 	source $VIMRUNTIME/defaults.vim
 "}}}
 
-"{{{ Local Variables
-	if executable('timeout')
-		let timeout = 'timeout 10 '
-	elseif executable('gtimeout')
-		let timeout = 'gtimeout 10 '
-	else
-		let timeout = ''
-	endif
-"}}}
-
 "{{{ Options
 	set relativenumber
 	set showmatch
@@ -34,7 +24,7 @@
 	set display+=uhex
 	set foldmethod=indent
 	set foldlevelstart=99
-	set wildignore=*/.git/*,*/.svn/*,*/.sass-cache/*,*/.tmp/*,*/.temp/*,.DS_Store,Thumbs.db,.tags,._*
+	set wildignore=*/.git/*,*/.svn/*,*/.sass-cache/*,*/.tmp/*,*/.temp/*,.DS_Store,Thumbs.db,._*
 	set encoding=utf-8
 	set spelllang=en
 	set listchars=tab:┆\ ,nbsp:·
@@ -51,12 +41,6 @@
 	set sessionoptions-=options
 	set grepformat=%f:%l:%c:%m
 	set noerrorbells visualbell t_vb=
-
-	if timeout
-		let &grepprg = timeout . 'ag --vimgrep --hidden $*'
-	endif
-
-	setglobal tags=./tags,./.tags,.tags;$HOME
 "}}}
 
 "{{{ Bundles
@@ -198,8 +182,8 @@
 
 	let g:shell_mappings_enabled = 0
 
-	let g:easytags_dynamic_files = 2
-	let g:easytags_events = []
+	let g:easytags_dynamic_files = 1
+	let g:easytags_on_cursorhold = 0
 
 	let g:CommandTTraverseSCM = 'dir'
 	let g:CommandTFileScanner = 'git'
@@ -356,10 +340,6 @@
 		nmap <silent> <Leader>l <Plug>(CommandTLine)
 		nmap <silent> <Leader>' <Plug>(CommandT)
 		nmap <silent> <Leader><CR> <Plug>(CommandTCommand)
-		" Update the tags file with [\][!]
-		nnoremap <Leader>! :UpdateTags<CR>
-		" Highlight known tags with [\][@]
-		nnoremap <Leader>@ :HighlightTags<CR>
 		" Move focus to tag bar with [Space][Shift]+[T]
 		nnoremap <silent> <Leader>T :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [\][$]

@@ -13,9 +13,6 @@ Icon
 ._*
 Thumbs.db
 
-# Cache files
-.tags
-
 # Backup files
 *.swp
 *~
@@ -37,6 +34,3 @@ Thumbs.db
 Network Trash Folder
 Temporary Items
 .apdisk
-
-# Entries added by SourceTree
-doc/tags
