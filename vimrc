@@ -363,6 +363,9 @@
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
+		" Quickly create a document with [Space][P]
+		nnoremap <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : &tag)<CR>
+		nnoremap <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : &tag)<CR>
 		" Open a URI in the browser with [Ctrl]+[Return]
 		nnoremap <C-CR> :Open<CR>
 	endif
