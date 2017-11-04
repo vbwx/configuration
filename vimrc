@@ -201,6 +201,10 @@
 	let g:easytags_dynamic_files = 2
 	let g:easytags_events = []
 
+	let g:CommandTTraverseSCM = 'dir'
+	let g:CommandTFileScanner = 'git'
+	let g:CommandTGitScanSubmodules = 1
+	let g:CommandTGitIncludeUntracked = 1
 	let g:CommandTEncoding = 'UTF-8'
  	if &term =~ "xterm" || &term =~ "screen"
 		let g:CommandTCancelMap = ['<Esc>', '<C-C>']
