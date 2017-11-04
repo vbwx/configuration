@@ -57,8 +57,8 @@
 	Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t; /usr/bin/ruby extconf.rb && make'}
 	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-session'
-	Plug 'xolox/vim-easytags'
 	Plug 'xolox/vim-shell'
+	Plug 'ludovicchabant/vim-gutentags'
 	Plug 'embear/vim-localvimrc'
 	Plug 'vim-utils/vim-man'
 	" Plug 'KabbAmine/gulp-vim'
@@ -176,14 +176,12 @@
 
 	let NERDMenuMode = 0
 
-	let g:sleuth_automatic = 0
-
 	let g:session_autosave = 'no'
 
-	let g:shell_mappings_enabled = 0
+	let g:gutentags_generate_on_missing = 0
+	let g:gutentags_generate_on_new = 0
 
-	let g:easytags_dynamic_files = 1
-	let g:easytags_on_cursorhold = 0
+	let g:shell_mappings_enabled = 0
 
 	let g:CommandTTraverseSCM = 'dir'
 	let g:CommandTFileScanner = 'git'
@@ -266,7 +264,7 @@
 	" Automatically open folds when jumping to a line
 	nnoremap G Gzv
 	" Clear search highlighting with [Z][/]
-	nnoremap <silent> z/ :nohl<CR>
+	nnoremap z/ :nohl<CR>
 	" Make [Shift]+[Y] behave like [Shift]+[D] or [Shift]+[C]
 	nmap Y y$
 	" Shortcut for accessing the system clipboard
@@ -344,6 +342,8 @@
 		nnoremap <silent> <Leader>T :TagbarOpen fj<CR>
 		" Reveal current tag in tag bar with [\][$]
 		nnoremap <silent> <Leader>$ :TagbarShowTag<CR>
+		" Generate a tags file for the current project with [\][!]
+		nnoremap <Leader>! :GutentagsUpdate!<CR>
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
 		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
