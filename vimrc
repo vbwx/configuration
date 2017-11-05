@@ -124,6 +124,8 @@
 "{{{ Plugin Settings
 	let maplocalleader = '\\'
 
+	let g:loaded_netrwPlugin = 1
+
 	let g:solarized_menu = 0
 
 	let g:airline_powerline_fonts = 1
