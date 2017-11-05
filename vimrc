@@ -98,7 +98,7 @@
 	"}}}
 
 	"{{{ Language Support
-	Plug 'mattn/emmet-vim'
+	Plug 'mattn/emmet-vim', {'for': ['html', 'javascript', 'css', 'php']}
 	Plug 'pangloss/vim-javascript'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'lervag/vimtex'
@@ -107,8 +107,8 @@
 	Plug 'vim-pandoc/vim-pandoc-after'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'darfink/vim-plist'
-	Plug 'shawncplus/phpcomplete.vim'
-	Plug 'vim-php/tagbar-phpctags.vim'
+	Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
+	Plug 'vim-php/tagbar-phpctags.vim', {'for': 'php'}
 	" Plug 'isRuslan/vim-es6'
 	" Plug 'jalvesaq/Nvim-R'
 	" Plug 'vim-pandoc/vim-rmarkdown'
@@ -183,6 +183,7 @@
 
 	let g:gutentags_generate_on_missing = 0
 	let g:gutentags_generate_on_new = 0
+	let g:gutentags_ctags_exclude = ['*.js']
 
 	let g:shell_mappings_enabled = 0
 
