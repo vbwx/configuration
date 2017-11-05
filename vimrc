@@ -313,8 +313,6 @@
 		nnoremap <Leader>K :Dash!<CR>
 		" Show undo tree
 		nnoremap <silent> <Leader>u :GundoShow<CR>
-		" Guess indentation settings with [\][_]
-		nnoremap <Leader>_ :Sleuth<CR>
 		" Show mark positions when using jump command
 		nnoremap <silent> ` :ShowMarksOnce<CR>`
 		nnoremap <silent> ' :ShowMarksOnce<CR>'
