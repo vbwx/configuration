@@ -24,7 +24,7 @@
 	set display+=uhex
 	set foldmethod=indent
 	set foldlevelstart=99
-	set wildignore=*/.git/*,*/.svn/*,*/.sass-cache/*,*/.tmp/*,*/.temp/*,.DS_Store,Thumbs.db,._*
+	set wildignore=*/.git/*,*/.svn/*,*/.sass-cache/*,*/.tmp/*,*/.temp/*,.DS_Store,Thumbs.db,._*,tags
 	set encoding=utf-8
 	set spelllang=en
 	set listchars=tab:┆\ ,nbsp:·
@@ -176,7 +176,8 @@
 
 	let NERDMenuMode = 0
 
-	let g:session_autosave = 'no'
+	let g:session_autosave = 'yes'
+	let g:session_autoload = 'yes'
 
 	let g:gutentags_generate_on_missing = 0
 	let g:gutentags_generate_on_new = 0
