@@ -1,7 +1,13 @@
-shopt -s cdable_vars
+shopt -s cdable_vars histappend checkwinsize
 
-PS1="\n\[\e[32m\]\W> \[\e[m\]"
-PS2="\[\e[32m\]> \[\e[m\]"
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+if [[ $TERM == 'xterm-color' || $TERM == *-256color ]]; then
+	PS1="\n\[\e[32m\]\w> \[\e[m\]"
+	PS2="\[\e[32m\]> \[\e[m\]"
+fi
 
 if [[ "$OSTYPE" == darwin* ]]; then
 	alias o='open'
@@ -26,6 +32,8 @@ elif type -t wget > /dev/null; then
 	alias get='wget --continue --progress=bar --timestamping --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15'
 fi
 
+alias grep='\grep --color=auto'
+alias ls='\ls -G'
 alias dir='ls -F'
 alias ll='ls -AFlho'
 alias la='ls -lao'
