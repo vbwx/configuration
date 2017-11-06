@@ -54,7 +54,7 @@
 
 	"{{{ Tools
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
-	Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t; /usr/bin/ruby extconf.rb && make'}
+	Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t; ruby extconf.rb && make'}
 	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-session'
 	Plug 'xolox/vim-shell'
@@ -98,7 +98,7 @@
 	"}}}
 
 	"{{{ Language Support
-	Plug 'mattn/emmet-vim', {'for': ['html', 'javascript', 'css', 'php']}
+	Plug 'mattn/emmet-vim'
 	Plug 'pangloss/vim-javascript'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'lervag/vimtex'
@@ -107,8 +107,6 @@
 	Plug 'vim-pandoc/vim-pandoc-after'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'darfink/vim-plist'
-	Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
-	Plug 'vim-php/tagbar-phpctags.vim', {'for': 'php'}
 	" Plug 'isRuslan/vim-es6'
 	" Plug 'jalvesaq/Nvim-R'
 	" Plug 'vim-pandoc/vim-rmarkdown'
