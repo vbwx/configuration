@@ -40,6 +40,7 @@
 	set viminfo^=!
 	set sessionoptions-=options
 	set grepformat=%f:%l:%c:%m
+	set diffopt=vertical,iwhite
 	set noerrorbells visualbell t_vb=
 "}}}
 
