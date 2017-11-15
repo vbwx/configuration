@@ -6,7 +6,7 @@
 "}}}
 
 "{{{ Options
-	set relativenumber
+	set number
 	set showmatch
 	set hlsearch
 	set ignorecase
@@ -41,6 +41,7 @@
 	set sessionoptions-=options
 	set grepformat=%f:%l:%c:%m
 	set diffopt=vertical,iwhite
+	set tags=./tags;$HOME
 	set noerrorbells visualbell t_vb=
 "}}}
 
@@ -355,15 +356,6 @@
 		nnoremap <C-CR> :Open<CR>
 	endif
 	" }}}
-"}}}
-
-"{{{ Abbreviations
-	if !empty(glob('/Applications/Utilities/Terminal.app'))
-		" Open a Terminal window at the directory of the current file
-		cabbrev TERM !open -a Terminal %/
-		" Open a Terminal window at the current working directory
-		cabbrev WTERM !open -a Terminal <C-R>=getcwd()<CR>
-	endif
 "}}}
 
 "{{{ Auto Commands
