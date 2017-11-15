@@ -57,16 +57,16 @@ alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
 alias killall='\killall -i -I'
 alias df='\df -kh'
 alias du='\du -kh'
+alias view='vim -R --noplugin'
+alias vi='vim --noplugin'
+
+function viman {
+	vim -R +"Man ${1-} ${2-} | silent only"
+}
 
 for cmd in start stop restart reboot reload; do
 	alias $cmd=">&2 echo Call sudo $cmd"
 done
-
-if type -t pandoc > /dev/null; then
-	function qpdf {
-		pandoc "$1" -o "${1%.*}.pdf"
-	}
-fi
 
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
