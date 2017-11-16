@@ -192,9 +192,6 @@
 	let g:CommandTGitScanSubmodules = 1
 	let g:CommandTGitIncludeUntracked = 1
 	let g:CommandTEncoding = 'UTF-8'
- 	if &term =~ "xterm" || &term =~ "screen"
-		let g:CommandTCancelMap = ['<Esc>', '<C-C>']
-  	endif
 "}}}
 
 "{{{ Mappings
@@ -282,14 +279,6 @@
 	xnoremap g/ <Esc>:nohl<CR>gv/\v
 	nnoremap g? :nohl<CR>?\v
 	xnoremap g? <Esc>:nohl<CR>gv?\v
-	" [Cmd]+[Return] is an alternative for [Ctrl]+[Return]
-	nmap <D-CR> <C-CR>
-	vmap <D-CR> <C-CR>
-	imap <D-CR> <C-CR>
-	" [Shift]+[Cmd]+[Return] is an alternative for [Shift]+[Return]
-	nmap <S-D-CR> <S-CR>
-	vmap <S-D-CR> <S-CR>
-	imap <S-D-CR> <S-CR>
 
 	" Reference the directory of the current file in command line
 	cnoremap %/ %:p:h/
