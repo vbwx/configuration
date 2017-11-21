@@ -56,12 +56,13 @@
 
 	"{{{ Tools
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
-	Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t; ruby extconf.rb && make'}
+	Plug 'vbwx/command-t', {'do': 'cd ruby/command-t/ext/command-t; ruby extconf.rb && make'}
+	Plug 'ervandew/supertab'
 	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-session'
 	Plug 'xolox/vim-shell'
-	Plug 'ludovicchabant/vim-gutentags'
-	Plug 'embear/vim-localvimrc'
+	"Plug 'ludovicchabant/vim-gutentags'
+	"Plug 'embear/vim-localvimrc'
 	Plug 'vim-utils/vim-man'
 	" Plug 'KabbAmine/gulp-vim'
 	" Plug 'mklabs/grunt.vim'
@@ -78,7 +79,7 @@
 	Plug 'vim-scripts/todolist.vim'
 	Plug 'sjl/gundo.vim'
 	Plug 'mhinz/vim-signify'
-	Plug 'scrooloose/syntastic'
+	"Plug 'scrooloose/syntastic'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'jacquesbh/vim-showmarks'
@@ -89,18 +90,18 @@
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-surround'
 	Plug 'tkhren/vim-fake'
-	Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --tern-completer'}
+	"Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --tern-completer'}
 	Plug 'Chiel92/vim-autoformat'
 	Plug 'tmhedberg/matchit'
 	Plug 'lfilho/cosco.vim'
 	Plug 'dyng/ctrlsf.vim'
 	Plug 'dhruvasagar/vim-table-mode'
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
+	"Plug 'SirVer/ultisnips'
+	"Plug 'honza/vim-snippets'
 	"}}}
 
 	"{{{ Language Support
-	Plug 'mattn/emmet-vim'
+	"Plug 'mattn/emmet-vim'
 	Plug 'pangloss/vim-javascript'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'lervag/vimtex'
@@ -132,39 +133,39 @@
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#wordcount#filetypes .= '|pandoc'
 
-	let g:localvimrc_name = ['.vimrc']
-	let g:localvimrc_persistent = 2
-	let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
+	"let g:localvimrc_name = ['.vimrc']
+	"let g:localvimrc_persistent = 2
+	"let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
 
-	let g:syntastic_mode_map = {
-	\	'mode': 'passive',
-	\	'active_filetypes': []
-	\ }
+	"let g:syntastic_mode_map = {
+	"\	'mode': 'passive',
+	"\	'active_filetypes': []
+	"\ }
 
-	let g:UltiSnipsExpandTrigger = "<C-Down>"
-	let g:UltiSnipsJumpForwardTrigger = "<C-Right>"
-	let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
-	let g:UltiSnipsEditSplit = "vertical"
+	"let g:UltiSnipsExpandTrigger = "<C-Down>"
+	"let g:UltiSnipsJumpForwardTrigger = "<C-Right>"
+	"let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
+	"let g:UltiSnipsEditSplit = "vertical"
 
 	let g:visualstar_extra_commands = 'zzzv'
 
-	let g:user_emmet_install_global = 0
-	let g:user_emmet_mode = 'nv'
-	let g:user_emmet_leader_key = maplocalleader
+	"let g:user_emmet_install_global = 0
+	"let g:user_emmet_mode = 'nv'
+	"let g:user_emmet_leader_key = maplocalleader
 
-	if !exists('g:ycm_semantic_triggers')
-		let g:ycm_semantic_triggers = {}
-	endif
-	let g:ycm_semantic_triggers.tex = [
-	\	're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
-	\	're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
-	\	're!\\hyperref\[[^]]*',
-	\	're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
-	\	're!\\(include(only)?|input){[^}]*',
-	\	're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
-	\	're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
-	\	're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
-	\ ]
+	"if !exists('g:ycm_semantic_triggers')
+		"let g:ycm_semantic_triggers = {}
+	"endif
+	"let g:ycm_semantic_triggers.tex = [
+	"\	're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+	"\	're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+	"\	're!\\hyperref\[[^]]*',
+	"\	're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+	"\	're!\\(include(only)?|input){[^}]*',
+	"\	're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+	"\	're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+	"\	're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+	"\ ]
 
 	let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 	let g:vimtex_view_general_options = '-r @line @pdf @tex'
@@ -178,14 +179,15 @@
 
 	let NERDMenuMode = 0
 
-	let g:session_autosave = 'yes'
+	"let g:session_autosave = 'yes'
 	let g:session_autoload = 'yes'
 
-	let g:gutentags_generate_on_missing = 0
-	let g:gutentags_generate_on_new = 0
-	let g:gutentags_ctags_exclude = ['*.js']
-
 	let g:shell_mappings_enabled = 0
+
+	"let g:gutentags_generate_on_missing = 0
+	"let g:gutentags_generate_on_new = 0
+	"let g:gutentags_generate_on_write = 0
+	"let g:gutentags_ctags_exclude = ['*.js']
 
 	let g:CommandTTraverseSCM = 'dir'
 	let g:CommandTFileScanner = 'git'
@@ -216,16 +218,10 @@
 	" Insert selected text as search command into command line with [Return]
 	xnoremap <CR> y:/\V\(<C-R>=escape(getreg('"'), '/\')<CR>\)/<C-B>
 	smap <CR> <C-G><CR>
-	" Faster shell command execution with [Alt]+[Return]
-	noremap <A-CR> :!
-	" Add a line below in insert mode with [Ctrl]+[Return] or [Cmd]+[Return]
-	inoremap <C-CR> <C-O>o
-	" Add a line above in insert mode with [Shift]+[Return] or [Shift]+[Cmd]+[Return]
-	inoremap <S-CR> <C-O>O
-	" Jump to tag with [Shift]+[Return]
-	nnoremap <S-CR> <C-]>
+	" Jump to tag with [Del]
+	nmap <Del> <NOP>
+	nnoremap <Del> <C-]>
 	" Jump back with [Shift]+[Backspace] or [Backspace]
-	nnoremap <S-BS> <C-T>
 	nnoremap <BS> <C-T>
 	" Ex mode is unnecessary
 	nmap Q <NOP>
@@ -298,7 +294,7 @@
 		" Reveal current file in file explorer with [\][%]
 		nnoremap <silent> <Leader>% :NERDTreeFind<CR>
 		" Check syntax with [\][^]
-		nnoremap <Leader>^ :SyntasticCheck<CR>
+		"nnoremap <Leader>^ :SyntasticCheck<CR>
 		" Look up keyword in Dash with [Space][D]
 		nnoremap <Leader>k :Dash<CR>
 		" Look up keyword in all Dash docsets with [Space][Shift]+[D]
@@ -334,15 +330,9 @@
 		" Reveal current tag in tag bar with [\][$]
 		nnoremap <silent> <Leader>$ :TagbarShowTag<CR>
 		" Generate a tags file for the current project with [\][!]
-		nnoremap <Leader>! :GutentagsUpdate!<CR>
+		"nnoremap <Leader>! :GutentagsUpdate!<CR>
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
-		imap <A-CR> <C-O><Plug>(cosco-commaOrSemiColon)
-		" Quickly create a document with [Space][P]
-		nnoremap <Leader>p :exec "Pandoc ".(&tag =~ '[,/;]' ? 'pdf' : &tag)<CR>
-		nnoremap <Leader>P :exec "Pandoc! ".(&tag =~ '[,/;]' ? 'pdf' : &tag)<CR>
-		" Open a URI in the browser with [Ctrl]+[Return]
-		nnoremap <C-CR> :Open<CR>
 	endif
 	" }}}
 "}}}
@@ -357,7 +347,7 @@
 
 	if &loadplugins
 		" Enable Emmet for HTML & CSS files
-		autocmd FileType html,css EmmetInstall
+		"autocmd FileType html,css EmmetInstall
 		" Strip trailing whitespace before saving
 		autocmd BufEnter * EnableStripWhitespaceOnSave
 	endif
