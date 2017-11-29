@@ -115,7 +115,6 @@
 	" Plug 'vim-pandoc/vim-rmarkdown'
 	" Plug 'leafgarland/typescript-vim'
 	" Plug 'digitaltoad/vim-pug'
-	" Plug 'kchmck/vim-coffee-script'
 	" Plug 'lumiliet/vim-twig'
 	"}}}
 
