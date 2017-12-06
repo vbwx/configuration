@@ -56,16 +56,15 @@
 
 	"{{{ Tools
 	Plug 'scrooloose/nerdtree', {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle']}
-	Plug 'vbwx/command-t', {'do': 'cd ruby/command-t/ext/command-t; ruby extconf.rb && make'}
-	Plug 'ervandew/supertab'
+	Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t; ruby extconf.rb && make'}
 	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-session'
 	Plug 'xolox/vim-shell'
-	"Plug 'ludovicchabant/vim-gutentags'
-	"Plug 'embear/vim-localvimrc'
+	Plug 'ludovicchabant/vim-gutentags'
+	Plug 'embear/vim-localvimrc'
 	Plug 'vim-utils/vim-man'
-	" Plug 'KabbAmine/gulp-vim'
-	" Plug 'mklabs/grunt.vim'
+	 Plug 'KabbAmine/gulp-vim'
+	 Plug 'mklabs/grunt.vim'
 
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
@@ -79,30 +78,30 @@
 	Plug 'vim-scripts/todolist.vim'
 	Plug 'sjl/gundo.vim'
 	Plug 'mhinz/vim-signify'
-	"Plug 'scrooloose/syntastic'
+	Plug 'scrooloose/syntastic'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'jacquesbh/vim-showmarks'
 	Plug 'scrooloose/nerdcommenter'
-	Plug 'tpope/vim-repeat'
 	Plug 'vbwx/vim-unimpaired'
 	Plug 'tpope/vim-sleuth'
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-surround'
 	Plug 'tkhren/vim-fake'
-	"Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --tern-completer'}
+	Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --tern-completer'}
 	Plug 'Chiel92/vim-autoformat'
 	Plug 'tmhedberg/matchit'
 	Plug 'lfilho/cosco.vim'
 	Plug 'dyng/ctrlsf.vim'
 	Plug 'dhruvasagar/vim-table-mode'
-	"Plug 'SirVer/ultisnips'
-	"Plug 'honza/vim-snippets'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+	Plug 'tpope/vim-repeat'
 	"}}}
 
 	"{{{ Language Support
-	"Plug 'mattn/emmet-vim'
-	Plug 'pangloss/vim-javascript'
+	Plug 'mattn/emmet-vim'
+	Plug 'isRuslan/vim-es6'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'lervag/vimtex'
 	Plug 'vim-pandoc/vim-pandoc'
@@ -110,12 +109,11 @@
 	Plug 'vim-pandoc/vim-pandoc-after'
 	Plug 'mustache/vim-mustache-handlebars'
 	Plug 'darfink/vim-plist'
-	" Plug 'isRuslan/vim-es6'
-	" Plug 'jalvesaq/Nvim-R'
-	" Plug 'vim-pandoc/vim-rmarkdown'
-	" Plug 'leafgarland/typescript-vim'
-	" Plug 'digitaltoad/vim-pug'
-	" Plug 'lumiliet/vim-twig'
+	Plug 'jalvesaq/Nvim-R'
+	Plug 'vim-pandoc/vim-rmarkdown'
+	Plug 'leafgarland/typescript-vim'
+	Plug 'digitaltoad/vim-pug'
+	Plug 'lumiliet/vim-twig'
 	"}}}
 
 	call plug#end()
@@ -132,43 +130,38 @@
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#wordcount#filetypes .= '|pandoc'
 
-	"let g:localvimrc_name = ['.vimrc']
-	"let g:localvimrc_persistent = 2
-	"let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
+	let g:localvimrc_name = ['.vimrc']
+	let g:localvimrc_persistent = 2
+	let g:localvimrc_persistence_file = $HOME.'/.vim/localvimrc'
 
-	"let g:syntastic_mode_map = {
-	"\	'mode': 'passive',
-	"\	'active_filetypes': []
-	"\ }
+	let g:syntastic_mode_map = {
+	\	'mode': 'passive',
+	\	'active_filetypes': []
+	\ }
 
-	"let g:UltiSnipsExpandTrigger = "<C-Down>"
-	"let g:UltiSnipsJumpForwardTrigger = "<C-Right>"
-	"let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
-	"let g:UltiSnipsEditSplit = "vertical"
+	let g:UltiSnipsExpandTrigger = "<C-Down>"
+	let g:UltiSnipsJumpForwardTrigger = "<C-Right>"
+	let g:UltiSnipsJumpBackwardTrigger = "<C-Left>"
+	let g:UltiSnipsEditSplit = "vertical"
 
-	let g:visualstar_extra_commands = 'zzzv'
+	let g:user_emmet_install_global = 0
+	let g:user_emmet_mode = 'nv'
+	let g:user_emmet_leader_key = maplocalleader
 
-	"let g:user_emmet_install_global = 0
-	"let g:user_emmet_mode = 'nv'
-	"let g:user_emmet_leader_key = maplocalleader
+	if exists('g:ycm_semantic_triggers')
+		let g:ycm_semantic_triggers.tex = [
+		\	're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+		\	're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+		\	're!\\hyperref\[[^]]*',
+		\	're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+		\	're!\\(include(only)?|input){[^}]*',
+		\	're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+		\	're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+		\	're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+		\ ]
+	endif
 
-	"if !exists('g:ycm_semantic_triggers')
-		"let g:ycm_semantic_triggers = {}
-	"endif
-	"let g:ycm_semantic_triggers.tex = [
-	"\	're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
-	"\	're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
-	"\	're!\\hyperref\[[^]]*',
-	"\	're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
-	"\	're!\\(include(only)?|input){[^}]*',
-	"\	're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
-	"\	're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
-	"\	're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
-	"\ ]
-
-	let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-	let g:vimtex_view_general_options = '-r @line @pdf @tex'
-	let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
+	let g:vimtex_view_method = 'skim'
 
 	let g:table_mode_map_prefix = '<Bar>'
 	let g:table_mode_tableize_d_map = '<Bar>T'
@@ -183,10 +176,10 @@
 
 	let g:shell_mappings_enabled = 0
 
-	"let g:gutentags_generate_on_missing = 0
-	"let g:gutentags_generate_on_new = 0
-	"let g:gutentags_generate_on_write = 0
-	"let g:gutentags_ctags_exclude = ['*.js']
+	let g:gutentags_generate_on_missing = 0
+	let g:gutentags_generate_on_new = 0
+	let g:gutentags_generate_on_write = 0
+	let g:gutentags_ctags_exclude = ['*.js']
 
 	let g:CommandTTraverseSCM = 'dir'
 	let g:CommandTFileScanner = 'git'
@@ -293,7 +286,7 @@
 		" Reveal current file in file explorer with [\][%]
 		nnoremap <silent> <Leader>% :NERDTreeFind<CR>
 		" Check syntax with [\][^]
-		"nnoremap <Leader>^ :SyntasticCheck<CR>
+		nnoremap <Leader>^ :SyntasticCheck<CR>
 		" Look up keyword in Dash with [Space][D]
 		nnoremap <Leader>k :Dash<CR>
 		" Look up keyword in all Dash docsets with [Space][Shift]+[D]
@@ -329,7 +322,7 @@
 		" Reveal current tag in tag bar with [\][$]
 		nnoremap <silent> <Leader>$ :TagbarShowTag<CR>
 		" Generate a tags file for the current project with [\][!]
-		"nnoremap <Leader>! :GutentagsUpdate!<CR>
+		nnoremap <Leader>! :GutentagsUpdate!<CR>
 		" Insert semicolon or comma at the end of the line with [\][;] or [Alt]+[Return]
 		nmap <Leader>; <Plug>(cosco-commaOrSemiColon)
 	endif
@@ -346,7 +339,7 @@
 
 	if &loadplugins
 		" Enable Emmet for HTML & CSS files
-		"autocmd FileType html,css EmmetInstall
+		autocmd FileType html,css EmmetInstall
 		" Strip trailing whitespace before saving
 		autocmd BufEnter * EnableStripWhitespaceOnSave
 	endif
@@ -355,32 +348,6 @@
 "{{{ Syntax Highlighting
 	colorscheme base16-tomorrow-night
 	highlight! link ExtraWhitespace Todo
-"}}}
-
-"{{{ Functions
-	function! UpdateSkim(status)
-		if !a:status | return | endif
-
-		let l:out = b:vimtex.out()
-		let l:tex = expand('%:p')
-		let l:cmd = [g:vimtex_view_general_viewer, '-r']
-		if !empty(system('pgrep Skim'))
-			call extend(l:cmd, ['-g'])
-		endif
-		if has('nvim')
-			call jobstart(l:cmd + [line('.'), l:out, l:tex])
-		elseif has('job')
-			call job_start(l:cmd + [line('.'), l:out, l:tex])
-		else
-			call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
-		endif
-	endfunction
-"}}}
-
-"{{{ Custom Commands
-	" Count words of a document using Pandoc
-	command! -bar -range=% Count <line1>,<line2>w !
-	\	pandoc -t plain | wc -w | sed -e 's/[[:space:]]//g' -e 's/$/ words/'
 "}}}
 
 " vim: ts=5:sw=5:fdm=marker:fdl=0:fdc=3
