@@ -1,6 +1,7 @@
 PATH+=":."
-EDITOR="vim"
-VISUAL="vim"
+BROWSER="open"
+EDITOR="subl -w"
+VISUAL="$EDITOR"
 PAGER="less"
 
 # Local variables, etc.
