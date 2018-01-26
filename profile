@@ -1,6 +1,6 @@
 PATH+=":."
 BROWSER="open"
-EDITOR="subl -w"
+EDITOR="subl"
 VISUAL="$EDITOR"
 PAGER="less"
 

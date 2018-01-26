@@ -60,10 +60,6 @@ alias du='\du -kh'
 alias view='vim -R --noplugin'
 alias vi='vim --noplugin'
 
-function viman {
-	vim -R +"Man ${1-} ${2-} | silent only"
-}
-
 for cmd in start stop restart reboot reload; do
 	alias $cmd=">&2 echo Call sudo $cmd"
 done
