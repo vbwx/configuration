@@ -36,15 +36,16 @@ cfg="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 link "$cfg/bash_profile" "$HOME/.bash_profile"
 link "$cfg/bashrc" "$HOME/.bashrc"
-link "$cfg/coffeelint.json" "$HOME/.coffeelint.json"
 link "$cfg/eslintrc.json" "$HOME/.eslintrc.json"
+move "$HOME/.gitconfig" "$cfg/gitconfig"
+link "$cfg/gitconfig" "$HOME/.config/git/config"
 link "$cfg/gitignore" "$HOME/.config/git/ignore"
 link "$cfg/vimrc" "$HOME/.vim/vimrc"
 link "$cfg/gvimrc" "$HOME/.vim/gvimrc"
 link "$cfg/profile" "$HOME/.profile"
 link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
 link "$cfg/tern-config.json" "$HOME/.tern-config"
-move "$HOME/.gitconfig" "$HOME/.config/git/config"
+link "$cfg/wgetrc" "$HOME/.wgetrc"
 
 if [[ $(uname) == 'Darwin' ]]; then
 	ln -vs "$cfg/lang.env.plist" ~/Library/LaunchAgents
