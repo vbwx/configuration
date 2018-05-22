@@ -59,6 +59,7 @@ alias df='\df -kh'
 alias du='\du -kh'
 alias view='vim -R --noplugin'
 alias vi='vim --noplugin'
+alias su='sudo -v'
 
 for cmd in start stop restart reboot reload; do
 	alias $cmd=">&2 echo Call sudo $cmd"
