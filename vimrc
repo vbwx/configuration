@@ -1,6 +1,12 @@
-" Copyright 2016-2017 Bernhard Waldbrunner
+" Copyright 2016-2018 Bernhard Waldbrunner
 
-"{{{ Load Defaults
+"{{{ Initialization
+	if empty(glob('~/.vim/autoload/plug.vim'))
+		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	endif
+
 	unlet! skip_defaults_vim
 	source $VIMRUNTIME/defaults.vim
 "}}}
@@ -63,8 +69,8 @@
 	Plug 'ludovicchabant/vim-gutentags'
 	Plug 'embear/vim-localvimrc'
 	Plug 'vim-utils/vim-man'
-	 Plug 'KabbAmine/gulp-vim'
-	 Plug 'mklabs/grunt.vim'
+	Plug 'KabbAmine/gulp-vim'
+	Plug 'mklabs/grunt.vim'
 
 	if !empty(glob("/Applications/Dash.app"))
 		Plug 'rizzatti/dash.vim'
