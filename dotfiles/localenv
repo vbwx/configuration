@@ -1,0 +1,12 @@
+# List of directories that cd searches.
+CDPATH="/Volumes"
+# CDPATH="/media/$USER" # for Debian systems
+
+# Define important directories
+Desk="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Desktop"
+Down="$HOME/Downloads"
+Pub="$HOME/Public"
+Uni="$HOME/Library/Mobile Documents/com~apple~CloudDocs/University/WIWI"
+Busi="$HOME/Business"
+Site="$HOME/Sites"
+Pro="$HOME/Projects"

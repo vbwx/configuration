@@ -1,52 +1,30 @@
 #!/bin/bash
 
-function makedir {
-	if [[ ${1-} ]]; then
-		[[ -d $1 ]] || mkdir -vp "$@"
-	fi
-}
+set -euo pipefail
+IFS=$'\n'
 
-function link {
-	local i dest
-	if [[ ${1-} && -e $1 ]]; then
-		if [[ ${2-} ]]; then
-			dest="${@:(-1)}"
-			i=$[$#-2]
-			[[ ${dest:(-1)} == '/' ]] && set - "${@:1:$i}" "$dest$(basename "$1")"
-			makedir "$(dirname "$dest")"
-		fi
-		[[ -e $dest ]] || ln -vs "$@"
-	fi
-}
-
-function move {
-	local i dest
-	if [[ ${1-} && ${2-} ]]; then
-		i=$[$#-2]
-		dest="${@:(-1)}"
-		[[ ${dest:(-1)} == '/' ]] && set - "${@:1:$i}" "$dest$(basename "$1")"
-		makedir "$(dirname "$dest")"
-		[[ -e $dest ]] || mv -v "$@"
-	fi
-}
-
-set -eu
-
-cfg="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-link "$cfg/bash_profile" "$HOME/.bash_profile"
-link "$cfg/bashrc" "$HOME/.bashrc"
-link "$cfg/eslintrc.json" "$HOME/.eslintrc.json"
-move "$HOME/.gitconfig" "$cfg/gitconfig"
-link "$cfg/gitconfig" "$HOME/.config/git/config"
-link "$cfg/gitignore" "$HOME/.config/git/ignore"
-link "$cfg/vimrc" "$HOME/.vim/vimrc"
-link "$cfg/gvimrc" "$HOME/.vim/gvimrc"
-link "$cfg/profile" "$HOME/.profile"
-link "$cfg/scss-lint.yml" "$HOME/.scss-lint.yml"
-link "$cfg/tern-config.json" "$HOME/.tern-config"
-link "$cfg/wgetrc" "$HOME/.wgetrc"
-
-if [[ $(uname) == 'Darwin' ]]; then
-	ln -vs "$cfg/lang.env.plist" ~/Library/LaunchAgents
+if [[ ${1-} == "-f" ]]; then
+	force="hf"
+	shift
+else
+	force=""
 fi
+
+function escape {
+	printf "%s" "$1" | LC_ALL=C sed 's/[]\\\\/.$&*{}|+?()[^]/\\&/g'
+}
+
+dest="${1-$HOME/.config}"
+
+[[ -d $dest ]] || mkdir -vp "$dest"
+ln -vs$force "$(realpath plugins)" "$dest"
+
+src="$(escape "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)")\\/"
+dest="$(escape "$(realpath "$HOME")")\\/"
+
+find dotfiles -mindepth 1 -type d -and -not -name ".*" | \
+	sed -E "s/^dotfiles\\//$dest./" | \
+	xargs mkdir -vp
+find dotfiles -mindepth 1 -type f -and -not -name ".*" | \
+	sed -E "s/^dotfiles\\/(.*)/$src&"$'\\\n'"$dest.\\1/" | \
+	xargs -n 2 ln -vs$force

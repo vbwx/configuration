@@ -1,0 +1,19 @@
+PATH+=":."
+
+if [[ "$OSTYPE" == darwin* ]]; then
+	export BROWSER='open'
+fi
+
+export EDITOR='subl'
+export VISUAL="$EDITOR"
+export PAGER='less'
+
+if [[ -z "$LANG" ]]; then
+	export LANG='en_US.UTF-8'
+	export LC_ALL='en_US.UTF-8'
+	export LC_COLLATE='en_US.UTF-8'
+	export LANGUAGE='en'
+fi
+
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+export NODE_PATH="/usr/local/lib/node_modules"
