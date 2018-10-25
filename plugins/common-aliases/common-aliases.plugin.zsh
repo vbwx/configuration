@@ -31,23 +31,21 @@ for cmd in start stop restart reboot reload; do
 	alias $cmd=">&2 echo Call sudo $cmd."
 done
 
-if [[ $SHELL == /bin/zsh ]]; then
-	alias ack='nocorrect ack'
-	alias cd='nocorrect cd'
-	alias gcc='nocorrect gcc'
-	alias grep='nocorrect grep'
-	alias ln='nocorrect ln'
-	alias rm='nocorrect rm'
-	alias bower='noglob bower'
-	alias fc='noglob fc'
-	alias find='noglob find'
-	alias ftp='noglob ftp'
-	alias history='noglob history'
-	alias locate='noglob locate'
-	alias rsync='noglob rsync'
-	alias scp='noglob scp'
-	alias sftp='noglob sftp'
-fi
+alias ack='nocorrect ack'
+alias cd='nocorrect cd'
+alias gcc='nocorrect gcc'
+alias grep='nocorrect grep'
+alias ln='nocorrect ln'
+alias rm='nocorrect rm'
+alias bower='noglob bower'
+alias fc='noglob fc'
+alias find='noglob find'
+alias ftp='noglob ftp'
+alias history='noglob history'
+alias locate='noglob locate'
+alias rsync='noglob rsync'
+alias scp='noglob scp'
+alias sftp='noglob sftp'
 
 # Advanced Aliases.
 # Use with caution

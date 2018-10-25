@@ -2,12 +2,11 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+Icon[]
 
-# Icon must end with two <CR>
-Icon
-
-# Local Vim configuration
+# Editor config files
 .vimrc
+*.sublime-workspace
 
 # Thumbnails
 ._*
@@ -34,4 +33,3 @@ Thumbs.db
 Network Trash Folder
 Temporary Items
 .apdisk
-*.sublime-workspace
